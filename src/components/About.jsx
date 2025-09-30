@@ -36,7 +36,7 @@ const About = () => {
 
         <div className="about-content">
           <div className="about-text">
-            <h3>¡Hola! Soy Melina Schimpf</h3>
+            <h3>¡Hola! Soy Melina Schimpf Baldo</h3>
             <p>
               Estudiante de Tecnicatura Superior en Análisis y Desarrollo de Software
               en el Instituto Superior Sedes Sapientiae, con finalización prevista para 2025.
@@ -45,17 +45,17 @@ const About = () => {
             <p>
               Tengo experiencia en desarrollo web con HTML, CSS, JavaScript y Bootstrap,
               así como en análisis de datos con SQL y Power BI. También he trabajado
-              con lenguajes como Python, C# y PHP, además de frameworks como Laravel.
+              con lenguajes como PHP, JavaScript, TypeScript, Python y C#.
             </p>
             <p>
-              Me especializo en el análisis de datos, desarrollo web y programación.
+              Me especializo en el desarrollo web y programación, pero también en en análisis de datos.
               Siempre estoy aprendiendo nuevas tecnologías para mantenerme actualizada
               en este campo en constante evolución.
             </p>
             
             <div className="stats">
               <div className="stat">
-                <h4>4+</h4>
+                <h4>8+</h4>
                 <p>Certificaciones Obtenidas</p>
               </div>
               <div className="stat">

@@ -8,27 +8,38 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: "Sistema de Gestión con Laravel",
+      title: "Sistema de Gestión de Maquinaria Vial",
       description: "Aplicación web completa desarrollada con PHP y Laravel, incluyendo autenticación, CRUD de usuarios, manejo de archivos y panel administrativo con Bootstrap.",
       image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=500&h=300&fit=crop",
       technologies: ["PHP", "Laravel", "MySQL", "Bootstrap", "Blade"],
-      category: "backend",
-      liveUrl: "https://github.com/meliischimpf",
-      githubUrl: "https://github.com/meliischimpf",
+      category: "fullstack",
+      //liveUrl: "#",
+      githubUrl: "https://github.com/meliischimpf/gestion_maquinaria_vial",
+      featured: true
+    },
+    { 
+      id: 2,
+      title: "Batalla Naval",
+      description: "El reconocido juego batalla naval, creado con HTML, CSS y JavaScript",
+      image: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=500&h=300&fit=crop",
+      technologies: ["HTML5", "CSS3", "JavaScript"],
+      category: "frontend",
+      //liveUrl: "#",
+      githubUrl: "hhttps://github.com/meliischimpf/batalla-naval",
       featured: true
     },
     {
-      id: 2,
-      title: "Dashboard de Análisis de Datos",
-      description: "Dashboard interactivo creado con Power BI para analizar grandes volúmenes de datos, con visualizaciones dinámicas y reportes automatizados según certificación Jump! Data Analytics.",
+      id: 3,
+      title: "Proyecto Data Analytics",
+      description: "Proyecto Data Analytics sobre Representación Femenina en Videojuegos según certificación Jump! Data Analytics.",
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=300&fit=crop",
       technologies: ["Power BI", "SQL Server", "Excel", "Data Analytics"],
       category: "data",
-      liveUrl: "#",
-      githubUrl: "https://github.com/meliischimpf",
+      //liveUrl: "#",
+      githubUrl: "https://github.com/meliischimpf/meliischimpf-representacion_femenina_en_videojuegos",
       featured: true
     },
-    {
+    /* {
       id: 3,
       title: "Aplicación React Interactiva",
       description: "Aplicación web moderna desarrollada con React, implementando componentes reutilizables, hooks y manejo de estado para una experiencia de usuario fluida.",
@@ -38,19 +49,8 @@ const Projects = () => {
       liveUrl: "#",
       githubUrl: "https://github.com/meliischimpf",
       featured: true
-    },
-    {
-      id: 4,
-      title: "Página Web Responsiva",
-      description: "Sitio web moderno y completamente responsivo desarrollado con HTML5, CSS3, JavaScript y Bootstrap, optimizado para múltiples dispositivos y navegadores.",
-      image: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=500&h=300&fit=crop",
-      technologies: ["HTML5", "CSS3", "JavaScript", "Bootstrap"],
-      category: "frontend",
-      liveUrl: "#",
-      githubUrl: "https://github.com/meliischimpf",
-      featured: false
-    },
-    {
+    }, */
+    /* {
       id: 5,
       title: "API REST con Laravel",
       description: "API RESTful desarrollada con Laravel, implementando autenticación JWT, validaciones, relaciones de base de datos y documentación con Swagger.",
@@ -60,23 +60,24 @@ const Projects = () => {
       liveUrl: "#",
       githubUrl: "https://github.com/meliischimpf",
       featured: false
-    },
+    }, */
     {
-      id: 6,
-      title: "Proyecto de Análisis SQL",
-      description: "Proyecto de optimización y análisis de bases de datos relacionales utilizando SQL Server y MySQL con consultas complejas y stored procedures.",
+      id: 4,
+      title: "Proyecto de Timbre QR (Under Construction)",
+      description: "Proyecto de Timbre con scanner de QR para mi departamento",
       image: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=500&h=300&fit=crop",
-      technologies: ["SQL Server", "MySQL", "MariaDB", "Database Design"],
-      category: "data",
-      liveUrl: "#",
-      githubUrl: "https://github.com/meliischimpf",
+      technologies: ["HTML", "CSS3", "JavaScript", "NodeJS"],
+      category: "fullstack",
+      //liveUrl: "#",
+      githubUrl: "https://github.com/meliischimpf/timbre-dpto",
       featured: false
-    }
+    },
   ]
 
   const categories = [
     { id: 'all', label: 'Todos' },
-    { id: 'backend', label: 'PHP/Laravel' },
+    { id: 'fullstack', label: 'FullStack'},
+    { id: 'backend', label: 'Backend' },
     { id: 'frontend', label: 'Frontend' },
     { id: 'data', label: 'Análisis de Datos' }
   ]

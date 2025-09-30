@@ -41,7 +41,7 @@ const Footer = () => {
         <div className="footer-content">
           <div className="footer-section">
             <div className="footer-brand">
-              <h3>Melina Schimpf</h3>
+              <h3>Melina Schimpf Baldo</h3>
               <p>
                 Estudiante de Desarrollo de Software apasionada por crear
                 soluciones digitales innovadoras y análisis de datos.
@@ -94,7 +94,7 @@ const Footer = () => {
         <div className="footer-bottom">
           <div className="footer-copyright">
             <p>
-              © {currentYear} Melina Schimpf. Hecho con <Heart size={16} className="heart" />
+              © {currentYear} Melina Schimpf Baldo. Hecho con <Heart size={16} className="heart" />
               por una desarrolladora apasionada.
             </p>
           </div>

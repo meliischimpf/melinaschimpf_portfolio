@@ -11,34 +11,49 @@ const Skills = () => {
         { name: "JavaScript", level: 85 },
         { name: "React", level: 75 },
         { name: "Bootstrap", level: 80 },
-        { name: "Diseño Web", level: 85 }
+        { name: "Tailwind", level: 85 }
       ]
     },
     {
-      title: "Backend & Programación",
+      title: "Backend",
       skills: [
         { name: "PHP", level: 90 },
-        { name: "Laravel", level: 85 },
+        { name: "NodeJs", level: 75},
         { name: "Python", level: 60 },
         { name: "C#", level: 55 },
-        { name: "Lógica de Programación", level: 85 }
+        { name: "Laravel", level: 85 },
+        { name: "NextJs", level: 75 },
+        { name: "GitHub", level: 80 },
+        { name: "REST API", level: 75 },
+        { name: "Postman", level: 70 },
+        { name: "Lógica de Programación", level: 90 }
       ]
     },
     {
       title: "Bases de Datos & Análisis",
       skills: [
-        { name: "SQL Server", level: 85 },
         { name: "MySQL", level: 80 },
-        { name: "MariaDB", level: 75 },
-        { name: "Power BI", level: 80 },
-        { name: "Excel", level: 90 },
+        { name: "MariaDB", level: 80 },
+        { name: "MongoDB", level: 70 },
+        { name: "Power BI", level: 75 },
+        { name: "Excel", level: 85 },
         { name: "Análisis de Datos", level: 85 }
+      ]
+    },
+    {
+      title: "Devops",
+      skills: [
+        { name: "Apache", level: 70 },
+        { name: "Nginx", level: 60 },
+        { name: "AWS", level: 70 },
+        { name: "Docker", level: 70 },
+        { name: "Kubernetes", level: 70 }
       ]
     }
   ]
 
   const tools = [
-    "Git", "GitHub", "Visual Studio", "Power BI", "Excel",
+    "Git", "Visual Studio", "Power BI", "Excel",
     "Hardware", "Redes", "Sistemas Operativos", "Routers", "Mantenimiento PC"
   ]
 

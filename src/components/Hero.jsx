@@ -13,13 +13,13 @@ const Hero = () => {
         <div className="hero-content">
           <div className="hero-text">
             <h1 className="hero-title">
-              Hola, soy <span className="highlight">Melina Schimpf</span>
+              Hola, soy <span className="highlight">Melina Schimpf Baldo</span>
             </h1>
             <h2 className="hero-role">Desarrolladora de Software</h2>
             <p className="hero-subtitle">
               Estudiante de Tecnicatura Superior en Análisis y Desarrollo de Software.
               Apasionada por crear soluciones digitales innovadoras con HTML, CSS,
-              JavaScript, Python y tecnologías modernas.
+              JavaScript, PHP y tecnologías modernas.
             </p>
             <div className="hero-buttons">
               <a href="#projects" className="btn">
@@ -46,7 +46,7 @@ const Hero = () => {
             <div className="image-placeholder">
               <img
                 src="https://cdn.builder.io/api/v1/image/assets%2F1d3555ed35f44b0496853911deccc8d1%2F801419f00d304e86b2a35fd318df844c?format=webp&width=800"
-                alt="Melina Schimpf"
+                alt="Melina Schimpf Baldo"
                 className="profile-photo"
               />
             </div>
