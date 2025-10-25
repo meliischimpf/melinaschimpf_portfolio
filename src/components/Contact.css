@@ -1,9 +1,22 @@
 .contact {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(
+    to bottom, 
+    #6db8e6 0%, 
+    #8bc9f0 20%, 
+    #a8d8f5 40%, 
+    #c6e6fa 60%, 
+    #e4f3ff 80%, 
+    #ffffff 100%
+  );
   padding: 100px 0;
-  color: white;
+  color: #0d47a1;
   position: relative;
   overflow: hidden;
+}
+
+[data-theme='dark'] .contact {
+  background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+  color: white;
 }
 
 .contact::before {
@@ -18,11 +31,12 @@
 }
 
 .contact .section-header h2 {
-  color: white;
+  color: inherit;
 }
 
 .contact .section-header p {
-  color: rgba(255, 255, 255, 0.9);
+  color: inherit;
+  opacity: 0.9;
 }
 
 .contact-content {
@@ -41,12 +55,13 @@
 .contact-intro h3 {
   font-size: 1.8rem;
   margin-bottom: 1rem;
-  color: #ffd700;
+  color: var(--accent-color);
 }
 
 .contact-intro p {
   line-height: 1.7;
   opacity: 0.9;
+  color: var(--text-secondary);
 }
 
 .contact-details {
@@ -58,25 +73,24 @@
   align-items: center;
   gap: 1.5rem;
   padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
+  background: var(--bg-secondary);
   border-radius: 12px;
   margin-bottom: 1rem;
   text-decoration: none;
-  color: white;
+  color: var(--text-primary);
   transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--border-color);
 }
 
 .contact-item:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--bg-secondary-hover);
   transform: translateX(10px);
 }
 
 .contact-icon {
   width: 50px;
   height: 50px;
-  background: linear-gradient(45deg, #ffd700, #ffed4e);
+  background: var(--accent-color);
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -88,16 +102,18 @@
 .contact-text h4 {
   margin: 0 0 0.5rem 0;
   font-size: 1.1rem;
+  color: var(--text-primary);
 }
 
 .contact-text p {
   margin: 0;
   opacity: 0.9;
+  color: var(--text-secondary);
 }
 
 .social-section h4 {
   margin-bottom: 1.5rem;
-  color: #ffd700;
+  color: var(--accent-color);
 }
 
 .social-links {
@@ -111,9 +127,9 @@
   justify-content: center;
   width: 50px;
   height: 50px;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--bg-secondary);
   border-radius: 12px;
-  color: white;
+  color: var(--text-primary);
   text-decoration: none;
   transition: all 0.3s ease;
   position: relative;
@@ -146,18 +162,21 @@
 }
 
 .contact-form-container {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
+  background: var(--card-bg);
+  border-radius: 15px;
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--border-color);
   padding: 3rem;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  z-index: 1;
+  color: var(--text-primary);
 }
 
 .contact-form h3 {
   font-size: 1.8rem;
   margin-bottom: 2rem;
   text-align: center;
-  color: #ffd700;
+  color: var(--accent-color);
 }
 
 .form-group {
@@ -168,38 +187,49 @@
   display: block;
   margin-bottom: 0.5rem;
   font-weight: 600;
-  color: white;
+  color: var(--text-primary);
 }
 
 .form-group input,
 .form-group textarea {
   width: 100%;
   padding: 1rem;
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
   font-size: 1rem;
   transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
+}
+
+[data-theme='dark'] .form-group input,
+[data-theme='dark'] .form-group textarea {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(0, 0, 0, 0.5);
+}
+
+[data-theme='dark'] .form-group input::placeholder,
+[data-theme='dark'] .form-group textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #ffd700;
-  background: rgba(255, 255, 255, 0.15);
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
 }
 
 .submit-btn {
   width: 100%;
   padding: 1rem 2rem;
-  background: linear-gradient(45deg, #ffd700, #ffed4e);
+  background: var(--accent-color);
   color: #333;
   border: none;
   border-radius: 8px;
@@ -221,9 +251,6 @@
 .submit-btn:disabled {
   opacity: 0.7;
   cursor: not-allowed;
-}
-
-.submit-btn.submitting {
   background: linear-gradient(45deg, #ccc, #ddd);
 }
 

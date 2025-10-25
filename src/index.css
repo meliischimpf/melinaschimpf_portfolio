@@ -1,10 +1,37 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* Variables de tema */
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --text-primary: #2c3e50;
+  --text-secondary: #6c757d;
+  --card-bg: #ffffff;
+  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --border-color: #e9ecef;
+  --accent-color: #007bff;
+  --accent-hover: #0056b3;
 }
 
-/* Reset básico */
+[data-theme='dark'] {
+  --bg-primary: #121212;
+  --bg-secondary: #1e1e1e;
+  --text-primary: #f8f9fa;
+  --text-secondary: #adb5bd;
+  --card-bg: #1e1e1e;
+  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  --border-color: #343a40;
+  --accent-color: #64b5f6;
+  --accent-hover: #90caf9;
+}
+
+/* Asegurar que el hero no herede los estilos del tema oscuro */
+#home {
+  --bg-primary: #ffffff !important;
+  --text-primary: #2c3e50 !important;
+  --text-secondary: #6c757d !important;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -16,6 +43,7 @@ html {
   height: 100%;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -25,32 +53,16 @@ body {
   padding: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
-  color: #333;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
   position: relative;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
-  transition: all 0.5s ease;
-}
-
-/* Fondo para modo claro */
-[data-theme='light'] body {
-  background: linear-gradient(135deg, #87CEEB 0%, #E0F7FA 100%);
-  color: #2c3e50;
-}
-
-/* Fondo para modo oscuro */
-[data-theme='dark'] body {
-  background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
-  color: #f5f5f5;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Fondo y nubes para modo claro */
-[data-theme='light'] body {
-  background: linear-gradient(135deg, #87CEEB 0%, #E0F7FA 100%);
-  color: #2c3e50;
-}
-
 [data-theme='light'] body::before {
   content: '';
   position: fixed;
@@ -59,11 +71,8 @@ body {
   width: 100%;
   height: 100%;
   background-image: 
-    /* Nubes grandes */
     url("data:image/svg+xml,%3Csvg width='400' height='300' viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23ffffff' fill-opacity='0.8' d='M100,100 C130,80 170,75 200,90 C230,105 260,100 290,85 C320,70 350,55 380,70 C410,85 400,110 390,125 C380,140 360,150 340,145 C320,140 300,120 270,125 C240,130 220,160 190,160 C160,160 140,130 110,130 C80,130 70,150 40,150 C10,150 0,130 20,110 C40,90 70,95 100,100 Z'/%3E%3C/svg%3E"),
-    /* Nubes medianas */
     url("data:image/svg+xml,%3Csvg width='300' height='200' viewBox='0 0 300 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23ffffff' fill-opacity='0.7' d='M50,50 C70,40 100,35 130,50 C160,65 180,90 150,110 C120,130 90,120 60,110 C30,100 20,70 40,50 C60,30 30,60 50,50 Z'/%3E%3C/svg%3E"),
-    /* Nubes pequeñas */
     url("data:image/svg+xml,%3Csvg width='200' height='150' viewBox='0 0 200 150' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23ffffff' fill-opacity='0.6' d='M30,30 C40,20 60,15 80,25 C100,35 110,55 90,70 C70,85 50,80 30,70 C10,60 20,40 30,30 Z'/%3E%3C/svg%3E");
   background-size: 800px 600px, 600px 400px, 400px 300px;
   background-position: 10% 20%, 70% 40%, 30% 70%;
@@ -76,14 +85,8 @@ body {
              floatCloud3 50s ease-in-out infinite 10s;
 }
 
-/* Fondo para modo oscuro - sin estrellas */
-[data-theme='dark'] body {
-  background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
-  color: #f5f5f5;
-}
-
 [data-theme='dark'] body::before {
-  display: none; /* Ocultar cualquier fondo adicional en modo oscuro */
+  display: none;
 }
 
 /* Animaciones para las nubes */

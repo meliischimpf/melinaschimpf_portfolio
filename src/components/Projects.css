@@ -1,6 +1,7 @@
 .projects {
-  background: white;
+  background: var(--bg-primary);
   padding: 100px 0;
+  color: var(--text-primary);
 }
 
 .featured-section {
@@ -9,7 +10,7 @@
 
 .featured-section h3 {
   font-size: 1.8rem;
-  color: #333;
+  color: var(--text-primary);
   margin-bottom: 2rem;
   text-align: center;
 }
@@ -22,16 +23,17 @@
 }
 
 .featured-project {
-  background: white;
+  background: var(--card-bg);
   border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--card-shadow);
   transition: all 0.3s ease;
+  border: 1px solid var(--border-color);
 }
 
 .featured-project:hover {
   transform: translateY(-10px);
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
 }
 
 .all-projects-section {
@@ -52,7 +54,7 @@
 
 .filter-header h3 {
   font-size: 1.8rem;
-  color: #333;
+  color: var(--text-primary);
   margin: 0;
 }
 
@@ -66,9 +68,9 @@
 .filter-btn {
   padding: 0.75rem 1.5rem;
   background: transparent;
-  border: 2px solid #e9ecef;
+  border: 2px solid var(--border-color);
   border-radius: 25px;
-  color: #666;
+  color: var(--text-secondary);
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -76,8 +78,8 @@
 
 .filter-btn:hover,
 .filter-btn.active {
-  background: #007bff;
-  border-color: #007bff;
+  background: var(--accent-color);
+  border-color: var(--accent-color);
   color: white;
 }
 
@@ -88,10 +90,11 @@
 }
 
 .project-card {
-  background: white;
+  background: var(--card-bg);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--border-color);
   transition: all 0.3s ease;
 }
 
@@ -127,7 +130,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 123, 255, 0.9);
+  background: rgba(100, 181, 246, 0.9);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -150,15 +153,15 @@
   justify-content: center;
   width: 48px;
   height: 48px;
-  background: white;
-  color: #007bff;
+  background: var(--bg-primary);
+  color: var(--accent-color);
   border-radius: 50%;
   text-decoration: none;
   transition: all 0.3s ease;
 }
 
 .project-link:hover {
-  background: #f8f9fa;
+  background: var(--bg-secondary);
   transform: scale(1.1);
 }
 
@@ -172,7 +175,7 @@
 
 .project-content h4 {
   font-size: 1.3rem;
-  color: #333;
+  color: var(--text-primary);
   margin-bottom: 1rem;
   font-weight: 600;
 }
@@ -182,13 +185,14 @@
 }
 
 .project-content p {
-  color: #666;
+  color: var(--text-secondary);
   line-height: 1.6;
   margin-bottom: 1.5rem;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  line-clamp: 3;
 }
 
 .project-technologies {
@@ -198,7 +202,7 @@
 }
 
 .tech-tag {
-  background: linear-gradient(45deg, #007bff, #0056b3);
+  background: var(--accent-color);
   color: white;
   padding: 0.4rem 0.8rem;
   border-radius: 15px;

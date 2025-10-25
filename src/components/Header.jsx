@@ -1,33 +1,21 @@
-import React, { useState, useEffect } from 'react'
-import { Menu, X, Moon, Sun } from 'lucide-react'
-import './Header.css'
+import React, { useState, useEffect } from 'react';
+import { Menu, X, Moon, Sun } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
+import './Header.css';
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [darkMode, setDarkMode] = useState(false) // Modo claro activado por defecto
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const { darkMode, toggleTheme } = useTheme();
 
+  // Efecto para manejar el scroll del header
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
-  // Efecto para establecer el tema inicial
-  useEffect(() => {
-    // Verificar si hay un tema guardado en localStorage
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      setDarkMode(savedTheme === 'dark');
-      document.documentElement.setAttribute('data-theme', savedTheme);
-    } else {
-      // Si no hay tema guardado, usar el modo claro por defecto
-      setDarkMode(false);
-      document.documentElement.setAttribute('data-theme', 'light');
-      localStorage.setItem('theme', 'light');
-    }
+      setIsScrolled(window.scrollY > 50);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   // Efecto para rastrear la posición del cursor y crear rastros
@@ -264,19 +252,9 @@ const Header = () => {
     };
   }, [darkMode])
 
-  // Efecto para cambiar entre temas
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.setAttribute('data-theme', 'dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.setAttribute('data-theme', 'light');
-      localStorage.setItem('theme', 'light');
-    }
-  }, [darkMode])
-
-  const toggleTheme = () => {
-    setDarkMode(!darkMode)
+  // Función para alternar el menú móvil
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
   }
 
   const navItems = [
@@ -314,7 +292,7 @@ const Header = () => {
               onClick={toggleTheme}
               aria-label={darkMode ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
             >
-              {darkMode ? <Moon size={20} /> : <Sun size={20} />}
+              {darkMode ? <Sun size={20} /> : <Moon size={20} />}
             </button>
             <button
               className="menu-toggle"

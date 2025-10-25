@@ -1,6 +1,7 @@
 .about {
-  background: white;
+  background: var(--bg-primary);
   padding: 100px 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .section-header {
@@ -10,7 +11,7 @@
 
 .section-header h2 {
   font-size: 2.5rem;
-  color: #333;
+  color: var(--text-primary);
   margin-bottom: 1rem;
   position: relative;
 }
@@ -29,7 +30,7 @@
 
 .section-header p {
   font-size: 1.1rem;
-  color: #666;
+  color: var(--text-secondary);
   max-width: 600px;
   margin: 0 auto;
 }
@@ -41,16 +42,30 @@
   align-items: start;
 }
 
+.about-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+}
+
 .about-text h3 {
   font-size: 1.8rem;
-  color: #333;
+  color: var(--text-primary);
   margin-bottom: 1.5rem;
 }
 
 .about-text p {
-  color: #666;
+  color: var(--text-secondary);
   margin-bottom: 1.5rem;
   line-height: 1.7;
+}
+
+.about-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+  color: var(--text-primary);
 }
 
 .stats {
@@ -68,13 +83,13 @@
 
 .stat h4 {
   font-size: 2.5rem;
-  color: #007bff;
+  color: var(--accent-color);
   font-weight: 700;
   margin-bottom: 0.5rem;
 }
 
 .stat p {
-  color: #666;
+  color: var(--text-secondary);
   font-weight: 500;
   margin: 0;
 }
@@ -88,23 +103,25 @@
   display: flex;
   gap: 1.5rem;
   padding: 2rem;
-  background: #f8f9fa;
+  background: var(--card-bg);
   border-radius: 12px;
   transition: all 0.3s ease;
   border-left: 4px solid transparent;
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--border-color);
 }
 
 .experience-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  border-left-color: #007bff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border-left-color: var(--accent-color);
 }
 
 .experience-icon {
   flex-shrink: 0;
   width: 60px;
   height: 60px;
-  background: linear-gradient(45deg, #007bff, #0056b3);
+  background: linear-gradient(45deg, var(--accent-color), var(--accent-hover));
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -114,12 +131,12 @@
 
 .experience-content h4 {
   font-size: 1.3rem;
-  color: #333;
+  color: var(--text-primary);
   margin-bottom: 0.5rem;
 }
 
 .experience-content p {
-  color: #666;
+  color: var(--text-secondary);
   line-height: 1.6;
   margin: 0;
 }
