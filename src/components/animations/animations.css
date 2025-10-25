@@ -1,0 +1,89 @@
+/* Estilos base para elementos animados */
+.animated-element {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+/* Efecto de elevación suave al hacer hover */
+.project-card {
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  backface-visibility: hidden;
+}
+
+.project-card:hover {
+  box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px);
+}
+
+/* Animación de gradiente en los botones */
+.animated-button {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: all 0.3s ease;
+  background: linear-gradient(45deg, #4f46e5, #7c3aed);
+  background-size: 200% 200%;
+}
+
+.animated-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: 0.5s;
+  z-index: -1;
+}
+
+.animated-button:hover::before {
+  left: 100%;
+}
+
+/* Efecto de brillo en las imágenes */
+.project-image-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.5rem;
+}
+
+.project-image {
+  transition: transform 0.5s ease, filter 0.5s ease;
+  transform-origin: center center;
+}
+
+.project-card:hover .project-image {
+  transform: scale(1.05);
+  filter: brightness(1.05);
+}
+
+/* Efecto de aparición de texto */
+.project-details {
+  opacity: 0.95;
+  transition: opacity 0.3s ease;
+}
+
+.project-card:hover .project-details {
+  opacity: 1;
+}
+
+/* Animación de las etiquetas de tecnología */
+.tech-tag {
+  display: inline-block;
+  margin: 0.25rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background-color: rgba(99, 102, 241, 0.1);
+  color: #4f46e5;
+  transition: all 0.3s ease;
+}
+
+.tech-tag:hover {
+  transform: translateY(-2px);
+  background-color: rgba(99, 102, 241, 0.2);
+}
