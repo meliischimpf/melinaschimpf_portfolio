@@ -3,21 +3,154 @@
   display: flex;
   align-items: center;
   position: relative;
-  overflow: hidden;
+  overflow: visible; /* Cambiado de hidden a visible */
   padding: 2rem 0;
   transition: all 0.5s ease;
+  z-index: 0; /* Asegura que el contenedor esté detrás de las nubes */
 }
 
 /* Fondo para modo claro */
 [data-theme='light'] .hero {
-  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 50%, #90caf9 100%);
+  background: linear-gradient(
+    to bottom, 
+    #6db8e6 0%, 
+    #8bc9f0 20%, 
+    #a8d8f5 40%, 
+    #c6e6fa 60%, 
+    #e4f3ff 80%, 
+    #ffffff 100%
+  );
   color: #0d47a1;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
 }
+
+/* Efecto de brillo del sol */
+[data-theme='light'] .hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 60%);
+  opacity: 0.6;
+  z-index: 0;
+  animation: sunGlow 15s infinite alternate;
+}
+
+@keyframes sunGlow {
+  0% { opacity: 0.4; transform: scale(0.9); }
+  100% { opacity: 0.7; transform: scale(1.1); }
+}
+
+/* Estilos para los símbolos de código */
+.code-symbols {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+  perspective: 1000px;
+}
+
+.code-symbol {
+  position: absolute;
+  font-family: 'Fira Code', 'Courier New', monospace;
+  font-weight: 700;
+  user-select: none;
+  will-change: transform, opacity, top, left;
+  transition: 
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.8s ease,
+    top 1.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+    left 1.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  transform-origin: center center;
+}
+
+/* Efecto de brillo en modo oscuro */
+[data-theme='dark'] .code-symbol {
+  filter: 
+    drop-shadow(0 0 5px currentColor) 
+    drop-shadow(0 0 15px rgba(255, 255, 255, 0.3));
+  opacity: 0.5;
+  font-weight: 800;
+}
+
+/* Efecto más sutil en modo claro */
+[data-theme='light'] .code-symbol {
+  filter: 
+    drop-shadow(0 2px 4px rgba(0,0,0,0.2))
+    drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+  opacity: 0.4;
+  font-weight: 800;
+}
+
+/* Animaciones de entrada */
+@keyframes floatIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9) rotate(10deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(0);
+  }
+}
+
+/* Aplicar animación de entrada a los símbolos */
+.code-symbol {
+  animation: floatIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* Retraso escalonado para la animación de entrada */
+.code-symbol:nth-child(1) { animation-delay: 0.1s; }
+.code-symbol:nth-child(2) { animation-delay: 0.2s; }
+.code-symbol:nth-child(3) { animation-delay: 0.3s; }
+.code-symbol:nth-child(4) { animation-delay: 0.4s; }
+.code-symbol:nth-child(5) { animation-delay: 0.5s; }
+.code-symbol:nth-child(6) { animation-delay: 0.6s; }
+.code-symbol:nth-child(7) { animation-delay: 0.7s; }
+.code-symbol:nth-child(8) { animation-delay: 0.8s; }
+.code-symbol:nth-child(9) { animation-delay: 0.9s; }
+.code-symbol:nth-child(10) { animation-delay: 1s; }
 
 /* Fondo para modo oscuro */
 [data-theme='dark'] .hero {
   background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
   color: white;
+  position: relative;
+  z-index: 1;
+}
+
+/* Asegurar que los iconos sean visibles en modo oscuro */
+[data-theme='dark'] .social-link {
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+[data-theme='dark'] .social-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='dark'] .scroll-down {
+  color: white;
+  border-color: white;
+}
+
+[data-theme='dark'] .scroll-down:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .hero::before {
@@ -64,6 +197,206 @@
   animation: twinkle 4s infinite ease-in-out;
 }
 
+/* Estilos para las nubes */
+:root {
+  --cloud-white: rgba(255, 255, 255, 0.95);
+  --cloud-shadow: rgba(0, 0, 0, 0.1);
+}
+
+/* Contenedor de nubes */
+.cloud-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0; /* Asegura que esté detrás de todo */
+  overflow: hidden;
+}
+
+/* Animación de movimiento de nubes */
+@keyframes moveCloud {
+  from {
+    transform: translateX(-150px);
+  }
+  to {
+    transform: translateX(calc(100vw + 150px));
+  }
+}
+
+/* Estilos base de nubes */
+.cloud {
+  position: absolute;
+  width: 180px;
+  height: 60px;
+  background: white;
+  border-radius: 50%;
+  z-index: 5;
+  opacity: 0.95;
+  box-shadow: 0 8px 15px rgba(255, 255, 255, 0.2);
+  filter: blur(2px);
+  will-change: transform, opacity;
+  transform: translate3d(0, 0, 0);
+  pointer-events: none;
+  /* Gradiente sutil para dar volumen */
+  background: linear-gradient(to bottom, #ffffff 0%, #f1f1f1 100%);
+}
+
+/* Partes de la nube */
+.cloud::before,
+.cloud::after {
+  content: '';
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  background: linear-gradient(to bottom, #ffffff 0%, #f1f1f1 100%);
+}
+
+/* Parte superior izquierda */
+.cloud::before {
+  width: 70px;
+  height: 70px;
+  top: -30px;
+  left: 20px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Parte superior derecha */
+.cloud::after {
+  width: 50px;
+  height: 50px;
+  top: -20px;
+  right: 30px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Parte inferior */
+.cloud .cloud-part {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  background: linear-gradient(to bottom, #ffffff 0%, #f1f1f1 100%);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Efecto de iluminación */
+.cloud .highlight {
+  position: absolute;
+  width: 40%;
+  height: 30%;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  top: 10%;
+  left: 10%;
+  transform: rotate(30deg);
+  filter: blur(5px);
+}
+
+[data-theme='dark'] .cloud,
+[data-theme='dark'] .cloud::before {
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.cloud.cirrus::before {
+  width: 150px;
+  top: 5px;
+  left: 20px;
+  transform: rotate(5deg);
+}
+
+.cloud.cirrus::after {
+  width: 100px;
+  top: 10px;
+  left: 40px;
+  transform: rotate(10deg);
+}
+
+.cloud.cirrus-small {
+  width: 100px;
+  height: 1px;
+  background: var(--cloud-white);
+  opacity: 0.6;
+  animation-timing-function: linear;
+  transform: rotate(-3deg) scaleX(0.8);
+}
+
+/* Animaciones de nubes */
+@keyframes floatCloud {
+  0% {
+    transform: translateX(-20%) translateY(var(--start-y, 0)) scale(var(--size, 1));
+    opacity: 0;
+  }
+  10% {
+    opacity: var(--opacity, 0.9);
+  }
+  90% {
+    opacity: var(--opacity, 0.9);
+  }
+  100% {
+    transform: translateX(120%) translateY(calc(var(--start-y, 0) + 5vh)) scale(var(--size, 1));
+    opacity: 0;
+  }
+}
+
+/* Efecto de movimiento suave */
+@keyframes floatCloud {
+  0% {
+    transform: translate3d(-20%, var(--start-y, 0), 0) scale(var(--size, 1));
+    opacity: var(--opacity, 0.8);
+  }
+  10% {
+    opacity: var(--opacity, 0.8);
+  }
+  90% {
+    opacity: var(--opacity, 0.8);
+  }
+  100% {
+    transform: translate3d(120%, var(--start-y, 0), 0) scale(var(--size, 1));
+    opacity: 0;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) scale(var(--size, 1));
+  }
+  50% {
+    transform: translateY(-10px) scale(var(--size, 1));
+  }
+}
+
+/* Las animaciones se han movido a la definición principal de .cloud */
+
+/* Variar la dirección vertical de las nubes */
+.cloud:nth-child(odd) {
+  --start-y: 0px;
+}
+
+.cloud:nth-child(even) {
+  --start-y: 10px;
+  animation-timing-function: ease-in-out, ease-in-out;
+}
+
+/* Asegurar que las partículas estén ocultas en modo claro */
+[data-theme='light'] .particle {
+  display: none !important;
+}
+
+/* Forzar visibilidad de nubes en modo claro */
+[data-theme='light'] .cloud {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 0.9 !important;
+}
+
+/* Asegurar que el contenedor de nubes esté visible */
+.cloud-container {
+  display: block !important;
+  visibility: visible !important;
+}
+
 @keyframes twinkle {
   0%, 100% { opacity: 0.4; transform: scale(1); }
   50% { opacity: 1; transform: scale(1.1); }
@@ -86,6 +419,12 @@
   white-space: nowrap;
   user-select: none;
   font-family: 'Fira Code', 'Courier New', monospace;
+  display: var(--particle-display, block);
+}
+
+/* Ocultar partículas en modo claro */
+[data-theme='light'] .particle {
+  display: none;
 }
 
 /* Efecto sutil de brillo al pasar el mouse */
@@ -234,30 +573,42 @@
   text-decoration: none;
   transition: all 0.3s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  border: 2px solid rgba(13, 71, 161, 0.2);
+  color: #0d47a1;
 }
 
+/* Estilos para los iconos dentro de los enlaces */
+.social-link svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+/* Estilos para modo oscuro */
 [data-theme='dark'] .social-link {
-  background: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
   color: white;
 }
 
+[data-theme='dark'] .social-link:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos para modo claro */
 [data-theme='light'] .social-link {
-  background: rgba(255, 255, 255, 0.9);
+  background-color: white;
   color: #0d47a1;
   border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-.social-link:hover {
+[data-theme='light'] .social-link:hover {
+  background-color: #f0f8ff;
   transform: translateY(-3px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-[data-theme='dark'] .social-link:hover {
-  background: rgba(255, 255, 255, 0.2);
-}
-
-[data-theme='light'] .social-link:hover {
-  background: white;
   color: #0d47a1;
 }
 

@@ -1,220 +1,452 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import { FiChevronDown } from 'react-icons/fi';
 import './Hero.css';
 
-const Hero = () => {
-  const heroRef = useRef(null);
-  const particles = useRef([]);
-  const animationFrame = useRef(null);
-  const mousePos = useRef({ x: 0, y: 0 });
+// Componente para los símbolos decorativos
+const CodeSymbols = () => {
+  const symbols = ['</>', '{}', '[]', '()', ';', '=>', '=', '!=='];
+  // Paleta de colores pastel más amplia y variada
+  const colors = [
+    'rgba(200, 200, 255, 0.5)',  // Azul pastel suave
+    'rgba(200, 230, 255, 0.5)',  // Azul cielo pastel
+    'rgba(200, 255, 240, 0.5)',  // Aguamarina pastel
+    'rgba(220, 255, 200, 0.5)',  // Verde menta pastel
+    'rgba(255, 255, 180, 0.5)',  // Amarillo pastel
+    'rgba(255, 220, 200, 0.5)',  // Melocotón pastel
+    'rgba(255, 200, 220, 0.5)',  // Rosa pastel
+    'rgba(230, 200, 255, 0.5)',  // Lila pastel
+    'rgba(200, 220, 255, 0.5)',  // Azul lavanda
+    'rgba(200, 255, 220, 0.5)',  // Verde manzana pastel
+    'rgba(255, 240, 200, 0.5)',  // Melón pastel
+    'rgba(220, 200, 255, 0.5)'   // Lila suave
+  ];
+  const [visibleSymbols, setVisibleSymbols] = useState([]);
+  const animationRef = useRef();
+  const lastTimestamp = useRef(0);
+  const animationSpeed = 0.2; // Controla la suavidad de la animación
 
   useEffect(() => {
-    const container = heroRef.current;
-    if (!container) return;
-
-    // Símbolos para las partículas
-    const symbols = ['</>', '{}', '()', '[]', ';', '=>', '{}', '//', '/*', '*/'];
-    
-    // Crear estrellas de fondo
-    const createStars = () => {
-      const starCount = 50; // Número de estrellas
+    // Crear símbolos iniciales con más propiedades para la animación
+    const initialSymbols = Array(15).fill().map((_, i) => {
+      const size = 1.2 + Math.random() * 1.8;
+      const speed = 0.1 + Math.random() * 0.3;
+      const startX = Math.random() * 100;
+      const startY = Math.random() * 100;
       
-      for (let i = 0; i < starCount; i++) {
-        const star = document.createElement('div');
-        star.className = 'star';
-        
-        // Tamaño aleatorio entre 1 y 3 píxeles
-        const size = 1 + Math.random() * 2;
-        
-        // Posición aleatoria
-        const x = Math.random() * 100;
-        const y = Math.random() * 100;
-        
-        // Opacidad aleatoria para efecto de parpadeo
-        const opacity = 0.2 + Math.random() * 0.5;
-        
-        // Aplicar estilos
-        star.style.width = `${size}px`;
-        star.style.height = `${size}px`;
-        star.style.left = `${x}%`;
-        star.style.top = `${y}%`;
-        star.style.opacity = opacity;
-        star.style.animationDelay = `${Math.random() * 5}s`; // Efecto de parpadeo aleatorio
-        
-        container.appendChild(star);
-      }
-    };
+      return {
+        id: i,
+        symbol: symbols[Math.floor(Math.random() * symbols.length)],
+        color: colors[Math.floor(Math.random() * colors.length)],
+        startX,
+        startY,
+        targetX: startX + (Math.random() * 40 - 20), // Objetivo más cercano
+        targetY: startY + (Math.random() * 40 - 20),
+        velocityX: (Math.random() - 0.5) * 0.02, // Velocidad inicial muy reducida
+        velocityY: (Math.random() - 0.5) * 0.02,
+        opacity: 0.2 + Math.random() * 0.25, // Ajuste de opacidad para mejor visibilidad
+        rotation: Math.random() * 360,
+        rotationSpeed: -1 + Math.random() * 2, // Rotación más dinámica
+        scale: size,
+        size: size,
+        speed: speed * 0.4, // Reducir la velocidad base
+        lastUpdate: Date.now(),
+        // Añadir comportamiento de flotación
+        floatOffset: Math.random() * 100,
+        floatSpeed: 0.3 + Math.random() * 0.5, // Flotación más lenta
+        floatDistance: 0.3 + Math.random() * 0.7 // Menor rango de flotación
+      };
+    });
     
-    // Crear partículas con símbolos de código
-    const createParticles = () => {
-      const particleCount = 60; // Aumenté de 25 a 60 partículas para un efecto más rico
-      const colors = ['#a78bfa', '#818cf8', '#60a5fa', '#4f46e5', '#7c3aed', '#8b5cf6', '#a855f7', '#d946ef'];
-      
-      for (let i = 0; i < particleCount; i++) {
-        const symbol = symbols[Math.floor(Math.random() * symbols.length)];
-        const particle = document.createElement('div');
-        particle.className = 'particle';
-        particle.textContent = symbol;
-        particle.style.color = colors[Math.floor(Math.random() * colors.length)];
-        particle.style.fontSize = `${Math.random() * 12 + 10}px`;
-        particle.style.opacity = 0.6 + Math.random() * 0.4;
-        particle.style.fontFamily = '"Fira Code", "Courier New", monospace';
-        particle.style.fontWeight = 'bold';
-        
-        // Posición inicial aleatoria
-        const x = Math.random() * 100;
-        const y = Math.random() * 100;
-        
-        // Velocidad y dirección inicial más pronunciadas
-        const speed = 0.5 + Math.random() * 1.0; // Mayor velocidad para mejor desplazamiento
-        const angle = Math.random() * Math.PI * 2; // Dirección aleatoria
-        const vx = Math.cos(angle) * speed;
-        const vy = Math.sin(angle) * speed;
-        
-        // Objeto de partícula con movimiento direccional
-        const particleObj = {
-          element: particle,
-          x,
-          y,
-          vx,
-          vy,
-          // Reducir significativamente el movimiento de flotación
-          time: Math.random() * 100,
-          // Agregar un pequeño cambio de dirección gradual
-          directionChange: 0.05 + Math.random() * 0.1,
-          nextDirectionChange: 100 + Math.floor(Math.random() * 200) // Cambios de dirección más espaciados
-        };
-        
-        particle.style.left = `${x}%`;
-        particle.style.top = `${y}%`;
-        
-        container.appendChild(particle);
-        particles.current.push(particleObj);
-      }
-    };
+    setVisibleSymbols(initialSymbols);
 
-    // Animar partículas
+    // Función de animación mejorada con física simple
     const animate = (timestamp) => {
-      particles.current.forEach(particle => {
-        if (!particle || !particle.element) return;
-        
-        // Cambio de dirección gradual y ocasional
-        particle.time++;
-        if (particle.time > particle.nextDirectionChange) {
-          // Cambio suave de dirección
-          const angle = Math.atan2(particle.vy, particle.vx);
-          const newAngle = angle + (Math.random() - 0.5) * particle.directionChange * 2;
-          const speed = Math.sqrt(particle.vx * particle.vx + particle.vy * particle.vy);
+      const deltaTime = Math.min(32, timestamp - lastTimestamp.current);
+      lastTimestamp.current = timestamp;
+      
+      setVisibleSymbols(prevSymbols => 
+        prevSymbols.map(sym => {
+          // Actualizar posición con velocidad
+          let newX = sym.startX + sym.velocityX * deltaTime * 0.1;
+          let newY = sym.startY + sym.velocityY * deltaTime * 0.1;
           
-          particle.vx = Math.cos(newAngle) * speed;
-          particle.vy = Math.sin(newAngle) * speed;
-          particle.nextDirectionChange = particle.time + 50 + Math.floor(Math.random() * 150);
-        }
-        
-        // Actualizar posición con movimiento suave
-        particle.x += particle.vx;
-        particle.y += particle.vy;
-        
-        // Rebotar suavemente en los bordes
-        if (particle.x < -5) {
-          particle.x = 105;
-        } else if (particle.x > 105) {
-          particle.x = -5;
-        }
-        
-        if (particle.y < -5) {
-          particle.y = 105;
-        } else if (particle.y > 105) {
-          particle.y = -5;
-        }
-        
-        // Aplicar transformación
-        particle.element.style.transform = `translate(${particle.x}%, ${particle.y}%)`;
-      });
+          // Calcular distancia al objetivo
+          const dx = sym.targetX - newX;
+          const dy = sym.targetY - newY;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          
+          // Física de movimiento
+          const accel = 0.00005 * deltaTime; // Aceleración mucho más reducida
+          let newVelX = sym.velocityX + (dx / (distance + 1)) * accel;
+          let newVelY = sym.velocityY + (dy / (distance + 1)) * accel;
+          
+          // Limitar velocidad máxima
+          const speed = Math.sqrt(newVelX * newVelX + newVelY * newVelY);
+          const maxSpeed = sym.speed * 0.6; // Velocidad máxima reducida a la mitad
+          if (speed > maxSpeed) {
+            newVelX = (newVelX / speed) * maxSpeed;
+            newVelY = (newVelY / speed) * maxSpeed;
+          }
+          
+          // Rebotar suavemente de los bordes
+          const margin = 5;
+          if (newX < margin || newX > 100 - margin) {
+            newVelX *= -0.5;
+            newX = newX < margin ? margin : 100 - margin;
+          }
+          if (newY < margin || newY > 100 - margin) {
+            newVelY *= -0.5;
+            newY = newY < margin ? margin : 100 - margin;
+          }
+          
+          // Cambiar objetivo si está lo suficientemente cerca
+          if (distance < 8) { // Aumentar distancia para cambiar de dirección
+            // Establecer nuevo objetivo en dirección aleatoria
+            const angle = Math.random() * Math.PI * 2;
+            const distance = 15 + Math.random() * 20; // Reducir distancia de movimiento
+            return {
+              ...sym,
+              targetX: newX + Math.cos(angle) * distance,
+              targetY: newY + Math.sin(angle) * distance,
+              startX: newX,
+              startY: newY,
+              velocityX: newVelX,
+              velocityY: newVelY,
+              rotation: sym.rotation + sym.rotationSpeed,
+              // Efecto de flotación suave
+              floatOffset: sym.floatOffset + 0.01 * deltaTime,
+              rotationSpeed: sym.rotationSpeed + (Math.random() * 0.02 - 0.01)
+            };
+          }
+          
+          // Aplicar efecto de flotación suave
+          const floatY = Math.sin(timestamp * 0.001 * sym.floatSpeed + sym.floatOffset) * sym.floatDistance;
+          
+          return {
+            ...sym,
+            startX: newX,
+            startY: newY,
+            velocityX: newVelX,
+            velocityY: newVelY,
+            rotation: sym.rotation + sym.rotationSpeed,
+            // Variar la opacidad para un efecto de parpadeo sutil
+            opacity: 0.15 + (0.15 * (0.5 + 0.5 * Math.sin(timestamp * 0.001 * sym.speed))), // Variación de opacidad sutil
+            // Aplicar flotación al renderizado
+            renderY: newY + floatY
+          };
+        })
+      );
       
-      animationFrame.current = requestAnimationFrame(animate);
+      animationRef.current = requestAnimationFrame(animate);
     };
     
-    // Manejar movimiento del mouse
-    const handleMouseMove = (e) => {
-      if (!e) return;
-      
-      const rect = container.getBoundingClientRect();
-      const mouseX = ((e.clientX - rect.left) / rect.width) * 100;
-      const mouseY = ((e.clientY - rect.top) / rect.height) * 100;
-      
-      // Actualizar la posición del mouse
-      mousePos.current = { x: mouseX, y: mouseY };
-      
-      // Hacer que las partículas se alejen del cursor
-      particles.current.forEach(particle => {
-        if (!particle) return;
-        
-        const dx = mouseX - particle.x;
-        const dy = mouseY - particle.y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-        
-        if (distance < 25) { 
-          const angle = Math.atan2(dy, dx);
-          const force = (25 - distance) * 0.03; 
-          particle.vx -= Math.cos(angle) * force;
-          particle.vy -= Math.sin(angle) * force;
-        }
-      });
-    };
+    animationRef.current = requestAnimationFrame(animate);
     
-    // Inicializar
-    createStars();
-    createParticles();
-    
-    // Último tiempo de animación para cálculos de delta
-    let lastTime = 0;
-    
-    // Función de animación principal con tiempo delta
-    const animateWithTimestamp = (timestamp) => {
-      if (!lastTime) lastTime = timestamp;
-      const deltaTime = timestamp - lastTime;
-      lastTime = timestamp;
-      
-      // Ajustar velocidad según el tiempo delta para consistencia
-      const timeFactor = Math.min(deltaTime / 16, 2.5); // Normalizar a ~60fps
-      
-      particles.current.forEach(particle => {
-        if (!particle || !particle.element) return;
-        
-        // Aplicar movimiento con factor de tiempo
-        particle.x += particle.vx * timeFactor;
-        particle.y += particle.vy * timeFactor;
-        
-        // Aplicar transformación
-        particle.element.style.transform = `translate(${particle.x}%, ${particle.y}%)`;
-      });
-      
-      animationFrame.current = requestAnimationFrame(animateWithTimestamp);
-    };
-    
-    animationFrame.current = requestAnimationFrame(animateWithTimestamp);
-    
-    window.addEventListener('mousemove', handleMouseMove, { passive: true });
-    
-    // Limpieza
     return () => {
-      if (animationFrame.current) {
-        cancelAnimationFrame(animationFrame.current);
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
       }
-      window.removeEventListener('mousemove', handleMouseMove);
-      particles.current.forEach(particle => {
-        if (particle?.element?.parentNode) {
-          particle.element.parentNode.removeChild(particle.element);
-        }
-      });
-      particles.current = [];
     };
   }, []);
 
   return (
-    <section className="hero" ref={heroRef}>
+    <div className="code-symbols">
+      {visibleSymbols.map(sym => (
+        <span 
+          key={sym.id}
+          className="code-symbol"
+          style={{
+            top: `${sym.renderY || sym.startY}%`,
+            left: `${sym.startX}%`,
+            opacity: sym.opacity,
+            transform: `rotate(${sym.rotation}deg) scale(${sym.scale})`,
+            position: 'absolute',
+            fontSize: `${1 * sym.size}rem`,
+            fontFamily: '"Fira Code", "Courier New", monospace',
+            pointerEvents: 'none',
+            zIndex: 1,
+            color: sym.color,
+            // Sombra muy sutil que se integra con el fondo
+            filter: 'drop-shadow(0 0 1px rgba(0,0,0,0.03))', // Sombra más sutil
+            transition: 'transform 0.1s ease-out, opacity 0.3s ease-out',
+            willChange: 'transform, opacity, top, left',
+            backfaceVisibility: 'hidden',
+            transformStyle: 'preserve-3d'
+          }}
+        >
+          {sym.symbol}
+        </span>
+      ))}
+    </div>
+  );
+};
+
+const Hero = () => {
+  const heroRef = useRef(null);
+  const animationFrame = useRef(null);
+  const lastTime = useRef(0);
+
+  // Crear nubes (para modo claro)
+  const createClouds = (container) => {
+    // Limpiar contenedor existente
+    const existingContainer = document.getElementById('cloud-container');
+    if (existingContainer) {
+      existingContainer.remove();
+    }
+    
+    const cloudContainer = document.createElement('div');
+    cloudContainer.id = 'cloud-container';
+    cloudContainer.className = 'cloud-container';
+    container.appendChild(cloudContainer);
+    
+    // Crear nubes iniciales
+    const initialClouds = [
+      { top: '20%', left: '10%', duration: 40 },
+      { top: '40%', left: '30%', duration: 50 },
+      { top: '60%', left: '60%', duration: 45 },
+      { top: '30%', left: '80%', duration: 55 }
+    ];
+    
+    // Crear nubes iniciales visibles
+    initialClouds.forEach(cloudData => {
+      createStaticCloud(cloudContainer, cloudData);
+    });
+    
+    // Función para crear nubes estáticas iniciales
+    function createStaticCloud(container, cloudData) {
+      const cloud = document.createElement('div');
+      cloud.className = 'cloud';
+      
+      // Tamaño y posición aleatorios para variedad
+      const scale = 0.7 + Math.random() * 0.6;
+      const rotation = -5 + Math.random() * 10;
+      
+      cloud.style.cssText = `
+        left: ${cloudData.left};
+        top: ${cloudData.top};
+        transform: scale(${scale}) rotate(${rotation}deg);
+        opacity: ${0.8 + Math.random() * 0.2};
+      `;
+      
+      // Añadir partes adicionales a la nube
+      const partCount = 3 + Math.floor(Math.random() * 3);
+      let cloudParts = '';
+      
+      // Generar partes de nube adicionales
+      for (let i = 0; i < partCount; i++) {
+        const size = 30 + Math.random() * 50;
+        const left = 10 + Math.random() * 100;
+        const top = -10 + Math.random() * 40;
+        
+        cloudParts += `
+          <div class="cloud-part" style="
+            width: ${size}px;
+            height: ${size}px;
+            left: ${left}px;
+            top: ${top}px;
+            opacity: ${0.8 + Math.random() * 0.2};
+          "></div>
+        `;
+      }
+      
+      // Añadir efecto de iluminación
+      cloud.innerHTML = `
+        ${cloudParts}
+        <div class="highlight"></div>
+      `;
+      
+      container.appendChild(cloud);
+    }
+    
+    // Función para crear nubes con animación
+    function createAnimatedCloud() {
+      const cloud = document.createElement('div');
+      cloud.className = 'cloud';
+      
+      const duration = 40 + Math.random() * 50;
+      const startX = -200 - (Math.random() * 100);
+      const y = 5 + Math.random() * 70;
+      const scale = 0.5 + Math.random() * 0.8;
+      const rotation = -5 + Math.random() * 10;
+      
+      cloud.style.cssText = `
+        left: ${startX}px;
+        top: ${y}%;
+        transform: scale(${scale}) rotate(${rotation}deg);
+        opacity: ${0.7 + Math.random() * 0.3};
+        animation: moveCloud ${duration}s linear forwards;
+      `;
+      
+      // Añadir partes adicionales a la nube
+      const partCount = 2 + Math.floor(Math.random() * 4);
+      let cloudParts = '';
+      
+      // Generar partes de nube adicionales
+      for (let i = 0; i < partCount; i++) {
+        const size = 20 + Math.random() * 60;
+        const left = 10 + Math.random() * 100;
+        const top = -20 + Math.random() * 50;
+        
+        cloudParts += `
+          <div class="cloud-part" style="
+            width: ${size}px;
+            height: ${size}px;
+            left: ${left}px;
+            top: ${top}px;
+            opacity: ${0.7 + Math.random() * 0.3};
+          "></div>
+        `;
+      }
+      
+      // Añadir efecto de iluminación
+      cloud.innerHTML = `
+        ${cloudParts}
+        <div class="highlight"></div>
+      `;
+      
+      cloudContainer.appendChild(cloud);
+      
+      // Cuando termine la animación, eliminar la nube
+      cloud.addEventListener('animationend', () => {
+        if (cloudContainer.contains(cloud)) {
+          cloudContainer.removeChild(cloud);
+        }
+      });
+    }
+    
+    // Iniciar la creación de nubes animadas
+    const startAnimations = () => {
+      // Primera tanda de nubes
+      setTimeout(createAnimatedCloud, 2000);
+      
+      // Crear nuevas nubes periódicamente
+      setInterval(() => {
+        if (Math.random() > 0.3) { // 70% de probabilidad de crear una nube
+          createAnimatedCloud();
+        }
+      }, 5000); // Intentar crear una nube cada 5 segundos
+    };
+    
+    // Iniciar animaciones después de un pequeño retraso
+    setTimeout(startAnimations, 1000);
+    
+    // Agregar nubes pequeñas adicionales
+    for (let i = 0; i < 10; i++) {
+      const cloud = document.createElement('div');
+      cloud.className = 'cloud cirrus-small';
+      
+      const x = -20 + Math.random() * 120;
+      const y = 5 + Math.random() * 80;
+      const duration = 60 + Math.random() * 100;
+      const delay = Math.random() * -100;
+      
+      Object.assign(cloud.style, {
+        left: `${x}%`,
+        top: `${y}%`,
+        animationDuration: `${duration}s`,
+        animationDelay: `${delay}s`,
+        opacity: 0.4 + Math.random() * 0.3,
+        zIndex: '10',
+        position: 'absolute'
+      });
+      
+      cloudContainer.appendChild(cloud);
+    }
+  };
+
+  // Crear estrellas (para modo oscuro)
+  const createStars = (container) => {
+    const starCount = 50;
+    
+    for (let i = 0; i < starCount; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      
+      const size = 1 + Math.random() * 2;
+      const x = Math.random() * 100;
+      const y = Math.random() * 100;
+      const opacity = 0.2 + Math.random() * 0.5;
+      
+      Object.assign(star.style, {
+        width: `${size}px`,
+        height: `${size}px`,
+        left: `${x}%`,
+        top: `${y}%`,
+        opacity: opacity,
+        animationDelay: `${Math.random() * 5}s`,
+        position: 'absolute',
+        zIndex: '10',
+        borderRadius: '50%',
+        backgroundColor: 'white',
+        boxShadow: '0 0 10px 2px rgba(255, 255, 255, 0.8)'
+      });
+      
+      container.appendChild(star);
+    }
+  };
+
+  // Limpiar elementos existentes
+  const clearElements = (container) => {
+    const existingClouds = document.getElementById('cloud-container');
+    if (existingClouds) existingClouds.remove();
+    
+    const existingStars = container.querySelectorAll('.star');
+    existingStars.forEach(star => star.remove());
+  };
+
+  // Efecto principal
+  useEffect(() => {
+    const container = heroRef.current;
+    if (!container) return;
+
+    // Limpiar elementos existentes
+    clearElements(container);
+    
+    // Crear elementos según el tema actual
+    const isLightMode = document.documentElement.getAttribute('data-theme') === 'light';
+    
+    if (isLightMode) {
+      createClouds(container);
+    } else {
+      createStars(container);
+    }
+    
+    // Observar cambios en el tema
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.attributeName === 'data-theme') {
+          clearElements(container);
+          
+          const isNowLight = document.documentElement.getAttribute('data-theme') === 'light';
+          if (isNowLight) {
+            createClouds(container);
+          } else {
+            createStars(container);
+          }
+        }
+      });
+    });
+    
+    // Iniciar observación
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-theme']
+    });
+    
+    // Limpieza
+    return () => {
+      observer.disconnect();
+      if (animationFrame.current) {
+        cancelAnimationFrame(animationFrame.current);
+      }
+      clearElements(container);
+    };
+  }, []);
+
+  return (
+    <section ref={heroRef} className="hero">
+      <CodeSymbols />
       <div className="container">
         <div className="hero-content">
           <div className="hero-text">
