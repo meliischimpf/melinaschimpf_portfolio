@@ -1,17 +1,66 @@
+/* Variables de tema */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #333333;
+  --header-bg: rgba(255, 255, 255, 0.95);
+  --header-border: rgba(0, 0, 0, 0.1);
+  --theme-toggle-bg: #f0f0f0;
+  --theme-toggle-hover: #e0e0e0;
+}
+
+[data-theme='dark'] {
+  --bg-color: #121212;
+  --text-color: #ffffff;
+  --header-bg: rgba(18, 18, 18, 0.95);
+  --header-border: rgba(255, 255, 255, 0.1);
+  --theme-toggle-bg: #333333;
+  --theme-toggle-hover: #444444;
+  
+  /* Cursor personalizado para modo oscuro */
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%23ffffff' d='M12 2.5c0 0 4.5 2.04 4.5 10.5c0 2.49-1.04 5.57-1.6 7H9.1c-.56-1.43-1.6-4.51-1.6-7C7.5 4.54 12 2.5 12 2.5m2 8.5a2 2 0 0 0-2-2a2 2 0 0 0-2 2a2 2 0 0 0 2 2a2 2 0 0 0 2-2m-6.08 9c.18.53.38 1.04.6 1.5h9c.23-.46.43-.97.6-1.5H7.92z'/%3E%3C/svg%3E") 12 12, auto;
+}
+
+/* Estilo para los elementos clickeables en modo oscuro */
+[data-theme='dark'] a,
+[data-theme='dark'] button,
+[data-theme='dark'] .nav-link,
+[data-theme='dark'] .theme-toggle,
+[data-theme='dark'] .menu-toggle {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%23ffffff' d='M12 2.5c0 0 4.5 2.04 4.5 10.5c0 2.49-1.04 5.57-1.6 7H9.1c-.56-1.43-1.6-4.51-1.6-7C7.5 4.54 12 2.5 12 2.5m2 8.5a2 2 0 0 0-2-2a2 2 0 0 0-2 2a2 2 0 0 0 2 2a2 2 0 0 0 2-2m-6.08 9c.18.53.38 1.04.6 1.5h9c.23-.46.43-.97.6-1.5H7.92z'/%3E%3C/svg%3E") 12 12, pointer;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  /* Cursor de avión para modo claro */
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%23333333' d='M22 16.21v-1.9L14 8.72l-2-1.09v-1.8c0-.34-.24-.57-.6-.62l-4.2-.42l-2.9-2.43l-.7.71l2.3 2.89l-2.89 1.07l-.7-.7l-1.42 1.42l1.76 1.12l1.59.31l1.69 4.63l.85 2.3l1.28-1.18L11 14.75l-.03-1.23l6.79-5.33l3.24 1.77l1-.6v5.85z'/%3E%3C/svg%3E") 12 12, auto;
+}
+
+/* Estilo para los elementos clickeables en modo claro */
+a,
+button,
+.nav-link,
+.theme-toggle,
+.menu-toggle {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%23333333' d='M22 16.21v-1.9L14 8.72l-2-1.09v-1.8c0-.34-.24-.57-.6-.62l-4.2-.42l-2.9-2.43l-.7.71l2.3 2.89l-2.89 1.07l-.7-.7l-1.42 1.42l1.76 1.12l1.59.31l1.69 4.63l.85 2.3l1.28-1.18L11 14.75l-.03-1.23l6.79-5.33l3.24 1.77l1-.6v5.85z'/%3E%3C/svg%3E") 12 12, pointer;
+}
+
 .header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--header-bg);
   backdrop-filter: blur(10px);
   z-index: 1000;
   transition: all 0.3s ease;
   padding: 1rem 0;
+  border-bottom: 1px solid var(--header-border);
 }
 
 .header-scrolled {
-  background: rgba(255, 255, 255, 0.98);
+  background: var(--header-bg);
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
   padding: 0.5rem 0;
 }
@@ -20,12 +69,45 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.theme-toggle {
+  background: var(--theme-toggle-bg);
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: var(--text-color);
+}
+
+.theme-toggle:hover {
+  background: var(--theme-toggle-hover);
+  transform: scale(1.05);
+}
+
+.theme-toggle:active {
+  transform: scale(0.95);
 }
 
 .logo h2 {
-  color: #007bff;
+  color: var(--text-color);
   font-weight: 700;
   margin: 0;
+  transition: color 0.3s ease;
 }
 
 .nav {
@@ -36,7 +118,7 @@
 
 .nav-link {
   text-decoration: none;
-  color: #333;
+  color: var(--text-color);
   font-weight: 500;
   padding: 0.5rem 1rem;
   border-radius: 5px;
@@ -54,12 +136,22 @@
   border: none;
   cursor: pointer;
   padding: 0.5rem;
-  color: #333;
+  color: var(--text-color);
+  transition: color 0.3s ease;
 }
 
 @media (max-width: 768px) {
+  .header-actions {
+    gap: 0.5rem;
+  }
+  
+  .theme-toggle {
+    width: 32px;
+    height: 32px;
+  }
   .menu-toggle {
     display: block;
+    color: var(--text-color);
   }
 
   .nav {
@@ -67,7 +159,7 @@
     top: 100%;
     left: 0;
     right: 0;
-    background: white;
+    background: var(--header-bg);
     flex-direction: column;
     gap: 0;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
