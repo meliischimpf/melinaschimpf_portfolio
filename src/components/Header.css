@@ -1,4 +1,4 @@
-/* Variables de tema */
+/* Variables de tema por defecto (modo claro) */
 :root {
   --bg-color: #ffffff;
   --text-color: #333333;
@@ -6,6 +6,70 @@
   --header-border: rgba(0, 0, 0, 0.1);
   --theme-toggle-bg: #f0f0f0;
   --theme-toggle-hover: #e0e0e0;
+  --nav-link-color: #333333;
+  --nav-link-hover: #1e88e5;
+}
+
+/* Variables para modo oscuro */
+[data-theme='dark'] {
+  --bg-color: #121212;
+  --text-color: #f5f5f5;
+  --header-bg: rgba(18, 18, 18, 0.95);
+  --header-border: rgba(255, 255, 255, 0.1);
+  --theme-toggle-bg: rgba(255, 255, 255, 0.1);
+  --theme-toggle-hover: rgba(255, 255, 255, 0.2);
+  --nav-link-color: #f5f5f5;
+  --nav-link-hover: #64b5f6;
+}
+
+/* Estilos para la estela del cohete */
+.rocket-trail {
+  position: fixed;
+  width: 12px;
+  height: 24px;
+  background: 
+    linear-gradient(
+      to bottom,
+      rgba(255, 220, 120, 0.9) 0%,
+      rgba(255, 140, 40, 0.8) 30%,
+      rgba(220, 40, 40, 0.6) 70%,
+      rgba(120, 0, 200, 0) 100%
+    );
+  border-radius: 50% 50% 10% 10%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%) rotate(180deg) scale(0.4, 0.6);
+  opacity: 0;
+  filter: blur(2px);
+  animation: rocketFire 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  transform-origin: center bottom;
+  will-change: transform, opacity;
+  /* Asegurar que no interfiera con el scroll */
+  touch-action: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+@keyframes rocketFire {
+  0% {
+    transform: translate(-50%, -50%) rotate(180deg) scale(0.4, 0.6);
+    opacity: 0.8;
+    filter: blur(2px);
+  }
+  30% {
+    opacity: 0.7;
+    transform: translate(-50%, -50%) rotate(180deg) scale(0.6, 0.9);
+  }
+  60% {
+    opacity: 0.4;
+    transform: translate(-50%, -50%) rotate(180deg) scale(0.8, 1.2);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(180deg) scale(1, 1.5);
+    opacity: 0;
+    filter: blur(4px);
+  }
 }
 
 [data-theme='dark'] {
@@ -16,8 +80,8 @@
   --theme-toggle-bg: #333333;
   --theme-toggle-hover: #444444;
   
-  /* Cursor personalizado para modo oscuro */
-  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%23ffffff' d='M12 2.5c0 0 4.5 2.04 4.5 10.5c0 2.49-1.04 5.57-1.6 7H9.1c-.56-1.43-1.6-4.51-1.6-7C7.5 4.54 12 2.5 12 2.5m2 8.5a2 2 0 0 0-2-2a2 2 0 0 0-2 2a2 2 0 0 0 2 2a2 2 0 0 0 2-2m-6.08 9c.18.53.38 1.04.6 1.5h9c.23-.46.43-.97.6-1.5H7.92z'/%3E%3C/svg%3E") 12 12, auto;
+  /* Cursor personalizado para modo oscuro (cohete) */
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%23ffffff' d='M12 2.5c0 0 4.5 2.04 4.5 10.5c0 2.49-1.04 5.57-1.6 7H9.1c-.56-1.43-1.6-4.51-1.6-7C7.5 4.54 12 2.5 12 2.5m2 8.5a2 2 0 0 0-2-2a2 2 0 0 0-2 2a2 2 0 0 0 2 2a2 2 0 0 0 2-2m-6.08 9c.18.53.38 1.04.6 1.5h9c.23-.46.43-.97.6-1.5H7.92z' transform='rotate(180 12 12)'/%3E%3C/svg%3E") 12 12, auto;
 }
 
 /* Estilo para los elementos clickeables en modo oscuro */
@@ -26,7 +90,59 @@
 [data-theme='dark'] .nav-link,
 [data-theme='dark'] .theme-toggle,
 [data-theme='dark'] .menu-toggle {
-  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%23ffffff' d='M12 2.5c0 0 4.5 2.04 4.5 10.5c0 2.49-1.04 5.57-1.6 7H9.1c-.56-1.43-1.6-4.51-1.6-7C7.5 4.54 12 2.5 12 2.5m2 8.5a2 2 0 0 0-2-2a2 2 0 0 0-2 2a2 2 0 0 0 2 2a2 2 0 0 0 2-2m-6.08 9c.18.53.38 1.04.6 1.5h9c.23-.46.43-.97.6-1.5H7.92z'/%3E%3C/svg%3E") 12 12, pointer;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%23ffffff' d='M12 2.5c0 0 4.5 2.04 4.5 10.5c0 2.49-1.04 5.57-1.6 7H9.1c-.56-1.43-1.6-4.51-1.6-7C7.5 4.54 12 2.5 12 2.5m2 8.5a2 2 0 0 0-2-2a2 2 0 0 0-2 2a2 2 0 0 0 2 2a2 2 0 0 0 2-2m-6.08 9c.18.53.38 1.04.6 1.5h9c.23-.46.43-.97.6-1.5H7.92z' transform='rotate(180 12 12)'/%3E%3C/svg%3E") 12 12, pointer;
+}
+
+/* Estilos para el humo del avión */
+.smoke-trail {
+  position: fixed;
+  width: 16px;
+  height: 16px;
+  background: 
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(255, 255, 255, 0.8) 0%,
+      rgba(220, 220, 220, 0.6) 30%,
+      rgba(180, 180, 180, 0.3) 70%,
+      rgba(100, 100, 100, 0) 100%
+    );
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%) scale(0.15);
+  filter: blur(3px);
+  opacity: 0;
+  animation: smokeDrift 1.5s ease-out forwards;
+  will-change: transform, opacity;
+  /* Asegurar que no interfiera con el scroll */
+  touch-action: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  /* Optimización de rendimiento */
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+@keyframes smokeDrift {
+  0% {
+    transform: translate(-50%, -50%) scale(0.15) rotate(0deg);
+    opacity: 0.7;
+    filter: blur(3px);
+  }
+  30% {
+    opacity: 0.5;
+    transform: translate(calc(-50% + 5px), calc(-50% - 8px)) scale(0.3) rotate(5deg);
+  }
+  70% {
+    opacity: 0.3;
+    transform: translate(calc(-50% + 12px), calc(-50% - 15px)) scale(0.6) rotate(10deg);
+  }
+  100% {
+    transform: translate(calc(-50% + 20px), calc(-50% - 25px)) scale(0.9) rotate(15deg);
+    opacity: 0;
+    filter: blur(4px);
+  }
 }
 
 body {
@@ -35,6 +151,8 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
   /* Cursor de avión para modo claro */
   cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%23333333' d='M22 16.21v-1.9L14 8.72l-2-1.09v-1.8c0-.34-.24-.57-.6-.62l-4.2-.42l-2.9-2.43l-.7.71l2.3 2.89l-2.89 1.07l-.7-.7l-1.42 1.42l1.76 1.12l1.59.31l1.69 4.63l.85 2.3l1.28-1.18L11 14.75l-.03-1.23l6.79-5.33l3.24 1.77l1-.6v5.85z'/%3E%3C/svg%3E") 12 12, auto;
+  position: relative;
+  overflow: hidden;
 }
 
 /* Estilo para los elementos clickeables en modo claro */
@@ -53,10 +171,12 @@ button,
   right: 0;
   background: var(--header-bg);
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   z-index: 1000;
   transition: all 0.3s ease;
   padding: 1rem 0;
   border-bottom: 1px solid var(--header-border);
+  color: var(--text-color);
 }
 
 .header-scrolled {
@@ -99,8 +219,22 @@ button,
   transform: scale(1.05);
 }
 
-.theme-toggle:active {
-  transform: scale(0.95);
+.nav-link {
+  color: var(--nav-link-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+}
+
+.nav-link:hover {
+  color: var(--nav-link-hover);
+  background: rgba(0, 0, 0, 0.05);
+}
+
+[data-theme='dark'] .nav-link:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .logo h2 {
@@ -116,16 +250,7 @@ button,
   list-style: none;
 }
 
-.nav-link {
-  text-decoration: none;
-  color: var(--text-color);
-  font-weight: 500;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  transition: all 0.3s ease;
-}
-
-.nav-link:hover {
+.active-link {
   color: #007bff;
   background: rgba(0, 123, 255, 0.1);
 }
