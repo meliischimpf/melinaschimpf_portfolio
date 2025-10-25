@@ -25,7 +25,7 @@ const Projects = () => {
       technologies: ["HTML5", "CSS3", "JavaScript"],
       category: "frontend",
       //liveUrl: "#",
-      githubUrl: "hhttps://github.com/meliischimpf/batalla-naval",
+      githubUrl: "https://github.com/meliischimpf/batalla-naval",
       featured: true
     },
     {
