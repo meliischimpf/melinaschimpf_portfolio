@@ -12,22 +12,22 @@ const Projects = () => {
     {
       id: 1,
       title: "Sistema de Gestión de Maquinaria Vial",
-      description: "Aplicación web completa desarrollada con PHP y Laravel, incluyendo autenticación, CRUD de usuarios, manejo de archivos y panel administrativo con Bootstrap.",
-      image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=500&h=300&fit=crop",
+      description: "Aplicación web desarrollada con PHP y Laravel para la gestión de maquinaria pesada. Incluye autenticación, CRUD de usuarios, manejo de archivos y panel administrativo con Bootstrap.",
+      image: "/assets/images/maquinaria-vial-screenshot.png",
       technologies: ["PHP", "Laravel", "MySQL", "Bootstrap", "Blade"],
       category: "fullstack",
-      //liveUrl: "#",
+      liveUrl: "https://gestion-maquinaria-vial.onrender.com/",
       githubUrl: "https://github.com/meliischimpf/gestion_maquinaria_vial",
       featured: true
     },
     { 
       id: 2,
       title: "Batalla Naval",
-      description: "El reconocido juego batalla naval, creado con HTML, CSS y JavaScript",
-      image: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=500&h=300&fit=crop",
+      description: "El reconocido juego batalla naval, creado con HTML, CSS y JavaScript. Incluye tableros interactivos, lógica de juego y diseño responsive.",
+      image: "/assets/images/battleship-screenshot.png",
       technologies: ["HTML5", "CSS3", "JavaScript"],
       category: "frontend",
-      //liveUrl: "#",
+      liveUrl: "https://batalla-naval-kappa.vercel.app",
       githubUrl: "https://github.com/meliischimpf/batalla-naval",
       featured: true
     },
