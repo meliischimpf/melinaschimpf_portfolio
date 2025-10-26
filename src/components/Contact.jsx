@@ -1,6 +1,8 @@
-import React, { useState } from 'react'
-import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter } from 'lucide-react'
-import './Contact.css'
+import React, { useState } from 'react';
+import { Mail, Phone, MapPin, Send, Github, Linkedin } from 'lucide-react';
+import emailjs from '@emailjs/browser';
+import { EMAIL_CONFIG } from '../config/email';
+import './Contact.css';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -20,20 +22,69 @@ const Contact = () => {
   }
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+    e.preventDefault();
+    setIsSubmitting(true);
     
-    // Simular envío del formulario
-    setTimeout(() => {
-      setIsSubmitting(false)
-      setSubmitStatus('success')
-      setFormData({ name: '', email: '', subject: '', message: '' })
+    try {
+      console.log('Enviando datos a EmailJS:', {
+        service_id: EMAIL_CONFIG.SERVICE_ID,
+        template_id: EMAIL_CONFIG.TEMPLATE_ID,
+        user_id: EMAIL_CONFIG.PUBLIC_KEY,
+        template_params: {
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          to_email: 'melischimpf@gmail.com'
+        }
+      });
+
+      const response = await emailjs.send(
+        EMAIL_CONFIG.SERVICE_ID,
+        EMAIL_CONFIG.TEMPLATE_ID,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          to_email: 'melischimpf@gmail.com',
+          reply_to: formData.email
+        },
+        EMAIL_CONFIG.PUBLIC_KEY
+      );
       
+      console.log('Respuesta de EmailJS:', response);
+      
+      if (response.status === 200) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        
+        // Mostrar mensaje de éxito por 5 segundos
+        setTimeout(() => {
+          setSubmitStatus('');
+        }, 5000);
+      } else {
+        throw new Error('Error en la respuesta del servidor');
+      }
+      
+    } catch (error) {
+      console.error('Error detallado al enviar el correo:', {
+        error: error,
+        status: error.status,
+        text: error.text,
+        response: error.response
+      });
+      
+      setSubmitStatus('error');
+      
+      // Mostrar mensaje de error por 5 segundos
       setTimeout(() => {
-        setSubmitStatus('')
-      }, 5000)
-    }, 2000)
-  }
+        setSubmitStatus('');
+      }, 5000);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   const contactInfo = [
     {
@@ -198,22 +249,20 @@ const Contact = () => {
                 disabled={isSubmitting}
               >
                 {isSubmitting ? (
-                  <>
-                    <div className="spinner"></div>
-                    Enviando...
-                  </>
+                  'Enviando...'
                 ) : (
                   <>
-                    <Send size={20} />
+                    <Send size={18} className="mr-2" />
                     Enviar Mensaje
                   </>
                 )}
               </button>
 
               {submitStatus === 'success' && (
-                <div className="success-message">
-                  ¡Mensaje enviado exitosamente! Te responderé pronto.
-                </div>
+                <p className="submit-success">¡Mensaje enviado con éxito! Me pondré en contacto contigo pronto.</p>
+              )}
+              {submitStatus === 'error' && (
+                <p className="submit-error">Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo más tarde.</p>
               )}
             </form>
           </div>
