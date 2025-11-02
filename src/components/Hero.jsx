@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import { FiChevronDown } from 'react-icons/fi';
+import { useTranslation } from 'react-i18next';
 import './Hero.css';
 
 // Componente para los símbolos decorativos
@@ -183,6 +184,7 @@ const CodeSymbols = () => {
 };
 
 const Hero = () => {
+  const { t } = useTranslation();
   const heroRef = useRef(null);
   const animationFrame = useRef(null);
   const lastTime = useRef(0);
@@ -451,23 +453,21 @@ const Hero = () => {
         <div className="hero-content">
           <div className="hero-text">
             <h1 className="hero-title">
-              Hola, soy <span className="highlight">Melina Schimpf Baldo</span>
+              {t('hero.greeting')} <span className="highlight">Melina Schimpf Baldo</span>
             </h1>
             <h2 className="hero-role">
-              Desarrolladora de Software
+              {t('hero.role')}
             </h2>
             <p className="hero-subtitle">
-              Estudiante de Tecnicatura Superior en Análisis y Desarrollo de Software.
-              Apasionada por crear soluciones digitales innovadoras con HTML, CSS,
-              JavaScript, PHP y tecnologías modernas.
+              {t('hero.description')}
             </p>
             <div className="hero-buttons">
               <a href="#projects" className="btn">
-                Ver Proyectos
+                {t('hero.cta')}
               </a>
               <a href="#contact" className="btn btn-outline">
                 <FaEnvelope size={20} />
-                Contactar
+                {t('hero.contact')}
               </a>
             </div>
             <div className="social-links">

@@ -1,39 +1,29 @@
-import React from 'react'
-import { Heart, Github, Linkedin, Mail, ArrowUp } from 'lucide-react'
-import './Footer.css'
+import React from 'react';
+import { Heart, Github, Linkedin, Mail, ArrowUp } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import './Footer.css';
 
 const Footer = () => {
+  const { t } = useTranslation();
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
-  const currentYear = new Date().getFullYear()
-
-  const quickLinks = [
-    { href: '#home', label: 'Inicio' },
-    { href: '#about', label: 'Acerca de' },
-    { href: '#skills', label: 'Habilidades' },
-    { href: '#projects', label: 'Proyectos' },
-    { href: '#contact', label: 'Contacto' }
-  ]
-
-  const socialLinks = [
-    {
-      icon: <Github size={20} />,
-      url: 'https://github.com/melischimpf',
-      name: 'GitHub'
-    },
-    {
-      icon: <Linkedin size={20} />,
-      url: 'https://linkedin.com/in/melina-schimpf',
-      name: 'LinkedIn'
-    },
-    {
-      icon: <Mail size={20} />,
-      url: 'mailto:melischimpf@gmail.com',
-      name: 'Email'
-    }
-  ]
+  const currentYear = new Date().getFullYear();
+  
+  // Obtener datos de las traducciones
+  const footerData = t('footer', { returnObjects: true });
+  const quickLinks = footerData.quickLinks || [];
+  const socialLinksData = footerData.socialLinks || [];
+  
+  // Mapear los enlaces sociales con los íconos correspondientes
+  const socialLinks = socialLinksData.map(social => ({
+    icon: social.name === 'GitHub' ? <Github size={20} /> :
+          social.name === 'LinkedIn' ? <Linkedin size={20} /> :
+          <Mail size={20} />,
+    url: social.url,
+    name: social.name
+  }));
 
   return (
     <footer className="footer">
@@ -42,15 +32,12 @@ const Footer = () => {
           <div className="footer-section">
             <div className="footer-brand">
               <h3>Melina Schimpf Baldo</h3>
-              <p>
-                Estudiante de Desarrollo de Software apasionada por crear
-                soluciones digitales innovadoras y análisis de datos.
-              </p>
+              <p>{footerData.brandDescription}</p>
             </div>
           </div>
 
           <div className="footer-section">
-            <h4>Enlaces Rápidos</h4>
+            <h4>{footerData.quickLinksTitle}</h4>
             <nav className="footer-links">
               {quickLinks.map((link, index) => (
                 <a key={index} href={link.href}>
@@ -61,7 +48,7 @@ const Footer = () => {
           </div>
 
           <div className="footer-section">
-            <h4>Conecta Conmigo</h4>
+            <h4>{footerData.connectTitle}</h4>
             <div className="footer-social">
               {socialLinks.map((social, index) => (
                 <a
@@ -78,25 +65,26 @@ const Footer = () => {
             </div>
             <p className="footer-contact">
               <Mail size={16} />
-              melischimpf@gmail.com
+              {footerData.email}
             </p>
           </div>
 
           <div className="footer-section">
-            <h4>¿Tienes un proyecto?</h4>
-            <p>¡Hablemos y hagámoslo realidad!</p>
+            <h4>{footerData.projectTitle}</h4>
+            <p>{footerData.projectText}</p>
             <a href="#contact" className="footer-cta">
-              Comenzar Proyecto
+              {footerData.projectCta}
             </a>
           </div>
         </div>
 
         <div className="footer-bottom">
           <div className="footer-copyright">
-            <p>
-              © {currentYear} Melina Schimpf Baldo. Hecho con <Heart size={16} className="heart" />
-              por una desarrolladora apasionada.
-            </p>
+            <p dangerouslySetInnerHTML={{
+              __html: footerData.copyright
+                .replace('{year}', currentYear)
+                .replace('{heart}', '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="heart"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>')
+            }} />
           </div>
           
           <button 

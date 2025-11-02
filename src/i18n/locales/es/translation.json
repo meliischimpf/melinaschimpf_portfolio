@@ -1,0 +1,226 @@
+{
+  "header": {
+    "home": "Inicio",
+    "about": "Sobre mí",
+    "skills": "Habilidades",
+    "projects": "Proyectos",
+    "contact": "Contacto",
+    "themeToggle": "Cambiar a modo {{mode}}",
+    "language": "Idioma",
+    "menu": "Menú"
+  },
+  "hero": {
+    "greeting": "Hola, soy",
+    "role": "Desarrolladora Full Stack",
+    "description": "Estudiante de Tecnicatura Superior en Análisis y Desarrollo de Software. Apasionada por crear soluciones digitales innovadoras con HTML, CSS, JavaScript, PHP y tecnologías modernas.",
+    "cta": "Ver mi trabajo",
+    "contact": "Contáctame"
+  },
+  "languages": {
+    "en": "Inglés",
+    "es": "Español"
+  },
+  "projects": {
+    "title": "Mis Proyectos",
+    "subtitle": "Una selección de mis trabajos más recientes",
+    "featuredTitle": "Proyectos Destacados",
+    "filters": {
+      "title": "Filtrar por categoría",
+      "all": "Todos",
+      "fullstack": "FullStack",
+      "backend": "Backend", 
+      "frontend": "Frontend",
+      "data": "Análisis de Datos"
+    },
+    "viewProject": "Ver Proyecto",
+    "viewCode": "Ver Código",
+    "noProjects": "No se encontraron proyectos en esta categoría.",
+    "projects": [
+      {
+        "title": "Sistema de Gestión de Maquinaria Vial",
+        "description": "Aplicación web desarrollada con PHP y Laravel para la gestión de maquinaria pesada. Incluye autenticación, CRUD de usuarios, manejo de archivos y panel administrativo con Bootstrap.",
+        "technologies": ["PHP", "Laravel", "MySQL", "Bootstrap", "Blade"]
+      },
+      {
+        "title": "Batalla Naval",
+        "description": "El reconocido juego batalla naval, creado con HTML, CSS y JavaScript. Incluye tableros interactivos, lógica de juego y diseño responsive.",
+        "technologies": ["HTML5", "CSS3", "JavaScript"]
+      },
+      {
+        "title": "Proyecto Data Analytics",
+        "description": "Proyecto Data Analytics sobre Representación Femenina en Videojuegos según certificación Jump! Data Analytics.",
+        "technologies": ["Power BI", "SQL Server", "Excel", "Data Analytics"]
+      },
+      {
+        "title": "Proyecto de Timbre QR (En Construcción)",
+        "description": "Proyecto de Timbre con scanner de QR para mi departamento",
+        "technologies": ["HTML", "CSS3", "JavaScript", "NodeJS"]
+      }
+    ]
+  },
+  "footer": {
+    "quickLinks": [
+      { "href": "#home", "label": "Inicio" },
+      { "href": "#about", "label": "Acerca de" },
+      { "href": "#skills", "label": "Habilidades" },
+      { "href": "#projects", "label": "Proyectos" },
+      { "href": "#contact", "label": "Contacto" }
+    ],
+    "brandDescription": "Estudiante de Desarrollo de Software apasionada por crear soluciones digitales innovadoras y análisis de datos.",
+    "quickLinksTitle": "Enlaces Rápidos",
+    "connectTitle": "Conecta Conmigo",
+    "projectTitle": "¿Tienes un proyecto?",
+    "projectText": "¡Hablemos y hagámoslo realidad!",
+    "projectCta": "Comenzar Proyecto",
+    "copyright": "© {year} Melina Schimpf Baldo. Hecho con {heart} por una desarrolladora apasionada.",
+    "socialLinks": [
+      {
+        "name": "GitHub",
+        "url": "https://github.com/melischimpf"
+      },
+      {
+        "name": "LinkedIn",
+        "url": "https://linkedin.com/in/melina-schimpf"
+      },
+      {
+        "name": "Email",
+        "url": "mailto:melischimpf@gmail.com"
+      }
+    ]
+  },
+  "contact": {
+    "title": "Contacto",
+    "subtitle": "¿Tienes un proyecto en mente? ¡Hablemos y hagámoslo realidad!",
+    "workTogether": "¡Trabajemos Juntos!",
+    "workDescription": "Estoy siempre interesada en nuevos proyectos y oportunidades de aprendizaje. Ya sea que necesites desarrollo web, análisis de datos o simplemente quieras charlar sobre tecnología, no dudes en contactarme.",
+    "contactInfo": [
+      {
+        "title": "Email",
+        "info": "melischimpf@gmail.com"
+      },
+      {
+        "title": "Teléfono",
+        "info": "+54 (3444) 41-2369"
+      },
+      {
+        "title": "Ubicación",
+        "info": "Gualeguaychú, Entre Ríos, Argentina"
+      }
+    ],
+    "followMe": "Sígueme en Redes Sociales",
+    "socialLinks": [
+      {
+        "name": "GitHub",
+        "url": "https://github.com/melischimpf"
+      },
+      {
+        "name": "LinkedIn",
+        "url": "https://linkedin.com/in/melina-schimpf"
+      },
+      {
+        "name": "Email",
+        "url": "mailto:melischimpf@gmail.com"
+      }
+    ],
+    "formTitle": "Envíame un Mensaje",
+    "formFields": {
+      "name": "Nombre *",
+      "email": "Correo Electrónico *",
+      "subject": "Asunto *",
+      "message": "Tu Mensaje *"
+    },
+    "submitButton": "Enviar Mensaje",
+    "sending": "Enviando...",
+    "successMessage": "¡Gracias! Tu mensaje ha sido enviado correctamente.",
+    "errorMessage": "Hubo un error al enviar tu mensaje. Por favor, inténtalo de nuevo más tarde."
+  },
+  "skills": {
+    "title": "Habilidades Técnicas",
+    "subtitle": "Tecnologías y herramientas que domino para crear soluciones excepcionales",
+    "additionalTools": "Herramientas y Tecnologías Adicionales",
+    "categories": [
+      {
+        "title": "Frontend",
+        "skills": [
+          { "name": "HTML", "level": 90 },
+          { "name": "CSS", "level": 90 },
+          { "name": "JavaScript", "level": 85 },
+          { "name": "React", "level": 75 },
+          { "name": "Bootstrap", "level": 80 },
+          { "name": "Tailwind", "level": 85 }
+        ]
+      },
+      {
+        "title": "Backend",
+        "skills": [
+          { "name": "PHP", "level": 90 },
+          { "name": "NodeJs", "level": 75 },
+          { "name": "Python", "level": 60 },
+          { "name": "C#", "level": 55 },
+          { "name": "Laravel", "level": 85 },
+          { "name": "NextJs", "level": 75 },
+          { "name": "GitHub", "level": 80 },
+          { "name": "REST API", "level": 75 },
+          { "name": "Postman", "level": 70 },
+          { "name": "Lógica de Programación", "level": 90 }
+        ]
+      },
+      {
+        "title": "Bases de Datos & Análisis",
+        "skills": [
+          { "name": "MySQL", "level": 80 },
+          { "name": "MariaDB", "level": 80 },
+          { "name": "MongoDB", "level": 70 },
+          { "name": "Power BI", "level": 75 },
+          { "name": "Excel", "level": 85 },
+          { "name": "Análisis de Datos", "level": 85 }
+        ]
+      },
+      {
+        "title": "DevOps",
+        "skills": [
+          { "name": "Apache", "level": 70 },
+          { "name": "Nginx", "level": 60 },
+          { "name": "AWS", "level": 70 },
+          { "name": "Docker", "level": 70 },
+          { "name": "Kubernetes", "level": 70 }
+        ]
+      }
+    ],
+    "tools": [
+      "Git", "Visual Studio", "Power BI", "Excel",
+      "Hardware", "Redes", "Sistemas Operativos", "Routers", "Mantenimiento PC"
+    ]
+  },
+  "about": {
+    "title": "Acerca de Mí",
+    "subtitle": "Conóceme mejor y mi experiencia en desarrollo",
+    "greeting": "¡Hola! Soy Melina Schimpf Baldo",
+    "description1": "Estudiante de Tecnicatura Superior en Análisis y Desarrollo de Software en el Instituto Superior Sedes Sapientiae, con finalización prevista para 2025. Me apasiona crear soluciones digitales innovadoras y eficientes.",
+    "description2": "Tengo experiencia en desarrollo web con HTML, CSS, JavaScript y Bootstrap, así como en análisis de datos con SQL y Power BI. También he trabajado con lenguajes como PHP, JavaScript, TypeScript, Python y C#.",
+    "description3": "Me especializo en el desarrollo web y programación, pero también en análisis de datos. Siempre estoy aprendiendo nuevas tecnologías para mantenerme actualizada en este campo en constante evolución.",
+    "stats": {
+      "certifications": "Certificaciones Obtenidas",
+      "graduation": "Graduación Prevista",
+      "technologies": "Tecnologías Aprendidas"
+    },
+    "experiences": [
+      {
+        "title": "Desarrollo Web",
+        "description": "Experiencia en el diseño y desarrollo de páginas web utilizando HTML, CSS, JavaScript y Bootstrap para crear interfaces modernas y responsivas."
+      },
+      {
+        "title": "Análisis de Datos",
+        "description": "Especializada en el uso avanzado de SQL para organización y análisis de grandes volúmenes de datos, y creación de dashboards interactivos con Power BI."
+      },
+      {
+        "title": "Programación Backend",
+        "description": "Conocimientos en PHP, Python y C#. Experiencia con frameworks como Laravel y desarrollo de videojuegos en C#."
+      },
+      {
+        "title": "Tecnologías Emergentes",
+        "description": "Experiencia en Python para la industria 4.0, incluyendo codificación para detección de objetos mediante video y automatizaciones."
+      }
+    ]
+  }
+}

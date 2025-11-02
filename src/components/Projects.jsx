@@ -1,20 +1,32 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ExternalLink, Github, Filter } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import anime from 'animejs/lib/anime.es.js';
 import AnimatedElement from './animations/AnimatedElement';
 import './Projects.css';
 import './animations/animations.css';
 
 const Projects = () => {
-  const [filter, setFilter] = useState('all')
+  const { t } = useTranslation();
+  const [filter, setFilter] = useState('all');
 
+  const projectsData = t('projects.projects', { returnObjects: true });
+  const categories = [
+    { id: 'all', label: t('projects.filters.all') },
+    { id: 'fullstack', label: t('projects.filters.fullstack') },
+    { id: 'backend', label: t('projects.filters.backend') },
+    { id: 'frontend', label: t('projects.filters.frontend') },
+    { id: 'data', label: t('projects.filters.data') }
+  ];
+
+  // Mapear los proyectos con los datos estáticos necesarios
   const projects = [
     {
       id: 1,
-      title: "Sistema de Gestión de Maquinaria Vial",
-      description: "Aplicación web desarrollada con PHP y Laravel para la gestión de maquinaria pesada. Incluye autenticación, CRUD de usuarios, manejo de archivos y panel administrativo con Bootstrap.",
+      title: projectsData[0].title,
+      description: projectsData[0].description,
       image: "/assets/images/maquinaria-vial-screenshot.png",
-      technologies: ["PHP", "Laravel", "MySQL", "Bootstrap", "Blade"],
+      technologies: projectsData[0].technologies,
       category: "fullstack",
       liveUrl: "https://gestion-maquinaria-vial.onrender.com/",
       githubUrl: "https://github.com/meliischimpf/gestion_maquinaria_vial",
@@ -22,10 +34,10 @@ const Projects = () => {
     },
     { 
       id: 2,
-      title: "Batalla Naval",
-      description: "El reconocido juego batalla naval, creado con HTML, CSS y JavaScript. Incluye tableros interactivos, lógica de juego y diseño responsive.",
+      title: projectsData[1].title,
+      description: projectsData[1].description,
       image: "/assets/images/battleship-screenshot.png",
-      technologies: ["HTML5", "CSS3", "JavaScript"],
+      technologies: projectsData[1].technologies,
       category: "frontend",
       liveUrl: "https://batalla-naval-kappa.vercel.app",
       githubUrl: "https://github.com/meliischimpf/batalla-naval",
@@ -33,63 +45,31 @@ const Projects = () => {
     },
     {
       id: 3,
-      title: "Proyecto Data Analytics",
-      description: "Proyecto Data Analytics sobre Representación Femenina en Videojuegos según certificación Jump! Data Analytics.",
+      title: projectsData[2].title,
+      description: projectsData[2].description,
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=300&fit=crop",
-      technologies: ["Power BI", "SQL Server", "Excel", "Data Analytics"],
+      technologies: projectsData[2].technologies,
       category: "data",
-      //liveUrl: "#",
       githubUrl: "https://github.com/meliischimpf/meliischimpf-representacion_femenina_en_videojuegos",
       featured: true
     },
-    /* {
-      id: 3,
-      title: "Aplicación React Interactiva",
-      description: "Aplicación web moderna desarrollada con React, implementando componentes reutilizables, hooks y manejo de estado para una experiencia de usuario fluida.",
-      image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=500&h=300&fit=crop",
-      technologies: ["React", "JavaScript", "CSS", "Hooks"],
-      category: "frontend",
-      liveUrl: "#",
-      githubUrl: "https://github.com/meliischimpf",
-      featured: true
-    }, */
-    /* {
-      id: 5,
-      title: "API REST con Laravel",
-      description: "API RESTful desarrollada con Laravel, implementando autenticación JWT, validaciones, relaciones de base de datos y documentación con Swagger.",
-      image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=500&h=300&fit=crop",
-      technologies: ["PHP", "Laravel", "MySQL", "API REST", "JWT"],
-      category: "backend",
-      liveUrl: "#",
-      githubUrl: "https://github.com/meliischimpf",
-      featured: false
-    }, */
     {
       id: 4,
-      title: "Proyecto de Timbre QR (Under Construction)",
-      description: "Proyecto de Timbre con scanner de QR para mi departamento",
+      title: projectsData[3].title,
+      description: projectsData[3].description,
       image: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=500&h=300&fit=crop",
-      technologies: ["HTML", "CSS3", "JavaScript", "NodeJS"],
+      technologies: projectsData[3].technologies,
       category: "fullstack",
-      //liveUrl: "#",
       githubUrl: "https://github.com/meliischimpf/timbre-dpto",
       featured: false
     },
-  ]
-
-  const categories = [
-    { id: 'all', label: 'Todos' },
-    { id: 'fullstack', label: 'FullStack'},
-    { id: 'backend', label: 'Backend' },
-    { id: 'frontend', label: 'Frontend' },
-    { id: 'data', label: 'Análisis de Datos' }
-  ]
+  ];
 
   const filteredProjects = filter === 'all' 
     ? projects 
-    : projects.filter(project => project.category === filter)
+    : projects.filter(project => project.category === filter);
 
-  const featuredProjects = projects.filter(project => project.featured)
+  const featuredProjects = projects.filter(project => project.featured);
 
   // Efecto para animación de scroll
   const projectsRef = useRef(null);
@@ -169,17 +149,17 @@ const Projects = () => {
       <div className="container">
         <div className="section-header">
           <AnimatedElement animation="fadeIn" delay={200}>
-            <h2>Mis Proyectos</h2>
+            <h2>{t('projects.title')}</h2>
           </AnimatedElement>
           <AnimatedElement animation="fadeIn" delay={300}>
-            <p>Una selección de mis trabajos más destacados y recientes</p>
+            <p>{t('projects.subtitle')}</p>
           </AnimatedElement>
         </div>
 
         {/* Featured Projects */}
         <div className="featured-section">
           <AnimatedElement animation="slideInLeft" delay={400}>
-            <h3>Proyectos Destacados</h3>
+            <h3>{t('projects.featuredTitle')}</h3>
           </AnimatedElement>
           <div className="featured-grid" ref={projectsRef}>
             {featuredProjects.map((project, index) => (
@@ -195,10 +175,10 @@ const Projects = () => {
                   <img src={project.image} alt={project.title} />
                   <div className="project-overlay">
                     <div className="project-links">
-                      <a href={project.liveUrl} className="project-link" aria-label="Ver proyecto">
+                      <a href={project.liveUrl} className="project-link" aria-label={`${t('projects.viewProject')} ${project.title}`}>
                         <ExternalLink size={20} />
                       </a>
-                      <a href={project.githubUrl} className="project-link" aria-label="Ver código">
+                      <a href={project.githubUrl} className="project-link" aria-label={t('projects.viewCode')}>
                         <Github size={20} />
                       </a>
                     </div>
@@ -223,7 +203,7 @@ const Projects = () => {
           <div className="filter-section">
             <AnimatedElement animation="fadeIn" delay={500}>
               <div className="filter-header">
-                <h3>Todos los Proyectos</h3>
+                <h3>{t('projects.filters.title')}</h3>
                 <Filter size={20} className="animated-filter-icon" />
               </div>
             </AnimatedElement>

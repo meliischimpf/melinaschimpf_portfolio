@@ -1,68 +1,20 @@
-import React from 'react'
-import './Skills.css'
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import './Skills.css';
 
 const Skills = () => {
-  const skillCategories = [
-    {
-      title: "Frontend",
-      skills: [
-        { name: "HTML", level: 90 },
-        { name: "CSS", level: 90 },
-        { name: "JavaScript", level: 85 },
-        { name: "React", level: 75 },
-        { name: "Bootstrap", level: 80 },
-        { name: "Tailwind", level: 85 }
-      ]
-    },
-    {
-      title: "Backend",
-      skills: [
-        { name: "PHP", level: 90 },
-        { name: "NodeJs", level: 75},
-        { name: "Python", level: 60 },
-        { name: "C#", level: 55 },
-        { name: "Laravel", level: 85 },
-        { name: "NextJs", level: 75 },
-        { name: "GitHub", level: 80 },
-        { name: "REST API", level: 75 },
-        { name: "Postman", level: 70 },
-        { name: "Lógica de Programación", level: 90 }
-      ]
-    },
-    {
-      title: "Bases de Datos & Análisis",
-      skills: [
-        { name: "MySQL", level: 80 },
-        { name: "MariaDB", level: 80 },
-        { name: "MongoDB", level: 70 },
-        { name: "Power BI", level: 75 },
-        { name: "Excel", level: 85 },
-        { name: "Análisis de Datos", level: 85 }
-      ]
-    },
-    {
-      title: "Devops",
-      skills: [
-        { name: "Apache", level: 70 },
-        { name: "Nginx", level: 60 },
-        { name: "AWS", level: 70 },
-        { name: "Docker", level: 70 },
-        { name: "Kubernetes", level: 70 }
-      ]
-    }
-  ]
-
-  const tools = [
-    "Git", "Visual Studio", "Power BI", "Excel",
-    "Hardware", "Redes", "Sistemas Operativos", "Routers", "Mantenimiento PC"
-  ]
+  const { t } = useTranslation();
+  
+  // Obtener las categorías de habilidades desde las traducciones
+  const skillCategories = t('skills.categories', { returnObjects: true });
+  const tools = t('skills.tools', { returnObjects: true });
 
   return (
     <section id="skills" className="skills">
       <div className="container">
         <div className="section-header">
-          <h2>Habilidades Técnicas</h2>
-          <p>Tecnologías y herramientas que domino para crear soluciones excepcionales</p>
+          <h2>{t('skills.title')}</h2>
+          <p>{t('skills.subtitle')}</p>
         </div>
 
         <div className="skills-grid">
@@ -90,7 +42,7 @@ const Skills = () => {
         </div>
 
         <div className="tools-section">
-          <h3>Herramientas y Tecnologías Adicionales</h3>
+          <h3>{t('skills.additionalTools')}</h3>
           <div className="tools-grid">
             {tools.map((tool, index) => (
               <div key={index} className="tool-tag">

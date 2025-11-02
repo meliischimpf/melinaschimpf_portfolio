@@ -1,5 +1,8 @@
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useEffect } from 'react';
 import { ThemeProvider } from './context/ThemeContext';
+import { LanguageProvider } from './context/LanguageContext';
+import { I18nextProvider } from 'react-i18next';
+import i18n from './i18n/i18n';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -28,8 +31,10 @@ if (import.meta.env.DEV) {
 
 function App() {
   return (
-    <ThemeProvider>
-      <div className="App">
+    <I18nextProvider i18n={i18n}>
+      <LanguageProvider>
+        <ThemeProvider>
+          <div className="App">
         {import.meta.env.DEV && ReactPlugin && (
           <Suspense fallback={null}>
             <TwentyFirstToolbar 
@@ -51,7 +56,9 @@ function App() {
         </main>
         <Footer />
       </div>
-    </ThemeProvider>
+        </ThemeProvider>
+      </LanguageProvider>
+    </I18nextProvider>
   );
 }
 

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Moon, Sun } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
+import { useTranslation } from 'react-i18next';
+import LanguageSelector from './LanguageSelector';
 import './Header.css';
 
 const Header = () => {
@@ -257,12 +259,14 @@ const Header = () => {
     setIsMenuOpen(!isMenuOpen);
   }
 
+  const { t } = useTranslation();
+  
   const navItems = [
-    { href: '#home', label: 'Inicio' },
-    { href: '#about', label: 'Acerca de' },
-    { href: '#skills', label: 'Habilidades' },
-    { href: '#projects', label: 'Proyectos' },
-    { href: '#contact', label: 'Contacto' }
+    { href: '#home', label: t('header.home') },
+    { href: '#about', label: t('header.about') },
+    { href: '#skills', label: t('header.skills') },
+    { href: '#projects', label: t('header.projects') },
+    { href: '#contact', label: t('header.contact') }
   ]
 
   return (
@@ -287,17 +291,18 @@ const Header = () => {
           </nav>
 
           <div className="header-actions">
+            <LanguageSelector />
             <button
               className="theme-toggle"
               onClick={toggleTheme}
-              aria-label={darkMode ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
+              aria-label={darkMode ? t('header.themeToggle', { mode: 'claro' }) : t('header.themeToggle', { mode: 'oscuro' })}
             >
               {darkMode ? <Sun size={20} /> : <Moon size={20} />}
             </button>
             <button
               className="menu-toggle"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label="Toggle menu"
+              aria-label={t('header.menu')}
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>

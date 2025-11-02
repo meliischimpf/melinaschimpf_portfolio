@@ -1,0 +1,226 @@
+{
+  "header": {
+    "home": "Home",
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "contact": "Contact",
+    "themeToggle": "Switch to {{mode}} mode",
+    "language": "Language",
+    "menu": "Toggle menu"
+  },
+  "hero": {
+    "greeting": "Hi, I'm",
+    "role": "Software Developer",
+    "description": "Student of Higher Technician in Software Analysis and Development. Passionate about creating innovative digital solutions with HTML, CSS, JavaScript, PHP and modern technologies.",
+    "cta": "View Projects",
+    "contact": "Contact me"
+  },
+  "languages": {
+    "en": "English",
+    "es": "Spanish"
+  },
+  "projects": {
+    "title": "My Projects",
+    "subtitle": "A selection of my latest work",
+    "featuredTitle": "Featured Projects",
+    "filters": {
+      "title": "Filter by category",
+      "all": "All",
+      "fullstack": "FullStack",
+      "backend": "Backend",
+      "frontend": "Frontend",
+      "data": "Data Analysis"
+    },
+    "viewProject": "View Project",
+    "viewCode": "View Code",
+    "noProjects": "No projects found in this category.",
+    "projects": [
+      {
+        "title": "Heavy Machinery Management System",
+        "description": "Web application developed with PHP and Laravel for heavy machinery management. Includes authentication, user CRUD, file management, and admin panel with Bootstrap.",
+        "technologies": ["PHP", "Laravel", "MySQL", "Bootstrap", "Blade"]
+      },
+      {
+        "title": "Battleship Game",
+        "description": "The classic Battleship game, created with HTML, CSS, and JavaScript. Features interactive boards, game logic, and responsive design.",
+        "technologies": ["HTML5", "CSS3", "JavaScript"]
+      },
+      {
+        "title": "Data Analytics Project",
+        "description": "Data Analytics project on Female Representation in Video Games as per Jump! Data Analytics certification.",
+        "technologies": ["Power BI", "SQL Server", "Excel", "Data Analytics"]
+      },
+      {
+        "title": "QR Doorbell Project (Under Construction)",
+        "description": "QR Code Doorbell project for my department",
+        "technologies": ["HTML", "CSS3", "JavaScript", "NodeJS"]
+      }
+    ]
+  },
+  "footer": {
+    "quickLinks": [
+      { "href": "#home", "label": "Home" },
+      { "href": "#about", "label": "About" },
+      { "href": "#skills", "label": "Skills" },
+      { "href": "#projects", "label": "Projects" },
+      { "href": "#contact", "label": "Contact" }
+    ],
+    "brandDescription": "Software Development student passionate about creating innovative digital solutions and data analysis.",
+    "quickLinksTitle": "Quick Links",
+    "connectTitle": "Connect With Me",
+    "projectTitle": "Have a project?",
+    "projectText": "Let's talk and make it happen!",
+    "projectCta": "Start Project",
+    "copyright": "© {year} Melina Schimpf Baldo. Made with {heart} by a passionate developer.",
+    "socialLinks": [
+      {
+        "name": "GitHub",
+        "url": "https://github.com/melischimpf"
+      },
+      {
+        "name": "LinkedIn",
+        "url": "https://linkedin.com/in/melina-schimpf"
+      },
+      {
+        "name": "Email",
+        "url": "mailto:melischimpf@gmail.com"
+      }
+    ]
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Do you have a project in mind? Let's talk and make it happen!",
+    "workTogether": "Let's Work Together!",
+    "workDescription": "I'm always interested in new projects and learning opportunities. Whether you need web development, data analysis, or just want to chat about technology, feel free to contact me.",
+    "contactInfo": [
+      {
+        "title": "Email",
+        "info": "melischimpf@gmail.com"
+      },
+      {
+        "title": "Phone",
+        "info": "+54 (3444) 41-2369"
+      },
+      {
+        "title": "Location",
+        "info": "Gualeguaychú, Entre Ríos, Argentina"
+      }
+    ],
+    "followMe": "Follow me on Social Media",
+    "socialLinks": [
+      {
+        "name": "GitHub",
+        "url": "https://github.com/melischimpf"
+      },
+      {
+        "name": "LinkedIn",
+        "url": "https://linkedin.com/in/melina-schimpf"
+      },
+      {
+        "name": "Email",
+        "url": "mailto:melischimpf@gmail.com"
+      }
+    ],
+    "formTitle": "Send me a Message",
+    "formFields": {
+      "name": "Name *",
+      "email": "Email *",
+      "subject": "Subject *",
+      "message": "Your Message *"
+    },
+    "submitButton": "Send Message",
+    "sending": "Sending...",
+    "successMessage": "Thank you! Your message has been sent successfully.",
+    "errorMessage": "There was an error sending your message. Please try again later."
+  },
+  "skills": {
+    "title": "Technical Skills",
+    "subtitle": "Technologies and tools I master to create exceptional solutions",
+    "additionalTools": "Additional Tools and Technologies",
+    "categories": [
+      {
+        "title": "Frontend",
+        "skills": [
+          { "name": "HTML", "level": 90 },
+          { "name": "CSS", "level": 90 },
+          { "name": "JavaScript", "level": 85 },
+          { "name": "React", "level": 75 },
+          { "name": "Bootstrap", "level": 80 },
+          { "name": "Tailwind", "level": 85 }
+        ]
+      },
+      {
+        "title": "Backend",
+        "skills": [
+          { "name": "PHP", "level": 90 },
+          { "name": "NodeJs", "level": 75 },
+          { "name": "Python", "level": 60 },
+          { "name": "C#", "level": 55 },
+          { "name": "Laravel", "level": 85 },
+          { "name": "NextJs", "level": 75 },
+          { "name": "GitHub", "level": 80 },
+          { "name": "REST API", "level": 75 },
+          { "name": "Postman", "level": 70 },
+          { "name": "Programming Logic", "level": 90 }
+        ]
+      },
+      {
+        "title": "Databases & Analysis",
+        "skills": [
+          { "name": "MySQL", "level": 80 },
+          { "name": "MariaDB", "level": 80 },
+          { "name": "MongoDB", "level": 70 },
+          { "name": "Power BI", "level": 75 },
+          { "name": "Excel", "level": 85 },
+          { "name": "Data Analysis", "level": 85 }
+        ]
+      },
+      {
+        "title": "DevOps",
+        "skills": [
+          { "name": "Apache", "level": 70 },
+          { "name": "Nginx", "level": 60 },
+          { "name": "AWS", "level": 70 },
+          { "name": "Docker", "level": 70 },
+          { "name": "Kubernetes", "level": 70 }
+        ]
+      }
+    ],
+    "tools": [
+      "Git", "Visual Studio", "Power BI", "Excel",
+      "Hardware", "Networks", "Operating Systems", "Routers", "PC Maintenance"
+    ]
+  },
+  "about": {
+    "title": "About Me",
+    "subtitle": "Get to know me and my development experience",
+    "greeting": "Hi! I'm Melina Schimpf Baldo",
+    "description1": "Student of Higher Technician in Software Analysis and Development at Instituto Superior Sedes Sapientiae, with expected graduation in 2025. I'm passionate about creating innovative and efficient digital solutions.",
+    "description2": "I have experience in web development with HTML, CSS, JavaScript, and Bootstrap, as well as data analysis with SQL and Power BI. I've also worked with languages like PHP, JavaScript, TypeScript, Python, and C#.",
+    "description3": "I specialize in web development and programming, but also in data analysis. I'm always learning new technologies to stay up-to-date in this constantly evolving field.",
+    "stats": {
+      "certifications": "Certifications Obtained",
+      "graduation": "Expected Graduation",
+      "technologies": "Technologies Learned"
+    },
+    "experiences": [
+      {
+        "title": "Web Development",
+        "description": "Experience in designing and developing web pages using HTML, CSS, JavaScript, and Bootstrap to create modern and responsive interfaces."
+      },
+      {
+        "title": "Data Analysis",
+        "description": "Specialized in advanced use of SQL for organizing and analyzing large volumes of data, and creating interactive dashboards with Power BI."
+      },
+      {
+        "title": "Backend Programming",
+        "description": "Knowledge in PHP, Python, and C#. Experience with frameworks like Laravel and game development in C#."
+      },
+      {
+        "title": "Emerging Technologies",
+        "description": "Experience in Python for industry 4.0, including object detection coding through video and automations."
+      }
+    ]
+  }
+}

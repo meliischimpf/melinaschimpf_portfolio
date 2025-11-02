@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send, Github, Linkedin } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import emailjs from '@emailjs/browser';
 import { EMAIL_CONFIG } from '../config/email';
 import './Contact.css';
@@ -86,23 +87,29 @@ const Contact = () => {
     }
   };
 
+  const { t } = useTranslation();
+  
+  // Obtener la información de contacto desde las traducciones
+  const contactInfoData = t('contact.contactInfo', { returnObjects: true });
+  const socialLinksData = t('contact.socialLinks', { returnObjects: true });
+
   const contactInfo = [
     {
       icon: <Mail size={24} />,
-      title: "Email",
-      info: "melischimpf@gmail.com",
+      title: contactInfoData[0].title,
+      info: contactInfoData[0].info,
       link: "mailto:melischimpf@gmail.com"
     },
     {
       icon: <Phone size={24} />,
-      title: "Teléfono",
-      info: "+54 (3444) 41-2369",
+      title: contactInfoData[1].title,
+      info: contactInfoData[1].info,
       link: "tel:+543444412369"
     },
     {
       icon: <MapPin size={24} />,
-      title: "Ubicación",
-      info: "Gualeguaychú, Entre Ríos, Argentina",
+      title: contactInfoData[2].title,
+      info: contactInfoData[2].info,
       link: "#"
     }
   ]
@@ -110,20 +117,20 @@ const Contact = () => {
   const socialLinks = [
     {
       icon: <Github size={24} />,
-      name: "GitHub",
-      url: "https://github.com/melischimpf",
+      name: socialLinksData[0].name,
+      url: socialLinksData[0].url,
       color: "#333"
     },
     {
       icon: <Linkedin size={24} />,
-      name: "LinkedIn",
-      url: "https://linkedin.com/in/melina-schimpf",
+      name: socialLinksData[1].name,
+      url: socialLinksData[1].url,
       color: "#0077b5"
     },
     {
       icon: <Mail size={24} />,
-      name: "Email",
-      url: "mailto:melischimpf@gmail.com",
+      name: socialLinksData[2].name,
+      url: socialLinksData[2].url,
       color: "#ea4335"
     }
   ]
@@ -132,19 +139,15 @@ const Contact = () => {
     <section id="contact" className="contact">
       <div className="container">
         <div className="section-header">
-          <h2>Contacto</h2>
-          <p>¿Tienes un proyecto en mente? ¡Hablemos y hagámoslo realidad!</p>
+          <h2>{t('contact.title')}</h2>
+          <p>{t('contact.subtitle')}</p>
         </div>
 
         <div className="contact-content">
           <div className="contact-info">
             <div className="contact-intro">
-              <h3>¡Trabajemos Juntos!</h3>
-              <p>
-                Estoy siempre interesada en nuevos proyectos y oportunidades de aprendizaje.
-              Ya sea que necesites desarrollo web, análisis de datos o
-              simplemente quieras charlar sobre tecnología, no dudes en contactarme.
-              </p>
+              <h3>{t('contact.workTogether')}</h3>
+              <p>{t('contact.workDescription')}</p>
             </div>
 
             <div className="contact-details">
@@ -168,7 +171,7 @@ const Contact = () => {
             </div>
 
             <div className="social-section">
-              <h4>Sígueme en Redes Sociales</h4>
+              <h4>{t('contact.followMe')}</h4>
               <div className="social-links">
                 {socialLinks.map((social, index) => (
                   <a
@@ -189,10 +192,10 @@ const Contact = () => {
 
           <div className="contact-form-container">
             <form className="contact-form" onSubmit={handleSubmit}>
-              <h3>Envíame un Mensaje</h3>
+              <h3>{t('contact.formTitle')}</h3>
               
               <div className="form-group">
-                <label htmlFor="name">Nombre *</label>
+                <label htmlFor="name">{t('contact.formFields.name')}</label>
                 <input
                   type="text"
                   id="name"
@@ -200,12 +203,11 @@ const Contact = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  placeholder="Tu nombre completo"
                 />
               </div>
-
+              
               <div className="form-group">
-                <label htmlFor="email">Email *</label>
+                <label htmlFor="email">{t('contact.formFields.email')}</label>
                 <input
                   type="email"
                   id="email"
@@ -213,12 +215,11 @@ const Contact = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  placeholder="tu.email@ejemplo.com"
                 />
               </div>
-
+              
               <div className="form-group">
-                <label htmlFor="subject">Asunto *</label>
+                <label htmlFor="subject">{t('contact.formFields.subject')}</label>
                 <input
                   type="text"
                   id="subject"
@@ -226,43 +227,39 @@ const Contact = () => {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  placeholder="¿En qué puedo ayudarte?"
                 />
               </div>
-
+              
               <div className="form-group">
-                <label htmlFor="message">Mensaje *</label>
+                <label htmlFor="message">{t('contact.formFields.message')}</label>
                 <textarea
                   id="message"
                   name="message"
-                  rows="6"
+                  rows="5"
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  placeholder="Cuéntame sobre tu proyecto o idea..."
                 ></textarea>
               </div>
-
+              
               <button 
                 type="submit" 
-                className={`submit-btn ${isSubmitting ? 'submitting' : ''}`}
+                className="btn btn-primary"
                 disabled={isSubmitting}
               >
-                {isSubmitting ? (
-                  'Enviando...'
-                ) : (
-                  <>
-                    <Send size={18} className="mr-2" />
-                    Enviar Mensaje
-                  </>
-                )}
+                {isSubmitting ? t('contact.sending') : t('contact.submitButton')}
               </button>
-
+              
               {submitStatus === 'success' && (
-                <p className="submit-success">¡Mensaje enviado con éxito! Me pondré en contacto contigo pronto.</p>
+                <div className="alert alert-success">
+                  {t('contact.successMessage')}
+                </div>
               )}
+              
               {submitStatus === 'error' && (
-                <p className="submit-error">Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo más tarde.</p>
+                <div className="alert alert-error">
+                  {t('contact.errorMessage')}
+                </div>
               )}
             </form>
           </div>
