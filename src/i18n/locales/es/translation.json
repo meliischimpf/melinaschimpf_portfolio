@@ -55,6 +55,11 @@
         "title": "Proyecto de Timbre QR (En Construcción)",
         "description": "Proyecto de Timbre con scanner de QR para mi departamento",
         "technologies": ["HTML", "CSS3", "JavaScript", "NodeJS"]
+      },
+      {
+        "title": "Portafolio Personal",
+        "description": "Sitio web de portafolio moderno y responsivo desarrollado con React, que incluye animaciones fluidas, soporte de internacionalización y un diseño limpio y profesional. Muestra mis proyectos, habilidades y experiencia de manera interactiva.",
+        "technologies": ["React", "JavaScript", "CSS3", "Vite", "i18next", "Framer Motion", "Diseño Responsive"]
       }
     ]
   },

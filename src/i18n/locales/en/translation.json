@@ -55,6 +55,11 @@
         "title": "QR Doorbell Project (Under Construction)",
         "description": "QR Code Doorbell project for my department",
         "technologies": ["HTML", "CSS3", "JavaScript", "NodeJS"]
+      },
+      {
+        "title": "Personal Portfolio",
+        "description": "Modern and responsive portfolio website built with React, featuring smooth animations, internationalization support, and a clean, professional design. Showcases my projects, skills, and experience in an interactive way.",
+        "technologies": ["React", "JavaScript", "CSS3", "Vite", "i18next", "Framer Motion", "Responsive Design"]
       }
     ]
   },

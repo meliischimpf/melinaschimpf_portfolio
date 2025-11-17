@@ -10,6 +10,7 @@ import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import CustomCursor from './components/CustomCursor';
 import './App.css';
 
 // Lazy load the 21st.dev Toolbar components only in development
@@ -34,7 +35,8 @@ function App() {
     <I18nextProvider i18n={i18n}>
       <LanguageProvider>
         <ThemeProvider>
-          <div className="App">
+          <div className="App custom-cursor-active">
+            <CustomCursor />
         {import.meta.env.DEV && ReactPlugin && (
           <Suspense fallback={null}>
             <TwentyFirstToolbar 
@@ -54,8 +56,8 @@ function App() {
             <Contact id="contact" />
           </div>
         </main>
-        <Footer />
-      </div>
+            <Footer />
+          </div>
         </ThemeProvider>
       </LanguageProvider>
     </I18nextProvider>

@@ -1,0 +1,261 @@
+/* Ocultar el cursor del sistema en todo el body */
+body {
+  cursor: none !important;
+}
+
+/* Estilo para el cursor personalizado */
+
+/* Estilos base del cursor personalizado */
+.custom-cursor {
+  position: fixed;
+  pointer-events: none;
+  z-index: 999999;
+  will-change: transform;
+  transition: 
+    transform 0.1s cubic-bezier(0.1, 0.8, 0.2, 1),
+    opacity 0.3s ease,
+    width 0.2s ease,
+    height 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  mix-blend-mode: difference;
+  transform-origin: center;
+  pointer-events: none;
+}
+
+/* Contenedor interno del cursor */
+.cursor-inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.2s ease-out;
+}
+
+/* Efecto de onda al hacer hover en elementos clickeables */
+.cursor-ripple {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1);
+  animation: ripple 1s infinite;
+  opacity: 0.7;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+/* Estilo para el modo oscuro (cohete) */
+.custom-cursor.dark {
+  width: 40px;
+  height: 40px;
+  /* Asegurar que el trail salga desde atrás del cohete */
+  transform-origin: center 70%;
+}
+
+/* Efecto de llama del cohete */
+.rocket-flame {
+  position: absolute;
+  width: 24px;
+  height: 60px;
+  background: linear-gradient(to bottom, 
+    rgba(255, 100, 0, 0.9) 0%,
+    rgba(255, 140, 0, 0.9) 40%,
+    rgba(255, 200, 0, 0.7) 70%,
+    rgba(255, 230, 0, 0.5) 90%,
+    transparent 100%
+  );
+  border-radius: 50% 50% 30% 30%;
+  filter: blur(4px);
+  opacity: 0;
+  transform: translate(-50%, 25px) scaleY(0.9);
+  transition: opacity 0.3s ease, transform 0.2s ease;
+  pointer-events: none;
+  z-index: -1;
+  animation: flame 0.2s infinite alternate;
+  box-shadow: 
+    0 0 15px 5px rgba(255, 80, 0, 0.5),
+    0 0 30px 10px rgba(255, 100, 0, 0.3);
+}
+
+.custom-cursor.dark .rocket-flame {
+  opacity: 1;
+  transform: translate(-50%, 25px) scaleY(1);
+}
+
+/* Efecto de humo para el modo claro */
+.smoke-trail {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: rgba(60, 60, 60, 0.9);
+  border-radius: 50%;
+  filter: blur(2px);
+  pointer-events: none;
+  z-index: -1;
+  transform-origin: center;
+  will-change: transform, opacity;
+  animation: smoke 1.2s ease-out forwards;
+  box-shadow: 0 0 8px 2px rgba(80, 80, 80, 0.5);
+}
+
+@keyframes smoke {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.9;
+    background: rgba(20, 20, 20, 0.95);
+  }
+  50% {
+    opacity: 0.6;
+    background: rgba(30, 30, 30, 0.8);
+  }
+  100% {
+    transform: translate(0, -25px) scale(1.8);
+    opacity: 0;
+    background: rgba(40, 40, 40, 0.7);
+  }
+}
+
+@keyframes flame {
+  0% {
+    height: 50px;
+    width: 20px;
+    filter: blur(4px);
+    background: linear-gradient(to bottom, 
+      rgba(255, 80, 0, 0.9) 0%,
+      rgba(255, 120, 0, 0.9) 40%,
+      rgba(255, 180, 0, 0.7) 70%,
+      rgba(255, 220, 0, 0.5) 90%,
+      transparent 100%
+    );
+  }
+  100% {
+    height: 70px;
+    width: 28px;
+    filter: blur(6px);
+    background: linear-gradient(to bottom, 
+      rgba(255, 120, 0, 0.9) 0%,
+      rgba(255, 160, 0, 0.9) 40%,
+      rgba(255, 200, 0, 0.7) 70%,
+      rgba(255, 240, 0, 0.5) 90%,
+      transparent 100%
+    );
+  }
+}
+
+/* Trail de partículas de fuego */
+.flame-particle {
+  position: absolute;
+  background: linear-gradient(45deg, #ff6a00, #ffcc00);
+  border-radius: 50%;
+  filter: blur(3px);
+  opacity: 0;
+  pointer-events: none;
+  z-index: -2;
+  box-shadow: 0 0 10px 2px rgba(255, 100, 0, 0.6);
+  animation: particle-fade 0.8s ease-out forwards;
+}
+
+@keyframes particle-fade {
+  0% {
+    opacity: 0.8;
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(
+      calc((var(--random-x, 0.5) - 0.5) * 60px), 
+      calc((var(--random-y, 1) * 80px) + 30px)
+    ) scale(0.3);
+    filter: blur(1px);
+  }
+}
+
+/* Estilo para el modo claro (avión) */
+.custom-cursor:not(.dark) {
+  width: 24px;
+  height: 24px;
+}
+
+/* Efecto de hover en elementos clickeables */
+.custom-cursor.pointer .cursor-inner {
+  transform: scale(1.3);
+}
+
+/* Deshabilitar el efecto de ripple en modo oscuro */
+.custom-cursor.dark.pointer .cursor-ripple {
+  display: none;
+}
+
+/* Estilos para la imagen del cohete */
+.rocket-icon {
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: transform 0.2s ease-out;
+  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.3));
+}
+
+/* Asegurar que las imágenes dentro del cursor se muestren correctamente */
+.custom-cursor img,
+.custom-cursor svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  /* Asegurar que el cohete esté por encima de la llama */
+  position: relative;
+  z-index: 1;
+  -o-user-drag: none;
+  user-select: none;
+  transition: transform 0.2s ease-out;
+}
+
+/* Efecto de arrastre */
+.custom-cursor.is-dragging .cursor-inner {
+  transform: scale(0.8);
+  opacity: 0.7;
+}
+
+/* Efecto de clic */
+.custom-cursor.is-clicking .cursor-inner {
+  transform: scale(0.9);
+}
+
+/* Efecto de carga */
+.custom-cursor.is-loading .cursor-inner::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 2px solid transparent;
+  border-top-color: currentColor;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

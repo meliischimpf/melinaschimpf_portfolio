@@ -57,11 +57,21 @@ const Projects = () => {
       id: 4,
       title: projectsData[3].title,
       description: projectsData[3].description,
-      image: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=500&h=300&fit=crop",
+      image: "/public/assets/images/under-construction.png",
       technologies: projectsData[3].technologies,
       category: "fullstack",
       githubUrl: "https://github.com/meliischimpf/timbre-dpto",
       featured: false
+    },
+    {
+      id: 5,
+      title: projectsData[4].title,
+      description: projectsData[4].description,
+      image: "/assets/images/portfolio-screenshot.png",
+      technologies: projectsData[4].technologies,
+      category: "fullstack",
+      githubUrl: "https://github.com/meliischimpf/timbre-dpto",
+      featured: true
     },
   ];
 
