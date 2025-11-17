@@ -11,8 +11,8 @@
   },
   "hero": {
     "greeting": "Hola, soy",
-    "role": "Desarrolladora Full Stack",
-    "description": "Estudiante de Tecnicatura Superior en Análisis y Desarrollo de Software. Apasionada por crear soluciones digitales innovadoras con HTML, CSS, JavaScript, PHP y tecnologías modernas.",
+    "role": "Desarrolladora Full-Stack Junior",
+    "description": "Especializada en soluciones web robustas con PHP/Laravel, Node.js y React. Apasionada por la resolución de problemas y el desarrollo de aplicaciones escalables. En constante aprendizaje y búsqueda de nuevos desafíos profesionales.",
     "cta": "Ver mi trabajo",
     "contact": "Contáctame"
   },
@@ -198,33 +198,33 @@
     ]
   },
   "about": {
-    "title": "Acerca de Mí",
-    "subtitle": "Conóceme mejor y mi experiencia en desarrollo",
+    "title": "Sobre Mí",
+    "subtitle": "Desarrolladora Full-Stack Junior apasionada por crear soluciones innovadoras",
     "greeting": "¡Hola! Soy Melina Schimpf Baldo",
-    "description1": "Estudiante de Tecnicatura Superior en Análisis y Desarrollo de Software en el Instituto Superior Sedes Sapientiae, con finalización prevista para 2025. Me apasiona crear soluciones digitales innovadoras y eficientes.",
-    "description2": "Tengo experiencia en desarrollo web con HTML, CSS, JavaScript y Bootstrap, así como en análisis de datos con SQL y Power BI. También he trabajado con lenguajes como PHP, JavaScript, TypeScript, Python y C#.",
-    "description3": "Me especializo en el desarrollo web y programación, pero también en análisis de datos. Siempre estoy aprendiendo nuevas tecnologías para mantenerme actualizada en este campo en constante evolución.",
+    "description1": "Desarrolladora Full-Stack Junior proactiva y orientada a la entrega, con especialización en la creación de soluciones web robustas y escalables. Mi stack incluye PHP/Laravel, Node.js, React, y experiencia en gestión de bases de datos SQL y NoSQL.",
+    "description2": "Mi valor diferencial reside en mi proactividad y una disposición inquebrantable a aprender y mejorar, tanto en equipo como por cuenta propia. Esta mentalidad me permite asimilar nuevas tecnologías rápidamente y aplicar un enfoque metódico a la resolución de problemas.",
+    "description3": "Actualmente cursando el último año de la Tecnicatura Superior en Análisis y Desarrollo de Software, en búsqueda activa de mi primera oportunidad profesional para aplicar mis conocimientos, crecer en un equipo de Sistemas y contribuir al desarrollo de soluciones de calidad.",
     "stats": {
-      "certifications": "Certificaciones Obtenidas",
-      "graduation": "Graduación Prevista",
-      "technologies": "Tecnologías Aprendidas"
+      "certifications": "Certificaciones",
+      "graduation": "Graduación 2025",
+      "technologies": "Tecnologías"
     },
     "experiences": [
       {
-        "title": "Desarrollo Web",
-        "description": "Experiencia en el diseño y desarrollo de páginas web utilizando HTML, CSS, JavaScript y Bootstrap para crear interfaces modernas y responsivas."
+        "title": "Técnico de Mantenimiento Informático",
+        "description": "Diagnóstico y reparación de hardware y software, mantenimiento preventivo, soporte técnico remoto/presencial, instalación de SO (Windows/Linux) y configuración básica de redes LAN."
       },
       {
         "title": "Análisis de Datos",
-        "description": "Especializada en el uso avanzado de SQL para organización y análisis de grandes volúmenes de datos, y creación de dashboards interactivos con Power BI."
+        "description": "Experiencia en análisis y visualización de datos con Power BI y Excel, optimizando la organización de información para la toma de decisiones basada en datos."
       },
       {
-        "title": "Programación Backend",
-        "description": "Conocimientos en PHP, Python y C#. Experiencia con frameworks como Laravel y desarrollo de videojuegos en C#."
+        "title": "Desarrollo Full-Stack",
+        "description": "Experiencia en desarrollo con PHP/Laravel, Node.js, React, y gestión de bases de datos SQL (MySQL) y NoSQL (MongoDB)."
       },
       {
-        "title": "Tecnologías Emergentes",
-        "description": "Experiencia en Python para la industria 4.0, incluyendo codificación para detección de objetos mediante video y automatizaciones."
+        "title": "Habilidades Técnicas",
+        "description": "Backend: Node.js, PHP/Laravel. Frontend: React, JavaScript, TypeScript. Bases de datos: MySQL, MongoDB. Herramientas: Git, GitHub, Docker."
       }
     ]
   }

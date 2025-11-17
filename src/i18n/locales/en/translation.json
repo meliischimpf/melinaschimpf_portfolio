@@ -11,8 +11,8 @@
   },
   "hero": {
     "greeting": "Hi, I'm",
-    "role": "Software Developer",
-    "description": "Student of Higher Technician in Software Analysis and Development. Passionate about creating innovative digital solutions with HTML, CSS, JavaScript, PHP and modern technologies.",
+    "role": "Junior Full-Stack Developer",
+    "description": "Specialized in robust web solutions with PHP/Laravel, Node.js, and React. Passionate about problem-solving and developing scalable applications. Continuously learning and seeking new professional challenges.",
     "cta": "View Projects",
     "contact": "Contact me"
   },
@@ -199,32 +199,32 @@
   },
   "about": {
     "title": "About Me",
-    "subtitle": "Get to know me and my development experience",
+    "subtitle": "Proactive Full-Stack Developer passionate about creating innovative solutions",
     "greeting": "Hi! I'm Melina Schimpf Baldo",
-    "description1": "Student of Higher Technician in Software Analysis and Development at Instituto Superior Sedes Sapientiae, with expected graduation in 2025. I'm passionate about creating innovative and efficient digital solutions.",
-    "description2": "I have experience in web development with HTML, CSS, JavaScript, and Bootstrap, as well as data analysis with SQL and Power BI. I've also worked with languages like PHP, JavaScript, TypeScript, Python, and C#.",
-    "description3": "I specialize in web development and programming, but also in data analysis. I'm always learning new technologies to stay up-to-date in this constantly evolving field.",
+    "description1": "Proactive and delivery-oriented Junior Full-Stack Developer, specializing in creating robust and scalable web solutions. My tech stack includes PHP/Laravel, Node.js, React, and experience with SQL and NoSQL databases.",
+    "description2": "My differential value lies in my proactivity and unwavering commitment to learning and improving, both in teams and independently. This mindset allows me to quickly assimilate new technologies and apply a methodical approach to problem-solving.",
+    "description3": "Currently in my final year of the Higher Technical Degree in Software Analysis and Development, actively seeking my first professional opportunity to apply my knowledge, grow within a Systems team, and contribute to the development of quality solutions.",
     "stats": {
-      "certifications": "Certifications Obtained",
-      "graduation": "Expected Graduation",
-      "technologies": "Technologies Learned"
+      "certifications": "Certifications",
+      "graduation": "Graduation 2025",
+      "technologies": "Technologies"
     },
     "experiences": [
       {
-        "title": "Web Development",
-        "description": "Experience in designing and developing web pages using HTML, CSS, JavaScript, and Bootstrap to create modern and responsive interfaces."
+        "title": "IT Maintenance Technician",
+        "description": "Diagnosis and repair of hardware and software, preventive maintenance, remote/on-site technical support, OS installation (Windows/Linux), and basic LAN network configuration."
       },
       {
         "title": "Data Analysis",
-        "description": "Specialized in advanced use of SQL for organizing and analyzing large volumes of data, and creating interactive dashboards with Power BI."
+        "description": "Experience in data analysis and visualization with Power BI and Excel, optimizing information organization for data-driven decision making."
       },
       {
-        "title": "Backend Programming",
-        "description": "Knowledge in PHP, Python, and C#. Experience with frameworks like Laravel and game development in C#."
+        "title": "Full-Stack Development",
+        "description": "Experience in development with PHP/Laravel, Node.js, React, and database management with SQL (MySQL) and NoSQL (MongoDB)."
       },
       {
-        "title": "Emerging Technologies",
-        "description": "Experience in Python for industry 4.0, including object detection coding through video and automations."
+        "title": "Technical Skills",
+        "description": "Backend: Node.js, PHP/Laravel. Frontend: React, JavaScript, TypeScript. Databases: MySQL, MongoDB. Tools: Git, GitHub, Docker."
       }
     ]
   }

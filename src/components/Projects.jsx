@@ -69,8 +69,9 @@ const Projects = () => {
       description: projectsData[4].description,
       image: "/assets/images/portfolio-screenshot.png",
       technologies: projectsData[4].technologies,
-      category: "fullstack",
-      githubUrl: "https://github.com/meliischimpf/timbre-dpto",
+      category: "frontend",
+      liveUrl: "https://melinaschimpf-portfolio.vercel.app/",
+      githubUrl: "https://github.com/meliischimpf/melinaschimpf_portfolio/",
       featured: true
     },
   ];
