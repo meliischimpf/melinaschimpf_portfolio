@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ExternalLink, Github, Filter } from 'lucide-react';
+import { ExternalLink, Github, Filter, PlayCircle, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import anime from 'animejs/lib/anime.es.js';
 import AnimatedElement from './animations/AnimatedElement';
@@ -9,6 +9,7 @@ import './animations/animations.css';
 const Projects = () => {
   const { t } = useTranslation();
   const [filter, setFilter] = useState('all');
+  const [videoModal, setVideoModal] = useState(null);
 
   const projectsData = t('projects.projects', { returnObjects: true });
   const categories = [
@@ -20,6 +21,8 @@ const Projects = () => {
   ];
 
   // Mapear los proyectos con los datos estáticos necesarios
+  const closeButtonRef = useRef(null);
+
   const projects = [
     {
       id: 1,
@@ -28,7 +31,7 @@ const Projects = () => {
       image: "/assets/images/ding-screenshot.png",
       technologies: projectsData[0].technologies,
       category: "fullstack",
-      liveUrl: "/assets/demo/ding/Demo - Ding.mp4",
+      videoUrl: "/assets/demos/ding/Demo - Ding.mp4",
       githubUrl: "private",
       featured: true
     },
@@ -113,6 +116,14 @@ const Projects = () => {
 
   const featuredProjects = projects.filter(project => project.featured);
 
+  const openVideoModal = (videoUrl, title) => {
+    setVideoModal({ url: videoUrl, title });
+  };
+
+  const closeVideoModal = () => {
+    setVideoModal(null);
+  };
+
   // Efecto para animación de scroll
   const projectsRef = useRef(null);
   const sectionRef = useRef(null);
@@ -155,6 +166,33 @@ const Projects = () => {
       }
     };
   }, [filter]);
+
+  useEffect(() => {
+    if (!videoModal) {
+      return undefined;
+    }
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        closeVideoModal();
+      }
+    };
+
+    const previousOverflow = document.body.style.overflow;
+    document.addEventListener('keydown', handleKeyDown);
+    document.body.style.overflow = 'hidden';
+
+    if (closeButtonRef.current) {
+      closeButtonRef.current.focus();
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [videoModal]);
+
+  const isVideoFile = videoModal?.url ? /\.(mp4|webm|ogg)(\?.*)?$/i.test(videoModal.url) : false;
 
   // Efecto de hover mejorado para las tarjetas
   const handleMouseEnter = (e) => {
@@ -217,12 +255,37 @@ const Projects = () => {
                   <img src={project.image} alt={project.title} />
                   <div className="project-overlay">
                     <div className="project-links">
-                      <a href={project.liveUrl} className="project-link" aria-label={`${t('projects.viewProject')} ${project.title}`}>
-                        <ExternalLink size={20} />
-                      </a>
-                      <a href={project.githubUrl} className="project-link" aria-label={t('projects.viewCode')}>
-                        <Github size={20} />
-                      </a>
+                      {project.videoUrl ? (
+                        <button
+                          type="button"
+                          className="project-link"
+                          onClick={() => openVideoModal(project.videoUrl, project.title)}
+                          aria-label={`${t('projects.viewDemo')} ${project.title}`}
+                        >
+                          <PlayCircle size={20} />
+                        </button>
+                      ) : project.liveUrl ? (
+                        <a
+                          href={project.liveUrl}
+                          className="project-link"
+                          aria-label={`${t('projects.viewProject')} ${project.title}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <ExternalLink size={20} />
+                        </a>
+                      ) : null}
+                      {project.githubUrl && project.githubUrl !== 'private' && (
+                        <a
+                          href={project.githubUrl}
+                          className="project-link"
+                          aria-label={t('projects.viewCode')}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <Github size={20} />
+                        </a>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -290,12 +353,37 @@ const Projects = () => {
                   <img src={project.image} alt={project.title} />
                   <div className="project-overlay">
                     <div className="project-links">
-                      <a href={project.liveUrl} className="project-link" aria-label="Ver proyecto">
-                        <ExternalLink size={18} />
-                      </a>
-                      <a href={project.githubUrl} className="project-link" aria-label="Ver código">
-                        <Github size={18} />
-                      </a>
+                      {project.videoUrl ? (
+                        <button
+                          type="button"
+                          className="project-link"
+                          onClick={() => openVideoModal(project.videoUrl, project.title)}
+                          aria-label={`${t('projects.viewDemo')} ${project.title}`}
+                        >
+                          <PlayCircle size={18} />
+                        </button>
+                      ) : project.liveUrl ? (
+                        <a
+                          href={project.liveUrl}
+                          className="project-link"
+                          aria-label={t('projects.viewProject')}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <ExternalLink size={18} />
+                        </a>
+                      ) : null}
+                      {project.githubUrl && project.githubUrl !== 'private' && (
+                        <a
+                          href={project.githubUrl}
+                          className="project-link"
+                          aria-label={t('projects.viewCode')}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <Github size={18} />
+                        </a>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -324,6 +412,46 @@ const Projects = () => {
           </div>
         </div>
       </div>
+      {videoModal && (
+        <div
+          className="video-modal-overlay"
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${t('projects.viewDemo')} ${videoModal.title}`}
+          onClick={closeVideoModal}
+        >
+          <div
+            className="video-modal-content"
+            onClick={(event) => event.stopPropagation()}
+            role="document"
+          >
+            <div className="video-modal-header">
+              <h4>{videoModal.title}</h4>
+              <button
+                type="button"
+                className="video-modal-close"
+                onClick={closeVideoModal}
+                aria-label={t('projects.closeDemo')}
+                ref={closeButtonRef}
+              >
+                <X size={20} />
+              </button>
+            </div>
+            <div className="video-modal-body">
+              {isVideoFile ? (
+                <video src={videoModal.url} controls autoPlay playsInline />
+              ) : (
+                <iframe
+                  src={videoModal.url}
+                  title={videoModal.title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

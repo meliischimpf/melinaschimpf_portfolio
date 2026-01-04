@@ -34,6 +34,8 @@
     },
     "viewProject": "View Project",
     "viewCode": "View Code",
+    "viewDemo": "View Demo",
+    "closeDemo": "Close demo",
     "noProjects": "No projects found in this category.",
     "projects": [
       {
@@ -228,16 +230,16 @@
     },
     "experiences": [
       {
+        "title": "Music Promotion Platform",
+        "description": "Full-Stack development of a scalable architecture using NestJS, TypeScript, and React. Implemented RESTful APIs, secure authentication (JWT/Firebase), PostgreSQL modeling, and GCP deployment with CI/CD pipelines."
+      },
+      {
         "title": "IT Maintenance Technician",
         "description": "Diagnosis and repair of hardware and software, preventive maintenance, remote/on-site technical support, OS installation (Windows/Linux), and basic LAN network configuration."
       },
       {
         "title": "Data Analysis",
         "description": "Experience in data analysis and visualization with Power BI and Excel, optimizing information organization for data-driven decision making."
-      },
-      {
-        "title": "Full-Stack Development",
-        "description": "Experience in development with PHP/Laravel, Node.js, React, and database management with SQL (MySQL) and NoSQL (MongoDB)."
       }
     ]
   }

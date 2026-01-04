@@ -34,6 +34,8 @@
     },
     "viewProject": "Ver Proyecto",
     "viewCode": "Ver Código",
+    "viewDemo": "Ver Demo",
+    "closeDemo": "Cerrar demo",
     "noProjects": "No se encontraron proyectos en esta categoría.",
     "projects": [
       {
@@ -228,16 +230,16 @@
     },
     "experiences": [
       {
+        "title": "Plataforma de Promoción Musical",
+        "description": "Desarrollo integral de una arquitectura escalable con NestJS, TypeScript y React. Implementación de APIs RESTful, autenticación segura (JWT/Firebase), modelado en PostgreSQL y despliegue en GCP mediante flujos de CI/CD con Docker."
+      },
+      {
         "title": "Técnico de Mantenimiento Informático",
         "description": "Diagnóstico y reparación de hardware y software, mantenimiento preventivo, soporte técnico remoto/presencial, instalación de SO (Windows/Linux) y configuración básica de redes LAN."
       },
       {
         "title": "Análisis de Datos",
         "description": "Experiencia en análisis y visualización de datos con Power BI y Excel, optimizando la organización de información para la toma de decisiones basada en datos."
-      },
-      {
-        "title": "Desarrollo Full-Stack",
-        "description": "Experiencia en desarrollo con PHP/Laravel, Node.js, React, y gestión de bases de datos SQL (MySQL) y NoSQL (MongoDB)."
       }
     ]
   }
