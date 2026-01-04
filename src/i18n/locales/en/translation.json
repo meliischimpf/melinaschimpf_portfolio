@@ -12,7 +12,7 @@
   "hero": {
     "greeting": "Hi, I'm",
     "role": "Junior Full-Stack Developer",
-    "description": "Specialized in robust web solutions with PHP/Laravel, Node.js, and React. Passionate about problem-solving and developing scalable applications. Continuously learning and seeking new professional challenges.",
+    "description": "Software Analysis and Development Technician proficient in Node.js (NestJS/Express), PHP (Laravel), Javascript, Typescript (React) and Kotlin. Expert in Root Cause Analysis (RCA) and cloud deployment (GCP/Docker). Following SOLID principles, I deliver secure solutions with Firebase Auth and SQL/NoSQL data management, holding a B2 English level for global remote teams.",
     "cta": "View Projects",
     "contact": "Contact me"
   },
@@ -218,9 +218,9 @@
     "title": "About Me",
     "subtitle": "Proactive Full-Stack Developer passionate about creating innovative solutions",
     "greeting": "Hi! I'm Melina Schimpf Baldo",
-    "description1": "Proactive and delivery-oriented Junior Full-Stack Developer, specializing in creating robust and scalable web solutions. My tech stack includes PHP/Laravel, Node.js, React, and experience with SQL and NoSQL databases.",
-    "description2": "My differential value lies in my proactivity and unwavering commitment to learning and improving, both in teams and independently. This mindset allows me to quickly assimilate new technologies and apply a methodical approach to problem-solving.",
-    "description3": "Currently in my final year of the Higher Technical Degree in Software Analysis and Development, actively seeking my first professional opportunity to apply my knowledge, grow within a Systems team, and contribute to the development of quality solutions.",
+    "description1": "Software Analysis and Development Technician specialized in scalable architectures using Node.js (NestJS/Express), PHP (Laravel), and JavaScript, TypeScript (React). I build comprehensive solutions involving SQL/NoSQL databases, GCP infrastructure, and mobile development with Kotlin.",
+    "description2": "My core value lies in a Root Cause Analysis (RCA) approach to complex problem-solving. I develop under SOLID principles to ensure software quality and maintainability, implementing secure authentication with Firebase Auth and CI/CD pipelines with Docker.",
+    "description3": "Holding a solid B2 English level, I am seeking to join global 100% remote teams. Available starting January 2026, I focus on quickly tackling challenges and delivering high-precision, goal-oriented code with a strong self-management mindset.",
     "stats": {
       "certifications": "Certifications",
       "graduation": "Graduation 2025",
@@ -238,10 +238,6 @@
       {
         "title": "Full-Stack Development",
         "description": "Experience in development with PHP/Laravel, Node.js, React, and database management with SQL (MySQL) and NoSQL (MongoDB)."
-      },
-      {
-        "title": "Technical Skills",
-        "description": "Backend: Node.js, PHP/Laravel. Frontend: React, JavaScript, TypeScript. Databases: MySQL, MongoDB. Tools: Git, GitHub, Docker."
       }
     ]
   }
