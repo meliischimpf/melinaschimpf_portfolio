@@ -37,6 +37,11 @@
     "noProjects": "No se encontraron proyectos en esta categoría.",
     "projects": [
       {
+        "title": "Ding!",
+        "description": "Aplicación web desarrollada con React, Typescript y Laravel para la gestión pedidos. Maneja 5 roles clave.",
+        "technologies": ["Typescript", "React", "PHP", "Laravel", "MySQL"]
+      },
+      {
         "title": "Sistema de Gestión de Maquinaria Vial",
         "description": "Aplicación web desarrollada con PHP y Laravel para la gestión de maquinaria pesada. Incluye autenticación, CRUD de usuarios, manejo de archivos y panel administrativo con Bootstrap.",
         "technologies": ["PHP", "Laravel", "MySQL", "Bootstrap", "Blade"]
@@ -52,14 +57,24 @@
         "technologies": ["Power BI", "SQL Server", "Excel", "Data Analytics"]
       },
       {
-        "title": "Proyecto de Timbre QR (En Construcción)",
+        "title": "Timbre QR (En Construcción)",
         "description": "Proyecto de Timbre con scanner de QR para mi departamento",
         "technologies": ["HTML", "CSS3", "JavaScript", "NodeJS"]
+      },
+      {
+        "title": "Alerta de Timbre Mobile (En Construcción)",
+        "description": "Proyecto de Alerta de Timbre para alertar el scan de QR",
+        "technologies": ["React Native"]
       },
       {
         "title": "Portafolio Personal",
         "description": "Sitio web de portafolio moderno y responsivo desarrollado con React, que incluye animaciones fluidas, soporte de internacionalización y un diseño limpio y profesional. Muestra mis proyectos, habilidades y experiencia de manera interactiva.",
         "technologies": ["React", "JavaScript", "CSS3", "Vite", "i18next", "Framer Motion", "Diseño Responsive"]
+      },
+      {
+        "title": "Firme como Rulo",
+        "description": "Sistema integral de gestión educativa para profesores desarrollado con PHP puro, HTML, CSS, Javascript y MySQL",
+        "technologies": ["PHP", "JavaScript", "HTML", "CSS", "MySQL"]
       }
     ]
   },
@@ -150,7 +165,10 @@
           { "name": "HTML", "level": 90 },
           { "name": "CSS", "level": 90 },
           { "name": "JavaScript", "level": 85 },
-          { "name": "React", "level": 75 },
+          { "name": "TypeScript", "level": 85 },
+          { "name": "React", "level": 80 },
+          { "name": "NextJS", "level": 75 },
+          { "name": "Vite", "level": 80 },
           { "name": "Bootstrap", "level": 80 },
           { "name": "Tailwind", "level": 85 }
         ]
@@ -158,22 +176,20 @@
       {
         "title": "Backend",
         "skills": [
+          { "name": "NodeJS", "level": 75 },
+          { "name": "NestJS", "level": 75 },
+          { "name": "ExpressJS", "level": 75 },
           { "name": "PHP", "level": 90 },
-          { "name": "NodeJs", "level": 75 },
-          { "name": "Python", "level": 60 },
-          { "name": "C#", "level": 55 },
           { "name": "Laravel", "level": 85 },
-          { "name": "NextJs", "level": 75 },
-          { "name": "GitHub", "level": 80 },
-          { "name": "REST API", "level": 75 },
-          { "name": "Postman", "level": 70 },
-          { "name": "Lógica de Programación", "level": 90 }
+          { "name": "C#", "level": 60 },
+          { "name": "Python", "level": 50 }
         ]
       },
       {
         "title": "Bases de Datos & Análisis",
         "skills": [
           { "name": "MySQL", "level": 80 },
+          { "name": "Postgres", "level": 70 },
           { "name": "MariaDB", "level": 80 },
           { "name": "MongoDB", "level": 70 },
           { "name": "Power BI", "level": 75 },
@@ -184,11 +200,12 @@
       {
         "title": "DevOps",
         "skills": [
-          { "name": "Apache", "level": 70 },
-          { "name": "Nginx", "level": 60 },
+          { "name": "Docker", "level": 85 },
+          { "name": "Kubernetes", "level": 70 },
+          { "name": "GCP", "level": 85 },
           { "name": "AWS", "level": 70 },
-          { "name": "Docker", "level": 70 },
-          { "name": "Kubernetes", "level": 70 }
+          { "name": "Apache", "level": 80 },
+          { "name": "Nginx", "level": 80 }
         ]
       }
     ],

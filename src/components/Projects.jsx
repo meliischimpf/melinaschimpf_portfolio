@@ -25,55 +25,86 @@ const Projects = () => {
       id: 1,
       title: projectsData[0].title,
       description: projectsData[0].description,
-      image: "/assets/images/maquinaria-vial-screenshot.png",
+      image: "/assets/images/ding-screenshot.png",
       technologies: projectsData[0].technologies,
+      category: "fullstack",
+      liveUrl: "/assets/demo/ding/Demo - Ding.mp4",
+      githubUrl: "private",
+      featured: true
+    },
+    {
+      id: 2,
+      title: projectsData[1].title,
+      description: projectsData[1].description,
+      image: "/assets/images/maquinaria-vial-screenshot.png",
+      technologies: projectsData[1].technologies,
       category: "fullstack",
       liveUrl: "https://gestion-maquinaria-vial.onrender.com/",
       githubUrl: "https://github.com/meliischimpf/gestion_maquinaria_vial",
       featured: true
     },
     { 
-      id: 2,
-      title: projectsData[1].title,
-      description: projectsData[1].description,
+      id: 3,
+      title: projectsData[2].title,
+      description: projectsData[2].description,
       image: "/assets/images/battleship-screenshot.png",
-      technologies: projectsData[1].technologies,
+      technologies: projectsData[2].technologies,
       category: "frontend",
       liveUrl: "https://batalla-naval-kappa.vercel.app",
       githubUrl: "https://github.com/meliischimpf/batalla-naval",
       featured: true
     },
     {
-      id: 3,
-      title: projectsData[2].title,
-      description: projectsData[2].description,
+      id: 4,
+      title: projectsData[3].title,
+      description: projectsData[3].description,
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=300&fit=crop",
-      technologies: projectsData[2].technologies,
+      technologies: projectsData[3].technologies,
       category: "data",
       githubUrl: "https://github.com/meliischimpf/meliischimpf-representacion_femenina_en_videojuegos",
       featured: true
     },
     {
-      id: 4,
-      title: projectsData[3].title,
-      description: projectsData[3].description,
+      id: 5,
+      title: projectsData[4].title,
+      description: projectsData[4].description,
       image: "/public/assets/images/under-construction.png",
-      technologies: projectsData[3].technologies,
+      technologies: projectsData[4].technologies,
       category: "fullstack",
       githubUrl: "https://github.com/meliischimpf/timbre-dpto",
       featured: false
     },
     {
-      id: 5,
-      title: projectsData[4].title,
-      description: projectsData[4].description,
+      id: 6,
+      title: projectsData[5].title,
+      description: projectsData[5].description,
+      image: "/public/assets/images/under-construction.png",
+      technologies: projectsData[5].technologies,
+      category: "fullstack",
+      githubUrl: "https://github.com/meliischimpf/timbre-mobile",
+      featured: false
+    },
+    {
+      id: 7,
+      title: projectsData[6].title,
+      description: projectsData[6].description,
       image: "/assets/images/portfolio-screenshot.png",
-      technologies: projectsData[4].technologies,
+      technologies: projectsData[6].technologies,
       category: "frontend",
       liveUrl: "https://melinaschimpf-portfolio.vercel.app/",
       githubUrl: "https://github.com/meliischimpf/melinaschimpf_portfolio/",
       featured: true
     },
+    {
+     id: 8,
+      title: projectsData[7].title,
+      description: projectsData[7].description,
+      image: "/public/assets/images/firme-como-rulo-screenshot.png",
+      technologies: projectsData[7].technologies,
+      category: "fullstack",
+      githubUrl: "https://github.com/meliischimpf/Firme_Como_Rulo",
+      featured: true 
+    }
   ];
 
   const filteredProjects = filter === 'all' 
