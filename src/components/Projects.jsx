@@ -1,7 +1,9 @@
-import { useEffect, useRef, useState } from 'react';
-import { ArrowUpRight, Github, Lock, Play, X } from 'lucide-react';
+import { useState } from 'react';
+import { ArrowUpRight, BookOpen, Github, Lock, Play } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { PROFILE } from '../data/profile';
+import Modal from './Modal';
+import CaseStudy from './CaseStudy';
 import './Projects.css';
 
 // Los textos están en las traducciones (projects.items.<id>); acá solo lo que no se traduce
@@ -16,6 +18,7 @@ const FEATURED = [
   {
     id: 'ding',
     image: '/assets/images/ding-screenshot.webp',
+    imageSmall: '/assets/images/ding-screenshot-640.webp',
     tech: ['Laravel', 'PHP', 'MySQL', 'React', 'TypeScript'],
     videoUrl: '/assets/demos/ding/Demo - Ding.mp4',
     privateCode: true,
@@ -23,6 +26,7 @@ const FEATURED = [
   {
     id: 'maquinaria',
     image: '/assets/images/maquinaria-vial-screenshot.webp',
+    imageSmall: '/assets/images/maquinaria-vial-screenshot-640.webp',
     tech: ['Laravel', 'PHP', 'MySQL', 'Blade', 'Bootstrap'],
     liveUrl: 'https://gestion-maquinaria-vial.onrender.com/',
     githubUrl: 'https://github.com/meliischimpf/gestion_maquinaria_vial',
@@ -79,29 +83,14 @@ const ProjectLinks = ({ project, title, onPlay }) => {
 const Projects = () => {
   const { t } = useTranslation();
   const [video, setVideo] = useState(null);
-  const closeRef = useRef(null);
-  const lastFocused = useRef(null);
+  const [caseId, setCaseId] = useState(null);
 
   const openVideo = (url, title) => {
-    lastFocused.current = document.activeElement;
+    setCaseId(null);
     setVideo({ url, title });
   };
 
-  useEffect(() => {
-    if (!video) return undefined;
-
-    const onKey = (e) => e.key === 'Escape' && setVideo(null);
-    const previousOverflow = document.body.style.overflow;
-    document.addEventListener('keydown', onKey);
-    document.body.style.overflow = 'hidden';
-    closeRef.current?.focus();
-
-    return () => {
-      document.removeEventListener('keydown', onKey);
-      document.body.style.overflow = previousOverflow;
-      lastFocused.current?.focus();
-    };
-  }, [video]);
+  const caseProject = FEATURED.find((project) => project.id === caseId);
 
   return (
     <section id="projects" className="section">
@@ -118,7 +107,15 @@ const Projects = () => {
             return (
               <article key={project.id} className={`project card reveal ${index % 2 === 1 ? 'project--reverse' : ''}`}>
                 <div className="project__media">
-                  <img src={project.image} alt={text.title} loading="lazy" width="1200" height="675" />
+                  <img
+                    src={project.image}
+                    srcSet={project.imageSmall ? `${project.imageSmall} 640w, ${project.image} 1200w` : undefined}
+                    sizes="(max-width: 860px) 100vw, 600px"
+                    alt={text.title}
+                    loading="lazy"
+                    width="1200"
+                    height="675"
+                  />
                   {project.videoUrl && (
                     <button
                       type="button"
@@ -139,7 +136,12 @@ const Projects = () => {
                       <li key={tech} className="tag">{tech}</li>
                     ))}
                   </ul>
-                  <ProjectLinks project={project} title={text.title} onPlay={openVideo} />
+                  <div className="project__footer">
+                    <button type="button" className="btn btn--ghost project__case-btn" onClick={() => setCaseId(project.id)}>
+                      <BookOpen size={16} /> {t('projects.viewCase')}
+                    </button>
+                    <ProjectLinks project={project} title={text.title} onPlay={openVideo} />
+                  </div>
                 </div>
               </article>
             );
@@ -175,23 +177,21 @@ const Projects = () => {
       </div>
 
       {video && (
-        <div className="video-modal" role="dialog" aria-modal="true" aria-label={video.title} onClick={() => setVideo(null)}>
-          <div className="video-modal__content" onClick={(e) => e.stopPropagation()}>
-            <div className="video-modal__header">
-              <h4>{video.title}</h4>
-              <button
-                type="button"
-                ref={closeRef}
-                className="icon-btn"
-                onClick={() => setVideo(null)}
-                aria-label={t('projects.closeDemo')}
-              >
-                <X size={18} />
-              </button>
-            </div>
-            <video src={video.url} controls autoPlay playsInline preload="metadata" />
-          </div>
-        </div>
+        <Modal title={video.title} closeLabel={t('projects.closeDemo')} onClose={() => setVideo(null)} size="lg">
+          <video className="project__video" src={video.url} controls autoPlay playsInline preload="metadata" />
+        </Modal>
+      )}
+
+      {caseProject && (
+        <Modal
+          title={t(`projects.items.${caseProject.id}.title`)}
+          closeLabel={t('projects.close')}
+          onClose={() => setCaseId(null)}
+        >
+          <CaseStudy project={caseProject}>
+            <ProjectLinks project={caseProject} title={t(`projects.items.${caseProject.id}.title`)} onPlay={openVideo} />
+          </CaseStudy>
+        </Modal>
       )}
     </section>
   );

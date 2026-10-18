@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { CheckCircle2, AlertCircle, Github, Linkedin, Mail, MapPin, Send } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import emailjs from '@emailjs/browser';
@@ -7,14 +7,19 @@ import { PROFILE } from '../data/profile';
 import './Contact.css';
 
 const EMPTY_FORM = { name: '', email: '', subject: '', message: '' };
+// Un humano tarda más que esto en completar el formulario; un bot suele enviarlo al instante
+const MIN_FILL_MS = 3000;
+const THROTTLE_MS = 30000;
 
 const Contact = () => {
   const { t } = useTranslation();
   const [form, setForm] = useState(EMPTY_FORM);
-  const [status, setStatus] = useState('idle'); // idle | sending | success | error
+  const [status, setStatus] = useState('idle'); // idle | sending | success | error | throttled
+  const [honeypot, setHoneypot] = useState('');
+  const renderedAt = useRef(Date.now());
 
   useEffect(() => {
-    if (status !== 'success' && status !== 'error') return undefined;
+    if (status === 'idle' || status === 'sending') return undefined;
     const timer = setTimeout(() => setStatus('idle'), 6000);
     return () => clearTimeout(timer);
   }, [status]);
@@ -23,6 +28,14 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Bot detectado: le mostramos éxito pero no se envía nada
+    if (honeypot || Date.now() - renderedAt.current < MIN_FILL_MS) {
+      setForm(EMPTY_FORM);
+      setStatus('success');
+      return;
+    }
+
     setStatus('sending');
     try {
       await emailjs.send(
@@ -35,12 +48,15 @@ const Contact = () => {
           subject: form.subject,
           message: form.message,
         },
-        { publicKey: EMAIL_CONFIG.PUBLIC_KEY },
+        {
+          publicKey: EMAIL_CONFIG.PUBLIC_KEY,
+          limitRate: { id: 'contact-form', throttle: THROTTLE_MS },
+        },
       );
       setForm(EMPTY_FORM);
       setStatus('success');
-    } catch {
-      setStatus('error');
+    } catch (error) {
+      setStatus(error?.status === 429 ? 'throttled' : 'error');
     }
   };
 
@@ -93,21 +109,36 @@ const Contact = () => {
           <div className="contact__row">
             <label className="field">
               <span>{t('contact.form.name')}</span>
-              <input name="name" value={form.name} onChange={handleChange} autoComplete="name" required />
+              <input name="name" value={form.name} onChange={handleChange} autoComplete="name" maxLength={100} required />
             </label>
             <label className="field">
               <span>{t('contact.form.email')}</span>
-              <input type="email" name="email" value={form.email} onChange={handleChange} autoComplete="email" required />
+              <input type="email" name="email" value={form.email} onChange={handleChange} autoComplete="email" maxLength={150} required />
             </label>
           </div>
           <label className="field">
             <span>{t('contact.form.subject')}</span>
-            <input name="subject" value={form.subject} onChange={handleChange} required />
+            <input name="subject" value={form.subject} onChange={handleChange} maxLength={150} required />
           </label>
           <label className="field">
             <span>{t('contact.form.message')}</span>
-            <textarea name="message" rows="6" value={form.message} onChange={handleChange} required />
+            <textarea name="message" rows="6" value={form.message} onChange={handleChange} minLength={10} maxLength={5000} required />
           </label>
+
+          {/* Campo trampa: invisible para personas, los bots lo completan */}
+          <div className="contact__trap" aria-hidden="true">
+            <label>
+              Website
+              <input
+                type="text"
+                name="website"
+                tabIndex={-1}
+                autoComplete="off"
+                value={honeypot}
+                onChange={(e) => setHoneypot(e.target.value)}
+              />
+            </label>
+          </div>
 
           <button type="submit" className="btn btn--primary contact__submit" disabled={status === 'sending'}>
             <Send size={16} />
@@ -118,6 +149,11 @@ const Contact = () => {
             {status === 'success' && (
               <p className="contact__alert contact__alert--success">
                 <CheckCircle2 size={18} /> {t('contact.form.success')}
+              </p>
+            )}
+            {status === 'throttled' && (
+              <p className="contact__alert contact__alert--error">
+                <AlertCircle size={18} /> {t('contact.form.throttled')}
               </p>
             )}
             {status === 'error' && (

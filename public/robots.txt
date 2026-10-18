@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://melinaschimpf-portfolio.vercel.app/sitemap.xml

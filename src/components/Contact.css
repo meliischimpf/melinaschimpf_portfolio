@@ -135,3 +135,11 @@ a.contact__channel:hover {
     justify-self: stretch;
   }
 }
+
+.contact__trap {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}

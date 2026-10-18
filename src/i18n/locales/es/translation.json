@@ -32,9 +32,18 @@
       "Me gusta entender el problema completo antes de escribir código, documentar lo que hago y dejar los sistemas mejor de lo que los encontré."
     ],
     "stats": [
-      { "value": "130+", "label": "pull requests en 2026" },
-      { "value": "3", "label": "clouds: AWS, Azure y GCP" },
-      { "value": "B2", "label": "inglés, trabajo remoto" }
+      {
+        "value": "130+",
+        "label": "pull requests en 2026"
+      },
+      {
+        "value": "3",
+        "label": "clouds: AWS, Azure y GCP"
+      },
+      {
+        "value": "B2",
+        "label": "inglés, trabajo remoto"
+      }
     ],
     "educationTitle": "Formación",
     "education": [
@@ -73,7 +82,15 @@
           "Observabilidad de la API principal para detectar y diagnosticar problemas antes de que lleguen a los usuarios.",
           "Trabajo remoto en inglés con un equipo distribuido, con más de 130 pull requests en el año."
         ],
-        "tags": ["AWS", "Python", "dbt", "Terraform", "SQL", "Observabilidad", "Seguridad"]
+        "tags": [
+          "AWS",
+          "Python",
+          "dbt",
+          "Terraform",
+          "SQL",
+          "Observabilidad",
+          "Seguridad"
+        ]
       },
       {
         "role": "Full-Stack Developer",
@@ -87,7 +104,15 @@
           "Lideré la migración de GCP a AWS (S3, SQS, Elastic Beanstalk) y Cloudflare (Pages, R2) con Terraform y Docker.",
           "Scripts para automatizar despliegues que antes eran manuales."
         ],
-        "tags": ["NestJS", "React", "TypeScript", "AWS", "Cloudflare", "Terraform", "Docker"]
+        "tags": [
+          "NestJS",
+          "React",
+          "TypeScript",
+          "AWS",
+          "Cloudflare",
+          "Terraform",
+          "Docker"
+        ]
       },
       {
         "role": "Helpdesk",
@@ -96,7 +121,11 @@
         "period": "Feb 2026 – Jul 2026",
         "summary": "Soporte técnico del sistema de gestión farmacéutica Plex 25 para clientes del sector salud, con monitoreo proactivo para mantener la operación sin cortes.",
         "highlights": [],
-        "tags": ["Soporte", "Diagnóstico", "Atención a clientes"]
+        "tags": [
+          "Soporte",
+          "Diagnóstico",
+          "Atención a clientes"
+        ]
       },
       {
         "role": "IT, Seguridad e Infraestructura",
@@ -109,7 +138,13 @@
           "Implementación y gestión de certificados SSL/HTTPS y DNS dinámico para acceso remoto estable.",
           "Redes LAN, firewalls y planes de backup y recuperación en Windows y Linux."
         ],
-        "tags": ["Seguridad", "Redes", "Linux", "Windows", "SSL/HTTPS"]
+        "tags": [
+          "Seguridad",
+          "Redes",
+          "Linux",
+          "Windows",
+          "SSL/HTTPS"
+        ]
       }
     ]
   },
@@ -128,17 +163,65 @@
       "r8": {
         "title": "R8 Audio",
         "kind": "Plataforma de promoción musical · Freelance",
-        "description": "Plataforma donde sellos y artistas envían promos, gestionan lanzamientos y reciben feedback. Construí funcionalidades de punta a punta y migré toda la infraestructura de GCP a AWS y Cloudflare con Terraform."
+        "description": "Plataforma donde sellos y artistas envían promos, gestionan lanzamientos y reciben feedback. Construí funcionalidades de punta a punta y migré toda la infraestructura de GCP a AWS y Cloudflare con Terraform.",
+        "case": {
+          "context": "R8 Audio es una plataforma donde sellos discográficos y artistas envían promos, gestionan lanzamientos y reciben feedback. La infraestructura original corría en GCP y necesitaba crecer con más funcionalidades y un despliegue más ordenado.",
+          "role": "Full-Stack Developer freelance (dic 2025 – ago 2026). Trabajé de punta a punta: backend, frontend e infraestructura.",
+          "built": [
+            "API en NestJS con TypeScript, organizada en módulos con inyección de dependencias.",
+            "Autenticación y gestión de identidad con Firebase Auth.",
+            "Subida de archivos de audio con signed URLs.",
+            "Dashboards de analítica para que sellos y artistas vean cómo rinden sus lanzamientos.",
+            "Un generador de contenido para redes sociales a partir de cada lanzamiento."
+          ],
+          "decisions": [
+            "Signed URLs para que los archivos pesados vayan directo al almacenamiento sin pasar por la API.",
+            "Migración de GCP a AWS (S3, SQS, Elastic Beanstalk) para el backend y a Cloudflare (Pages, R2) para el frontend y los archivos.",
+            "Toda la infraestructura definida como código en Terraform, para poder reproducirla y revisarla como cualquier otro cambio.",
+            "Imágenes Docker y scripts propios para automatizar despliegues que antes eran manuales."
+          ],
+          "outcome": "La plataforma quedó corriendo en AWS y Cloudflare, con la infraestructura versionada en Terraform y despliegues automatizados."
+        }
       },
       "ding": {
         "title": "Ding!",
         "kind": "Gestión de pedidos",
-        "description": "Aplicación web para gestionar pedidos con cinco roles de usuario y permisos diferenciados. API en Laravel con MySQL y frontend en React con TypeScript."
+        "description": "Aplicación web para gestionar pedidos con cinco roles de usuario y permisos diferenciados. API en Laravel con MySQL y frontend en React con TypeScript.",
+        "case": {
+          "context": "Ding! es una aplicación web para gestionar pedidos y entregas, donde participan distintos tipos de usuario con permisos diferentes.",
+          "role": "Desarrollo full-stack: API, base de datos y frontend.",
+          "built": [
+            "API REST en Laravel con base de datos MySQL.",
+            "Frontend en React con TypeScript.",
+            "Cinco roles de usuario, cada uno con sus propias pantallas y permisos."
+          ],
+          "decisions": [
+            "Backend y frontend separados: una API en Laravel consumida por una SPA en React.",
+            "Permisos por rol controlados en el backend, no solo ocultando opciones en la interfaz.",
+            "TypeScript en el frontend para tipar los datos que llegan de la API."
+          ],
+          "outcome": "Una aplicación funcional con el flujo completo de pedidos para los cinco roles. Podés ver la demo en video."
+        }
       },
       "maquinaria": {
         "title": "Gestión de maquinaria vial",
         "kind": "Sistema de gestión",
-        "description": "Sistema para administrar maquinaria pesada: autenticación, gestión de usuarios, carga de archivos y panel administrativo."
+        "description": "Sistema para administrar maquinaria pesada: autenticación, gestión de usuarios, carga de archivos y panel administrativo.",
+        "case": {
+          "context": "Un sistema para administrar maquinaria vial pesada: registrar equipos, gestionar usuarios y centralizar la documentación de cada máquina.",
+          "role": "Desarrollo completo del sistema, desde el modelo de datos hasta el despliegue.",
+          "built": [
+            "Autenticación de usuarios y gestión de usuarios (alta, baja y modificación).",
+            "Carga y gestión de archivos asociados a cada máquina.",
+            "Panel administrativo con Blade y Bootstrap."
+          ],
+          "decisions": [
+            "Laravel con vistas en Blade: para un panel interno, el renderizado del lado del servidor es simple y rápido de mantener.",
+            "MySQL como base relacional para máquinas, usuarios y archivos.",
+            "Desplegado en Render para que se pueda probar en línea."
+          ],
+          "outcome": "El sistema está online y se puede probar, y el código es público en GitHub."
+        }
       },
       "rulo": {
         "title": "Firme como Rulo",
@@ -155,7 +238,16 @@
         "kind": "Juego web",
         "description": "El clásico juego con tableros interactivos y diseño responsive, en JavaScript puro."
       }
-    }
+    },
+    "viewCase": "Ver caso completo",
+    "caseLabels": {
+      "context": "Contexto",
+      "role": "Mi rol",
+      "built": "Qué construí",
+      "decisions": "Decisiones técnicas",
+      "outcome": "Resultado"
+    },
+    "close": "Cerrar"
   },
   "skills": {
     "eyebrow": "Stack",
@@ -163,23 +255,62 @@
     "categories": [
       {
         "title": "Backend",
-        "skills": ["Node.js", "NestJS", "Express", "TypeScript", "Python", "PHP / Laravel"]
+        "skills": [
+          "Node.js",
+          "NestJS",
+          "Express",
+          "TypeScript",
+          "Python",
+          "PHP / Laravel"
+        ]
       },
       {
         "title": "Datos",
-        "skills": ["PostgreSQL", "MySQL", "dbt", "ETL / ELT", "MongoDB", "Firebase", "Power BI"]
+        "skills": [
+          "PostgreSQL",
+          "MySQL",
+          "dbt",
+          "ETL / ELT",
+          "MongoDB",
+          "Firebase",
+          "Power BI"
+        ]
       },
       {
         "title": "Cloud y DevOps",
-        "skills": ["AWS", "Azure", "GCP", "Cloudflare", "Docker", "Terraform", "CI/CD"]
+        "skills": [
+          "AWS",
+          "Azure",
+          "GCP",
+          "Cloudflare",
+          "Docker",
+          "Terraform",
+          "CI/CD"
+        ]
       },
       {
         "title": "Seguridad",
-        "skills": ["Control de acceso", "Auditoría", "SSL/HTTPS", "Respuesta a incidentes", "Firewalls", "Backups"]
+        "skills": [
+          "Control de acceso",
+          "Auditoría",
+          "SSL/HTTPS",
+          "Respuesta a incidentes",
+          "Firewalls",
+          "Backups"
+        ]
       }
     ],
     "alsoTitle": "También",
-    "also": ["React", "Next.js", "Git", "GitHub Actions", "Linux", "Redes LAN", "WordPress", "Kotlin"]
+    "also": [
+      "React",
+      "Next.js",
+      "Git",
+      "GitHub Actions",
+      "Linux",
+      "Redes LAN",
+      "WordPress",
+      "Kotlin"
+    ]
   },
   "services": {
     "eyebrow": "Servicios",
@@ -218,7 +349,8 @@
       "submit": "Enviar mensaje",
       "sending": "Enviando…",
       "success": "¡Gracias! Tu mensaje llegó bien. Te respondo pronto.",
-      "error": "No se pudo enviar el mensaje. Probá de nuevo o escribime directo a mi email."
+      "error": "No se pudo enviar el mensaje. Probá de nuevo o escribime directo a mi email.",
+      "throttled": "Ya enviaste un mensaje hace unos segundos. Esperá un momento antes de mandar otro."
     }
   },
   "footer": {

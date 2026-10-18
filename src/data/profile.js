@@ -5,6 +5,7 @@ export const PROFILE = {
   github: 'https://github.com/meliischimpf',
   linkedin: 'https://linkedin.com/in/melina-schimpf',
   photo: '/assets/images/profile.webp',
+  photoSmall: '/assets/images/profile-280.webp',
   // Cuando subas el CV a public/cv/, poné acá la ruta (por ejemplo '/cv/Melina-Schimpf-Baldo-CV.pdf')
   cvUrl: null,
 };

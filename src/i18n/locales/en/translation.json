@@ -32,9 +32,18 @@
       "I like to understand the whole problem before writing code, document what I do, and leave systems better than I found them."
     ],
     "stats": [
-      { "value": "130+", "label": "pull requests in 2026" },
-      { "value": "3", "label": "clouds: AWS, Azure and GCP" },
-      { "value": "B2", "label": "English, remote work" }
+      {
+        "value": "130+",
+        "label": "pull requests in 2026"
+      },
+      {
+        "value": "3",
+        "label": "clouds: AWS, Azure and GCP"
+      },
+      {
+        "value": "B2",
+        "label": "English, remote work"
+      }
     ],
     "educationTitle": "Education",
     "education": [
@@ -73,7 +82,15 @@
           "Observability for the core API to detect and diagnose issues before they reach users.",
           "Remote work in English with a distributed team, with 130+ pull requests this year."
         ],
-        "tags": ["AWS", "Python", "dbt", "Terraform", "SQL", "Observability", "Security"]
+        "tags": [
+          "AWS",
+          "Python",
+          "dbt",
+          "Terraform",
+          "SQL",
+          "Observability",
+          "Security"
+        ]
       },
       {
         "role": "Full-Stack Developer",
@@ -87,7 +104,15 @@
           "Led the migration from GCP to AWS (S3, SQS, Elastic Beanstalk) and Cloudflare (Pages, R2) with Terraform and Docker.",
           "Scripts to automate deployments that used to be manual."
         ],
-        "tags": ["NestJS", "React", "TypeScript", "AWS", "Cloudflare", "Terraform", "Docker"]
+        "tags": [
+          "NestJS",
+          "React",
+          "TypeScript",
+          "AWS",
+          "Cloudflare",
+          "Terraform",
+          "Docker"
+        ]
       },
       {
         "role": "Helpdesk",
@@ -96,7 +121,11 @@
         "period": "Feb 2026 – Jul 2026",
         "summary": "Technical support for the Plex 25 pharmacy management system for healthcare clients, with proactive monitoring to keep operations running.",
         "highlights": [],
-        "tags": ["Support", "Troubleshooting", "Client care"]
+        "tags": [
+          "Support",
+          "Troubleshooting",
+          "Client care"
+        ]
       },
       {
         "role": "IT, Security & Infrastructure",
@@ -109,7 +138,13 @@
           "Implemented and managed SSL/HTTPS certificates and dynamic DNS for stable remote access.",
           "LAN networks, firewalls and backup and recovery plans on Windows and Linux."
         ],
-        "tags": ["Security", "Networking", "Linux", "Windows", "SSL/HTTPS"]
+        "tags": [
+          "Security",
+          "Networking",
+          "Linux",
+          "Windows",
+          "SSL/HTTPS"
+        ]
       }
     ]
   },
@@ -128,17 +163,65 @@
       "r8": {
         "title": "R8 Audio",
         "kind": "Music promotion platform · Freelance",
-        "description": "A platform where labels and artists send promos, manage releases and collect feedback. I built end-to-end features and migrated the whole infrastructure from GCP to AWS and Cloudflare with Terraform."
+        "description": "A platform where labels and artists send promos, manage releases and collect feedback. I built end-to-end features and migrated the whole infrastructure from GCP to AWS and Cloudflare with Terraform.",
+        "case": {
+          "context": "R8 Audio is a platform where record labels and artists send promos, manage releases and collect feedback. The original infrastructure ran on GCP and needed to grow with new features and a cleaner deployment process.",
+          "role": "Freelance Full-Stack Developer (Dec 2025 – Aug 2026). I worked end to end: backend, frontend and infrastructure.",
+          "built": [
+            "NestJS API with TypeScript, organized in modules with dependency injection.",
+            "Authentication and identity management with Firebase Auth.",
+            "Audio file uploads with signed URLs.",
+            "Analytics dashboards so labels and artists can see how their releases perform.",
+            "A social media content generator for each release."
+          ],
+          "decisions": [
+            "Signed URLs so large files go straight to storage without passing through the API.",
+            "Migration from GCP to AWS (S3, SQS, Elastic Beanstalk) for the backend and Cloudflare (Pages, R2) for the frontend and files.",
+            "All infrastructure defined as code in Terraform, so it can be reproduced and reviewed like any other change.",
+            "Docker images and custom scripts to automate deployments that used to be manual."
+          ],
+          "outcome": "The platform now runs on AWS and Cloudflare, with infrastructure versioned in Terraform and automated deployments."
+        }
       },
       "ding": {
         "title": "Ding!",
         "kind": "Order management",
-        "description": "Web app to manage orders with five user roles and separate permissions. Laravel API with MySQL and a React + TypeScript frontend."
+        "description": "Web app to manage orders with five user roles and separate permissions. Laravel API with MySQL and a React + TypeScript frontend.",
+        "case": {
+          "context": "Ding! is a web app to manage orders and deliveries, with different types of users and permissions.",
+          "role": "Full-stack development: API, database and frontend.",
+          "built": [
+            "REST API in Laravel with a MySQL database.",
+            "React frontend with TypeScript.",
+            "Five user roles, each with its own screens and permissions."
+          ],
+          "decisions": [
+            "Separate backend and frontend: a Laravel API consumed by a React SPA.",
+            "Role permissions enforced in the backend, not just by hiding options in the UI.",
+            "TypeScript on the frontend to type the data coming from the API."
+          ],
+          "outcome": "A working app with the full order flow for all five roles. You can watch the video demo."
+        }
       },
       "maquinaria": {
         "title": "Road machinery management",
         "kind": "Management system",
-        "description": "System to manage heavy machinery: authentication, user management, file uploads and an admin dashboard."
+        "description": "System to manage heavy machinery: authentication, user management, file uploads and an admin dashboard.",
+        "case": {
+          "context": "A system to manage heavy road machinery: register equipment, manage users and keep each machine's documents in one place.",
+          "role": "Built the whole system, from the data model to deployment.",
+          "built": [
+            "User authentication and user management (create, update, delete).",
+            "Upload and management of files linked to each machine.",
+            "Admin dashboard with Blade and Bootstrap."
+          ],
+          "decisions": [
+            "Laravel with Blade views: for an internal dashboard, server-side rendering is simple and quick to maintain.",
+            "MySQL as the relational database for machines, users and files.",
+            "Deployed on Render so it can be tried online."
+          ],
+          "outcome": "The system is live and can be tried online, and the code is public on GitHub."
+        }
       },
       "rulo": {
         "title": "Firme como Rulo",
@@ -155,7 +238,16 @@
         "kind": "Web game",
         "description": "The classic game with interactive boards and responsive design, in vanilla JavaScript."
       }
-    }
+    },
+    "viewCase": "Read case study",
+    "caseLabels": {
+      "context": "Context",
+      "role": "My role",
+      "built": "What I built",
+      "decisions": "Technical decisions",
+      "outcome": "Outcome"
+    },
+    "close": "Close"
   },
   "skills": {
     "eyebrow": "Stack",
@@ -163,23 +255,62 @@
     "categories": [
       {
         "title": "Backend",
-        "skills": ["Node.js", "NestJS", "Express", "TypeScript", "Python", "PHP / Laravel"]
+        "skills": [
+          "Node.js",
+          "NestJS",
+          "Express",
+          "TypeScript",
+          "Python",
+          "PHP / Laravel"
+        ]
       },
       {
         "title": "Data",
-        "skills": ["PostgreSQL", "MySQL", "dbt", "ETL / ELT", "MongoDB", "Firebase", "Power BI"]
+        "skills": [
+          "PostgreSQL",
+          "MySQL",
+          "dbt",
+          "ETL / ELT",
+          "MongoDB",
+          "Firebase",
+          "Power BI"
+        ]
       },
       {
         "title": "Cloud & DevOps",
-        "skills": ["AWS", "Azure", "GCP", "Cloudflare", "Docker", "Terraform", "CI/CD"]
+        "skills": [
+          "AWS",
+          "Azure",
+          "GCP",
+          "Cloudflare",
+          "Docker",
+          "Terraform",
+          "CI/CD"
+        ]
       },
       {
         "title": "Security",
-        "skills": ["Access control", "Auditing", "SSL/HTTPS", "Incident response", "Firewalls", "Backups"]
+        "skills": [
+          "Access control",
+          "Auditing",
+          "SSL/HTTPS",
+          "Incident response",
+          "Firewalls",
+          "Backups"
+        ]
       }
     ],
     "alsoTitle": "Also",
-    "also": ["React", "Next.js", "Git", "GitHub Actions", "Linux", "LAN networking", "WordPress", "Kotlin"]
+    "also": [
+      "React",
+      "Next.js",
+      "Git",
+      "GitHub Actions",
+      "Linux",
+      "LAN networking",
+      "WordPress",
+      "Kotlin"
+    ]
   },
   "services": {
     "eyebrow": "Services",
@@ -218,7 +349,8 @@
       "submit": "Send message",
       "sending": "Sending…",
       "success": "Thanks! Your message arrived. I'll get back to you soon.",
-      "error": "The message couldn't be sent. Please try again or email me directly."
+      "error": "The message couldn't be sent. Please try again or email me directly.",
+      "throttled": "You just sent a message. Please wait a moment before sending another one."
     }
   },
   "footer": {

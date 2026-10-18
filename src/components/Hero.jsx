@@ -55,6 +55,8 @@ const Hero = () => {
         <div className="hero__photo-wrap">
           <img
             src={PROFILE.photo}
+            srcSet={`${PROFILE.photoSmall} 280w, ${PROFILE.photo} 400w`}
+            sizes="(max-width: 860px) 140px, 340px"
             alt={t('hero.photoAlt')}
             className="hero__photo"
             width="400"
