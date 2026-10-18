@@ -1,48 +1,52 @@
-import React from 'react';
+import { Cloud, Database, Server, ShieldCheck } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import './Skills.css';
 
+const ICONS = [Server, Database, Cloud, ShieldCheck];
+
 const Skills = () => {
   const { t } = useTranslation();
-  
-  // Obtener las categorías de habilidades desde las traducciones
-  const skillCategories = t('skills.categories', { returnObjects: true });
-  const tools = t('skills.tools', { returnObjects: true });
+  const categories = t('skills.categories', { returnObjects: true });
+  const also = t('skills.also', { returnObjects: true });
 
   return (
-    <section id="skills" className="skills">
+    <section id="skills" className="section section--alt">
       <div className="container">
-        <div className="section-header">
-          <h2>{t('skills.title')}</h2>
-          <p>{t('skills.subtitle')}</p>
+        <header className="section-header reveal">
+          <span className="eyebrow">{t('skills.eyebrow')}</span>
+          <h2 className="section-title">{t('skills.title')}</h2>
+        </header>
+
+        <div className="skills__grid">
+          {categories.map((category, index) => {
+            const Icon = ICONS[index % ICONS.length];
+            return (
+              <div key={category.title} className="skills__group card reveal">
+                <h3>
+                  <Icon size={18} aria-hidden="true" />
+                  {category.title}
+                </h3>
+                <ul className="tags">
+                  {category.skills.map((skill) => (
+                    <li key={skill} className="tag">{skill}</li>
+                  ))}
+                </ul>
+              </div>
+            );
+          })}
         </div>
 
-        <div className="skills-grid">
-          {skillCategories.map((category, index) => (
-            <div key={index} className="skill-category">
-              <h3>{category.title}</h3>
-              <div className="skills-tags">
-                {category.skills.map((skill, skillIndex) => (
-                  <span key={skillIndex} className="skill-tag">{skill}</span>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="tools-section">
-          <h3>{t('skills.additionalTools')}</h3>
-          <div className="tools-grid">
-            {tools.map((tool, index) => (
-              <div key={index} className="tool-tag">
-                {tool}
-              </div>
+        <div className="skills__also reveal">
+          <span>{t('skills.alsoTitle')}:</span>
+          <ul className="tags">
+            {also.map((tool) => (
+              <li key={tool} className="tag">{tool}</li>
             ))}
-          </div>
+          </ul>
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Skills
+export default Skills;

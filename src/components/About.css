@@ -1,187 +1,92 @@
 .about {
-  background: var(--bg-primary);
-  padding: 100px 0;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.section-header {
-  text-align: center;
-  margin-bottom: 4rem;
-}
-
-.section-header h2 {
-  font-size: 2.5rem;
-  color: var(--text-primary);
-  margin-bottom: 1rem;
-  position: relative;
-}
-
-.section-header h2::after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 4px;
-  background: linear-gradient(45deg, #007bff, #0056b3);
-  border-radius: 2px;
-}
-
-.section-header p {
-  font-size: 1.1rem;
-  color: var(--text-secondary);
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.about-content {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 56px;
   align-items: start;
 }
 
-.about-content h2 {
-  font-size: 2.5rem;
-  margin-bottom: 1.5rem;
-  color: var(--text-primary);
-}
-
-.about-text h3 {
-  font-size: 1.8rem;
-  color: var(--text-primary);
-  margin-bottom: 1.5rem;
-}
-
-.about-text p {
-  color: var(--text-secondary);
-  margin-bottom: 1.5rem;
-  line-height: 1.7;
-}
-
-.about-details {
+.about__text {
+  margin-top: 24px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
-  color: var(--text-primary);
+  gap: 16px;
+  color: var(--muted);
+  font-size: 1.05rem;
 }
 
-.stats {
+.about__stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  margin-top: 2rem;
-  padding-top: 2rem;
-  border-top: 2px solid #f0f0f0;
+  gap: 16px;
+  margin-top: 40px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
 }
 
-.stat {
-  text-align: center;
-}
-
-.stat h4 {
-  font-size: 2.5rem;
-  color: var(--accent-color);
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-}
-
-.stat p {
-  color: var(--text-secondary);
-  font-weight: 500;
-  margin: 0;
-}
-
-.experiences {
-  display: grid;
-  gap: 2rem;
-}
-
-.experience-card {
+.about__stat {
   display: flex;
-  gap: 1.5rem;
-  padding: 2rem;
-  background: var(--card-bg);
-  border-radius: 12px;
-  transition: all 0.3s ease;
-  border-left: 4px solid transparent;
-  box-shadow: var(--card-shadow);
-  border: 1px solid var(--border-color);
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  gap: 4px;
 }
 
-.experience-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  border-left-color: var(--accent-color);
+.about__stat dd {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--text);
 }
 
-.experience-icon {
-  flex-shrink: 0;
-  width: 60px;
-  height: 60px;
-  background: linear-gradient(45deg, var(--accent-color), var(--accent-hover));
-  border-radius: 12px;
+.about__stat dt {
+  font-size: 0.9rem;
+  color: var(--subtle);
+}
+
+.about__education {
+  padding: 28px;
+}
+
+.about__education h3 {
   display: flex;
   align-items: center;
-  justify-content: center;
-  color: white;
+  gap: 8px;
+  margin-bottom: 20px;
+  font-size: 1rem;
+  color: var(--accent);
 }
 
-.experience-content h4 {
-  font-size: 1.3rem;
-  color: var(--text-primary);
-  margin-bottom: 0.5rem;
+.about__education ul {
+  list-style: none;
+  display: grid;
+  gap: 18px;
 }
 
-.experience-content p {
-  color: var(--text-secondary);
-  line-height: 1.6;
-  margin: 0;
+.about__education li {
+  display: grid;
+  gap: 2px;
+  padding-left: 14px;
+  border-left: 2px solid var(--border);
 }
 
-@media (max-width: 768px) {
-  .about-content {
+.about__edu-title {
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.about__edu-meta {
+  font-size: 0.875rem;
+  color: var(--subtle);
+}
+
+@media (max-width: 860px) {
+  .about {
     grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-
-  .stats {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-  }
-
-  .stat h4 {
-    font-size: 2rem;
-  }
-
-  .experience-card {
-    flex-direction: column;
-    text-align: center;
-    gap: 1rem;
-  }
-
-  .experience-icon {
-    align-self: center;
-  }
-
-  .section-header h2 {
-    font-size: 2rem;
+    gap: 40px;
   }
 }
 
 @media (max-width: 480px) {
-  .stats {
+  .about__stats {
     grid-template-columns: 1fr;
-    gap: 2rem;
   }
-}
-
-.experience-period {
-  display: block;
-  font-size: 0.9rem;
-  color: var(--accent-color);
-  margin-bottom: 0.5rem;
-  font-weight: 500;
 }

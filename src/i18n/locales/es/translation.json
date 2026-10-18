@@ -1,362 +1,228 @@
 {
-  "header": {
-    "home": "Inicio",
+  "nav": {
     "about": "Sobre mí",
-    "skills": "Habilidades",
+    "experience": "Experiencia",
     "projects": "Proyectos",
+    "skills": "Stack",
+    "services": "Servicios",
     "contact": "Contacto",
-    "themeToggle": "Cambiar a modo {{mode}}",
-    "language": "Idioma",
-    "menu": "Menú",
-    "services": "Servicios"
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú",
+    "themeToLight": "Cambiar a modo claro",
+    "themeToDark": "Cambiar a modo oscuro",
+    "language": "Cambiar idioma",
+    "skip": "Saltar al contenido"
   },
   "hero": {
+    "available": "Disponible para proyectos freelance",
     "greeting": "Hola, soy",
     "role": "Backend & Security Engineer",
-    "description": "Construyo APIs, pipelines de datos y la infraestructura cloud que los sostiene. Hoy trabajo en Goalkeeper.com, una empresa de tecnología deportiva del Reino Unido, y tomo proyectos freelance en Node.js, Python, AWS y seguridad.",
-    "cta": "Ver mi trabajo",
-    "contact": "Trabajemos juntos"
+    "description": "Construyo APIs, pipelines de datos y la infraestructura cloud que los sostiene, con foco en que sean seguros, observables y fáciles de mantener. Hoy trabajo en remoto para una empresa de tecnología del Reino Unido.",
+    "ctaProjects": "Ver proyectos",
+    "ctaContact": "Contactame",
+    "cv": "Descargar CV",
+    "photoAlt": "Foto de Melina Schimpf Baldo"
   },
-  "languages": {
-    "en": "Inglés",
-    "es": "Español"
+  "about": {
+    "eyebrow": "Sobre mí",
+    "title": "Del soporte IT al backend, sin perder de vista la seguridad",
+    "paragraphs": [
+      "Soy Backend & Security Engineer y vivo en Entre Ríos, Argentina. Trabajo en remoto con equipos de otros países, en español e inglés.",
+      "Empecé resolviendo problemas de hardware, redes e incidentes de seguridad para clientes reales. Eso me dejó una costumbre: pensar en lo que pasa después del deploy. Hoy diseño servicios backend, pipelines de datos e infraestructura en la nube, y me ocupo de que la información sea correcta, esté protegida y se pueda auditar.",
+      "Me gusta entender el problema completo antes de escribir código, documentar lo que hago y dejar los sistemas mejor de lo que los encontré."
+    ],
+    "stats": [
+      { "value": "130+", "label": "pull requests en 2026" },
+      { "value": "3", "label": "clouds: AWS, Azure y GCP" },
+      { "value": "B2", "label": "inglés, trabajo remoto" }
+    ],
+    "educationTitle": "Formación",
+    "education": [
+      {
+        "title": "Técnica Superior en Análisis y Desarrollo de Software",
+        "place": "Instituto Superior Sedes Sapientiae",
+        "period": "2023 – 2025"
+      },
+      {
+        "title": "Next-Generation Cyber Security",
+        "place": "Huawei",
+        "period": "2025"
+      },
+      {
+        "title": "Data Analytics",
+        "place": "Jump! Education",
+        "period": "2023"
+      }
+    ]
+  },
+  "experience": {
+    "eyebrow": "Experiencia",
+    "title": "Dónde estuve trabajando",
+    "current": "Actual",
+    "items": [
+      {
+        "role": "Backend & Security Engineer",
+        "company": "Goalkeeper.com",
+        "context": "Tecnología deportiva · Reino Unido · Remoto",
+        "period": "Jul 2026 – Actualidad",
+        "summary": "Trabajo en el backend, los datos y la seguridad de una plataforma SaaS en producción. Mi foco es que los datos sean confiables, que el sistema sea auditable y que el equipo sepa qué está pasando en producción.",
+        "highlights": [
+          "Diseño y construcción de un data warehouse en AWS, con modelos en dbt e infraestructura como código en Terraform.",
+          "Pipelines ETL en Python que integran fuentes externas, con validaciones y controles de calidad en cada etapa.",
+          "Integridad de datos y auditoría: trazabilidad de cambios, reglas de validación y control de acceso.",
+          "Observabilidad de la API principal para detectar y diagnosticar problemas antes de que lleguen a los usuarios.",
+          "Trabajo remoto en inglés con un equipo distribuido, con más de 130 pull requests en el año."
+        ],
+        "tags": ["AWS", "Python", "dbt", "Terraform", "SQL", "Observabilidad", "Seguridad"]
+      },
+      {
+        "role": "Full-Stack Developer",
+        "company": "R8 Audio",
+        "context": "Plataforma de promoción musical · Freelance",
+        "period": "Dic 2025 – Ago 2026",
+        "summary": "Desarrollé funcionalidades de punta a punta para una plataforma donde sellos y artistas envían promos, gestionan lanzamientos y reciben feedback.",
+        "highlights": [
+          "Backend en NestJS con TypeScript, inyección de dependencias y Firebase Auth para la gestión de identidad.",
+          "Subidas de archivos con signed URLs, dashboards de analítica y un generador de contenido para redes.",
+          "Lideré la migración de GCP a AWS (S3, SQS, Elastic Beanstalk) y Cloudflare (Pages, R2) con Terraform y Docker.",
+          "Scripts para automatizar despliegues que antes eran manuales."
+        ],
+        "tags": ["NestJS", "React", "TypeScript", "AWS", "Cloudflare", "Terraform", "Docker"]
+      },
+      {
+        "role": "Helpdesk",
+        "company": "Galbop",
+        "context": "Software para farmacias",
+        "period": "Feb 2026 – Jul 2026",
+        "summary": "Soporte técnico del sistema de gestión farmacéutica Plex 25 para clientes del sector salud, con monitoreo proactivo para mantener la operación sin cortes.",
+        "highlights": [],
+        "tags": ["Soporte", "Diagnóstico", "Atención a clientes"]
+      },
+      {
+        "role": "IT, Seguridad e Infraestructura",
+        "company": "Freelance",
+        "context": "Fundavida, Mostto y clientes locales",
+        "period": "Abr 2025 – Actualidad",
+        "summary": "Mantenimiento y seguridad de infraestructura para instituciones y pequeñas empresas.",
+        "highlights": [
+          "Contención y limpieza de un incidente crítico de malware, restaurando la integridad del entorno.",
+          "Implementación y gestión de certificados SSL/HTTPS y DNS dinámico para acceso remoto estable.",
+          "Redes LAN, firewalls y planes de backup y recuperación en Windows y Linux."
+        ],
+        "tags": ["Seguridad", "Redes", "Linux", "Windows", "SSL/HTTPS"]
+      }
+    ]
   },
   "projects": {
-    "title": "Mis Proyectos",
-    "subtitle": "Una selección de mis trabajos más recientes",
-    "featuredTitle": "Proyectos Destacados",
-    "filters": {
-      "title": "Filtrar por categoría",
-      "all": "Todos",
-      "fullstack": "FullStack",
-      "backend": "Backend",
-      "frontend": "Frontend",
-      "data": "Análisis de Datos"
-    },
-    "viewProject": "Ver Proyecto",
-    "viewCode": "Ver Código",
-    "viewDemo": "Ver Demo",
+    "eyebrow": "Proyectos",
+    "title": "Trabajo seleccionado",
+    "subtitle": "Algunos proyectos donde se ve cómo trabajo, de punta a punta.",
+    "live": "Ver sitio",
+    "code": "Código",
+    "demo": "Ver demo",
+    "private": "Código privado",
     "closeDemo": "Cerrar demo",
-    "noProjects": "No se encontraron proyectos en esta categoría.",
-    "projects": [
-      {
-        "title": "R8 Audio · Plataforma de promoción musical",
-        "description": "Trabajo freelance para una plataforma donde sellos y artistas envían promos, gestionan lanzamientos y reciben feedback. Construí funcionalidades de punta a punta con NestJS y React: subidas con signed URLs, dashboards de analítica, un generador de contenido para redes y la migración de GCP a AWS (S3, SQS, Elastic Beanstalk) y Cloudflare Pages con Terraform.",
-        "technologies": [
-          "NestJS",
-          "React",
-          "TypeScript",
-          "AWS",
-          "Cloudflare",
-          "Terraform",
-          "Docker"
-        ]
+    "othersTitle": "Otros proyectos",
+    "moreOnGithub": "Más en GitHub",
+    "items": {
+      "r8": {
+        "title": "R8 Audio",
+        "kind": "Plataforma de promoción musical · Freelance",
+        "description": "Plataforma donde sellos y artistas envían promos, gestionan lanzamientos y reciben feedback. Construí funcionalidades de punta a punta y migré toda la infraestructura de GCP a AWS y Cloudflare con Terraform."
       },
-      {
+      "ding": {
         "title": "Ding!",
-        "description": "Aplicación web desarrollada con React, Typescript y Laravel para la gestión pedidos. Maneja 5 roles clave.",
-        "technologies": [
-          "Typescript",
-          "React",
-          "PHP",
-          "Laravel",
-          "MySQL"
-        ]
+        "kind": "Gestión de pedidos",
+        "description": "Aplicación web para gestionar pedidos con cinco roles de usuario y permisos diferenciados. API en Laravel con MySQL y frontend en React con TypeScript."
       },
-      {
-        "title": "Sistema de Gestión de Maquinaria Vial",
-        "description": "Aplicación web desarrollada con PHP y Laravel para la gestión de maquinaria pesada. Incluye autenticación, CRUD de usuarios, manejo de archivos y panel administrativo con Bootstrap.",
-        "technologies": [
-          "PHP",
-          "Laravel",
-          "MySQL",
-          "Bootstrap",
-          "Blade"
-        ]
+      "maquinaria": {
+        "title": "Gestión de maquinaria vial",
+        "kind": "Sistema de gestión",
+        "description": "Sistema para administrar maquinaria pesada: autenticación, gestión de usuarios, carga de archivos y panel administrativo."
       },
-      {
-        "title": "Batalla Naval",
-        "description": "El reconocido juego batalla naval, creado con HTML, CSS y JavaScript. Incluye tableros interactivos, lógica de juego y diseño responsive.",
-        "technologies": [
-          "HTML5",
-          "CSS3",
-          "JavaScript"
-        ]
-      },
-      {
-        "title": "Proyecto Data Analytics",
-        "description": "Proyecto Data Analytics sobre Representación Femenina en Videojuegos según certificación Jump! Data Analytics.",
-        "technologies": [
-          "Power BI",
-          "SQL Server",
-          "Excel",
-          "Data Analytics"
-        ]
-      },
-      {
-        "title": "Timbre QR (En Construcción)",
-        "description": "Proyecto de Timbre con scanner de QR para mi departamento",
-        "technologies": [
-          "HTML",
-          "CSS3",
-          "JavaScript",
-          "NodeJS"
-        ]
-      },
-      {
-        "title": "Alerta de Timbre Mobile (En Construcción)",
-        "description": "Proyecto de Alerta de Timbre para alertar el scan de QR",
-        "technologies": [
-          "React Native"
-        ]
-      },
-      {
-        "title": "Portafolio Personal",
-        "description": "Sitio web de portafolio moderno y responsivo desarrollado con React, que incluye animaciones fluidas, soporte de internacionalización y un diseño limpio y profesional. Muestra mis proyectos, habilidades y experiencia de manera interactiva.",
-        "technologies": [
-          "React",
-          "JavaScript",
-          "CSS3",
-          "Vite",
-          "i18next",
-          "Diseño Responsive"
-        ]
-      },
-      {
+      "rulo": {
         "title": "Firme como Rulo",
-        "description": "Sistema integral de gestión educativa para profesores desarrollado con PHP puro, HTML, CSS, Javascript y MySQL",
-        "technologies": [
-          "PHP",
-          "JavaScript",
-          "HTML",
-          "CSS",
-          "MySQL"
-        ]
+        "kind": "Gestión educativa",
+        "description": "Sistema de gestión para docentes hecho con PHP puro y MySQL, sin frameworks."
+      },
+      "analytics": {
+        "title": "Representación femenina en videojuegos",
+        "kind": "Análisis de datos",
+        "description": "Análisis de datos y dashboard en Power BI, como proyecto final de la certificación de Jump! Data Analytics."
+      },
+      "battleship": {
+        "title": "Batalla naval",
+        "kind": "Juego web",
+        "description": "El clásico juego con tableros interactivos y diseño responsive, en JavaScript puro."
       }
-    ]
-  },
-  "footer": {
-    "quickLinks": [
-      {
-        "href": "#home",
-        "label": "Inicio"
-      },
-      {
-        "href": "#about",
-        "label": "Sobre mí"
-      },
-      {
-        "href": "#services",
-        "label": "Servicios"
-      },
-      {
-        "href": "#skills",
-        "label": "Habilidades"
-      },
-      {
-        "href": "#projects",
-        "label": "Proyectos"
-      },
-      {
-        "href": "#contact",
-        "label": "Contacto"
-      }
-    ],
-    "brandDescription": "Backend & Security Engineer. APIs, pipelines de datos e infraestructura cloud.",
-    "quickLinksTitle": "Enlaces Rápidos",
-    "connectTitle": "Conecta Conmigo",
-    "projectTitle": "¿Tienes un proyecto?",
-    "projectText": "¡Hablemos y hagámoslo realidad!",
-    "projectCta": "Comenzar Proyecto",
-    "copyright": "© {year} Melina Schimpf Baldo.",
-    "socialLinks": [
-      {
-        "name": "GitHub",
-        "url": "https://github.com/meliischimpf"
-      },
-      {
-        "name": "LinkedIn",
-        "url": "https://linkedin.com/in/melina-schimpf"
-      },
-      {
-        "name": "Email",
-        "url": "mailto:melischimpf@gmail.com"
-      }
-    ]
-  },
-  "contact": {
-    "title": "Contacto",
-    "subtitle": "¿Tienes un proyecto en mente? ¡Hablemos y hagámoslo realidad!",
-    "workTogether": "¡Trabajemos Juntos!",
-    "workDescription": "Estoy disponible para proyectos freelance: APIs, pipelines de datos, migraciones cloud o revisiones de seguridad. Contame qué necesitás y vemos cómo te puedo ayudar.",
-    "contactInfo": [
-      {
-        "title": "Email",
-        "info": "melischimpf@gmail.com"
-      },
-      {
-        "title": "Teléfono",
-        "info": "+54 (3444) 41-2369"
-      },
-      {
-        "title": "Ubicación",
-        "info": "Gualeguaychú, Entre Ríos, Argentina"
-      }
-    ],
-    "followMe": "Sígueme en Redes Sociales",
-    "socialLinks": [
-      {
-        "name": "GitHub",
-        "url": "https://github.com/meliischimpf"
-      },
-      {
-        "name": "LinkedIn",
-        "url": "https://linkedin.com/in/melina-schimpf"
-      },
-      {
-        "name": "Email",
-        "url": "mailto:melischimpf@gmail.com"
-      }
-    ],
-    "formTitle": "Envíame un Mensaje",
-    "formFields": {
-      "name": "Nombre *",
-      "email": "Correo Electrónico *",
-      "subject": "Asunto *",
-      "message": "Tu Mensaje *"
-    },
-    "submitButton": "Enviar Mensaje",
-    "sending": "Enviando...",
-    "successMessage": "¡Gracias! Tu mensaje ha sido enviado correctamente.",
-    "errorMessage": "Hubo un error al enviar tu mensaje. Por favor, inténtalo de nuevo más tarde."
+    }
   },
   "skills": {
-    "title": "Habilidades Técnicas",
-    "subtitle": "El stack que uso todos los días",
-    "additionalTools": "También manejo",
+    "eyebrow": "Stack",
+    "title": "Con qué trabajo",
     "categories": [
       {
         "title": "Backend",
-        "skills": [
-          "Node.js",
-          "NestJS",
-          "Express",
-          "TypeScript",
-          "Python",
-          "PHP / Laravel"
-        ]
+        "skills": ["Node.js", "NestJS", "Express", "TypeScript", "Python", "PHP / Laravel"]
       },
       {
         "title": "Datos",
-        "skills": [
-          "PostgreSQL",
-          "MySQL",
-          "dbt",
-          "ETL / ELT",
-          "MongoDB",
-          "Power BI"
-        ]
+        "skills": ["PostgreSQL", "MySQL", "dbt", "ETL / ELT", "MongoDB", "Firebase", "Power BI"]
       },
       {
         "title": "Cloud y DevOps",
-        "skills": [
-          "AWS",
-          "Azure",
-          "GCP",
-          "Cloudflare",
-          "Docker",
-          "Terraform",
-          "CI/CD"
-        ]
+        "skills": ["AWS", "Azure", "GCP", "Cloudflare", "Docker", "Terraform", "CI/CD"]
       },
       {
-        "title": "Seguridad y Frontend",
-        "skills": [
-          "Control de acceso",
-          "Auditoría",
-          "SSL/HTTPS",
-          "Respuesta a incidentes",
-          "React",
-          "Next.js"
-        ]
+        "title": "Seguridad",
+        "skills": ["Control de acceso", "Auditoría", "SSL/HTTPS", "Respuesta a incidentes", "Firewalls", "Backups"]
       }
     ],
-    "tools": [
-      "Git",
-      "GitHub Actions",
-      "Linux",
-      "Windows",
-      "Redes",
-      "Hardware",
-      "Excel",
-      "Kotlin"
-    ]
-  },
-  "about": {
-    "title": "Sobre Mí",
-    "subtitle": "Backend & Security Engineer enfocada en sistemas seguros, observables y fáciles de mantener",
-    "greeting": "¡Hola! Soy Melina",
-    "description1": "Soy Backend & Security Engineer, vivo en Entre Ríos, Argentina, y trabajo en remoto. En Goalkeeper.com (TLA Studios, Reino Unido) trabajo en una plataforma de analítica de rendimiento usada por clubes de fútbol profesional: construí un data warehouse multimarca en AWS, mejoro la integridad de datos y la auditoría de la plataforma, y sumo observabilidad a la API principal.",
-    "description2": "Antes, como desarrolladora full-stack freelance en R8 Audio, construí funcionalidades de punta a punta con NestJS y React y lideré la migración de la plataforma de GCP a AWS y Cloudflare con Terraform y Docker.",
-    "description3": "Mi experiencia en soporte IT y seguridad hace que me importe lo que pasa después del deploy. Soy Técnica Superior en Análisis y Desarrollo de Software (2025), tengo inglés B2 y estoy disponible para proyectos freelance.",
-    "stats": [
-      {
-        "value": "130+",
-        "label": "Pull requests en 2026"
-      },
-      {
-        "value": "3",
-        "label": "Clouds: AWS, Azure, GCP"
-      },
-      {
-        "value": "2025",
-        "label": "Egresada"
-      }
-    ],
-    "experiences": [
-      {
-        "title": "Backend & Security Engineer · Goalkeeper.com",
-        "period": "Jul 2026 – Actualidad · Remoto (Reino Unido)",
-        "description": "Data warehouse multimarca en AWS (dbt, Terraform), integridad de datos y auditoría en la plataforma de analítica, pipelines ETL en Python para datos de partidos y observabilidad de la API principal."
-      },
-      {
-        "title": "Full-Stack Developer · R8 Audio",
-        "period": "Dic 2025 – Ago 2026 · Freelance",
-        "description": "Plataforma de promoción musical para sellos y artistas hecha con NestJS y React: subidas con signed URLs, dashboards de analítica, un generador de contenido para redes y la migración de GCP a AWS y Cloudflare."
-      },
-      {
-        "title": "Soporte IT y Técnica de PC",
-        "period": "Abr 2025 – Actualidad · Freelance",
-        "description": "Diagnóstico de hardware y software en Windows y Linux, redes LAN, firewalls, backups, limpieza de malware y configuración de SSL/HTTPS para clientes locales."
-      },
-      {
-        "title": "Helpdesk · Galbop",
-        "period": "Feb 2026 – Jul 2026",
-        "description": "Soporte técnico del sistema de gestión farmacéutica Plex 25, manteniendo operativos a clientes del sector salud."
-      }
-    ]
+    "alsoTitle": "También",
+    "also": ["React", "Next.js", "Git", "GitHub Actions", "Linux", "Redes LAN", "WordPress", "Kotlin"]
   },
   "services": {
-    "title": "Servicios",
-    "subtitle": "Cómo puedo ayudar en tu proyecto",
+    "eyebrow": "Servicios",
+    "title": "Cómo te puedo ayudar",
     "items": [
       {
         "title": "APIs y backends",
-        "description": "APIs REST y lógica de negocio con Node.js (NestJS, Express), TypeScript, Python o Laravel, pensadas para testearse y mantenerse."
+        "description": "APIs REST y lógica de negocio con Node.js, TypeScript, Python o Laravel, pensadas para testearse y mantenerse."
       },
       {
         "title": "Pipelines de datos",
-        "description": "Pipelines ETL/ELT, modelado de datos con dbt y PostgreSQL, y reglas de calidad de datos confiables."
+        "description": "Procesos ETL/ELT, modelado con dbt y PostgreSQL, y reglas de calidad para que los datos sean confiables."
       },
       {
         "title": "Cloud y DevOps",
         "description": "Despliegues y migraciones en AWS, Azure y Cloudflare, con Terraform, Docker y CI/CD."
       },
       {
-        "title": "Seguridad y confiabilidad",
-        "description": "Control de acceso, auditoría, SSL/HTTPS, limpieza de incidentes y observabilidad para sistemas en producción."
+        "title": "Seguridad",
+        "description": "Control de acceso, auditoría, SSL/HTTPS, respuesta a incidentes y observabilidad para sistemas en producción."
       }
-    ],
-    "cta": "Contame tu proyecto"
+    ]
+  },
+  "contact": {
+    "eyebrow": "Contacto",
+    "title": "¿Hablamos?",
+    "subtitle": "Contame qué necesitás: una API, un pipeline de datos, una migración a la nube o una revisión de seguridad, y vemos cómo te puedo ayudar.",
+    "emailLabel": "Email",
+    "locationLabel": "Ubicación",
+    "location": "Entre Ríos, Argentina · Remoto",
+    "form": {
+      "name": "Nombre",
+      "email": "Email",
+      "subject": "Asunto",
+      "message": "Mensaje",
+      "submit": "Enviar mensaje",
+      "sending": "Enviando…",
+      "success": "¡Gracias! Tu mensaje llegó bien. Te respondo pronto.",
+      "error": "No se pudo enviar el mensaje. Probá de nuevo o escribime directo a mi email."
+    }
+  },
+  "footer": {
+    "rights": "Todos los derechos reservados.",
+    "backToTop": "Volver arriba"
   }
 }

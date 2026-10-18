@@ -1,292 +1,119 @@
-/* Variables de tema por defecto (modo claro) */
-:root {
-  --bg-color: #ffffff;
-  --text-color: #333333;
-  --header-bg: rgba(255, 255, 255, 0.95);
-  --header-border: rgba(0, 0, 0, 0.1);
-  --theme-toggle-bg: #f0f0f0;
-  --theme-toggle-hover: #e0e0e0;
-  --nav-link-color: #333333;
-  --nav-link-hover: #1e88e5;
-}
-
-/* Variables para modo oscuro */
-[data-theme='dark'] {
-  --bg-color: #121212;
-  --text-color: #f5f5f5;
-  --header-bg: rgba(18, 18, 18, 0.95);
-  --header-border: rgba(255, 255, 255, 0.1);
-  --theme-toggle-bg: rgba(255, 255, 255, 0.1);
-  --theme-toggle-hover: rgba(255, 255, 255, 0.2);
-  --nav-link-color: #f5f5f5;
-  --nav-link-hover: #64b5f6;
-}
-
-/* Estilos para la estela del cohete */
-.rocket-trail {
-  position: fixed;
-  width: 12px;
-  height: 24px;
-  background: 
-    linear-gradient(
-      to bottom,
-      rgba(255, 220, 120, 0.9) 0%,
-      rgba(255, 140, 40, 0.8) 30%,
-      rgba(220, 40, 40, 0.6) 70%,
-      rgba(120, 0, 200, 0) 100%
-    );
-  border-radius: 50% 50% 10% 10%;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%) rotate(180deg) scale(0.4, 0.6);
-  opacity: 0;
-  filter: blur(2px);
-  animation: rocketFire 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-  transform-origin: center bottom;
-  will-change: transform, opacity;
-  /* Asegurar que no interfiera con el scroll */
-  touch-action: none;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  user-select: none;
-}
-
-@keyframes rocketFire {
-  0% {
-    transform: translate(-50%, -50%) rotate(180deg) scale(0.4, 0.6);
-    opacity: 0.8;
-    filter: blur(2px);
-  }
-  30% {
-    opacity: 0.7;
-    transform: translate(-50%, -50%) rotate(180deg) scale(0.6, 0.9);
-  }
-  60% {
-    opacity: 0.4;
-    transform: translate(-50%, -50%) rotate(180deg) scale(0.8, 1.2);
-  }
-  100% {
-    transform: translate(-50%, -50%) rotate(180deg) scale(1, 1.5);
-    opacity: 0;
-    filter: blur(4px);
-  }
-}
-
-[data-theme='dark'] {
-  --theme-toggle-bg: #333333;
-  --theme-toggle-hover: #444444;
-}
-
-/* Estilos para la estela del cohete */
-.rocket-trail {
-  position: fixed;
-  width: 12px;
-  height: 24px;
-  width: 16px;
-  height: 16px;
-  background: 
-    radial-gradient(
-      circle at 50% 50%,
-      rgba(255, 255, 255, 0.8) 0%,
-      rgba(220, 220, 220, 0.6) 30%,
-      rgba(180, 180, 180, 0.3) 70%,
-      rgba(100, 100, 100, 0) 100%
-    );
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%) scale(0.15);
-  filter: blur(3px);
-  opacity: 0;
-  animation: smokeDrift 1.5s ease-out forwards;
-  will-change: transform, opacity;
-  /* Asegurar que no interfiera con el scroll */
-  touch-action: none;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  user-select: none;
-  /* Optimización de rendimiento */
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-}
-
-@keyframes smokeDrift {
-  0% {
-    transform: translate(-50%, -50%) scale(0.15) rotate(0deg);
-    opacity: 0.7;
-    filter: blur(3px);
-  }
-  30% {
-    opacity: 0.5;
-    transform: translate(calc(-50% + 5px), calc(-50% - 8px)) scale(0.3) rotate(5deg);
-  }
-  70% {
-    opacity: 0.3;
-    transform: translate(calc(-50% + 12px), calc(-50% - 15px)) scale(0.6) rotate(10deg);
-  }
-  100% {
-    transform: translate(calc(-50% + 20px), calc(-50% - 25px)) scale(0.9) rotate(15deg);
-    opacity: 0;
-    filter: blur(4px);
-  }
-}
-
-body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  transition: background-color 0.3s ease, color 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Estilo para los elementos clickeables en modo claro */
-a,
-button,
-.nav-link,
-.theme-toggle,
-.menu-toggle {
-  cursor: pointer;
-}
-
 .header {
-  position: fixed;
+  position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
-  background: var(--header-bg);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   z-index: 1000;
-  transition: all 0.3s ease;
-  padding: 1rem 0;
-  border-bottom: 1px solid var(--header-border);
-  color: var(--text-color);
-}
-
-.header-scrolled {
-  background: var(--header-bg);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-  padding: 0.5rem 0;
-}
-
-.header-content {
+  height: var(--header-h);
   display: flex;
+  align-items: center;
+  border-bottom: 1px solid transparent;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.header--scrolled {
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  backdrop-filter: saturate(160%) blur(12px);
+  -webkit-backdrop-filter: saturate(160%) blur(12px);
+  border-bottom-color: var(--border);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
   justify-content: space-between;
-  align-items: center;
-  padding: 0 1.5rem;
-  max-width: 1200px;
-  margin: 0 auto;
+  gap: 24px;
 }
 
-.header-actions {
+.header__brand {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 10px;
+  font-weight: 600;
+  white-space: nowrap;
 }
 
-.theme-toggle {
-  background: var(--theme-toggle-bg);
-  border: none;
-  border-radius: 50%;
-  width: 36px;
-  height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  color: var(--text-color);
-}
-
-.theme-toggle:hover {
-  background: var(--theme-toggle-hover);
-  transform: scale(1.05);
-}
-
-.nav-link {
-  color: var(--nav-link-color);
-  text-decoration: none;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-}
-
-.nav-link:hover {
-  color: var(--nav-link-hover);
-  background: rgba(0, 0, 0, 0.05);
-}
-
-[data-theme='dark'] .nav-link:hover {
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.logo h2 {
-  color: var(--text-color);
+.header__mark {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
   font-weight: 700;
-  margin: 0;
-  transition: color 0.3s ease;
 }
 
-.nav {
+.header__nav {
   display: flex;
-  gap: 2rem;
-  list-style: none;
+  gap: 4px;
 }
 
-.active-link {
-  color: #007bff;
-  background: rgba(0, 123, 255, 0.1);
+.header__link {
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--muted);
+  transition: color 0.15s ease, background-color 0.15s ease;
 }
 
-.menu-toggle {
+.header__link:hover {
+  color: var(--text);
+}
+
+.header__link.is-active {
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header__menu-toggle {
   display: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0.5rem;
-  color: var(--text-color);
-  transition: color 0.3s ease;
 }
 
-@media (max-width: 768px) {
-  .header-actions {
-    gap: 0.5rem;
+@media (max-width: 1024px) {
+  .header__name {
+    display: none;
   }
-  
-  .theme-toggle {
-    width: 32px;
-    height: 32px;
-  }
-  .menu-toggle {
-    display: block;
-    color: var(--text-color);
+}
+
+@media (max-width: 860px) {
+  .header__menu-toggle {
+    display: inline-flex;
   }
 
-  .nav {
+  .header__nav {
     position: absolute;
-    top: 100%;
+    top: var(--header-h);
     left: 0;
     right: 0;
-    background: var(--header-bg);
     flex-direction: column;
     gap: 0;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    padding: 1rem 0;
-    transform: translateY(-100%);
+    padding: 8px 16px 16px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow-md);
     opacity: 0;
     visibility: hidden;
-    transition: all 0.3s ease;
+    transform: translateY(-8px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
   }
 
-  .nav-open {
-    transform: translateY(0);
+  .header__nav.is-open {
     opacity: 1;
     visibility: visible;
+    transform: none;
   }
 
-  .nav-link {
-    padding: 1rem 2rem;
-    border-radius: 0;
+  .header__link {
+    padding: 12px;
+    border-radius: var(--radius-sm);
+    font-size: 1rem;
   }
 }

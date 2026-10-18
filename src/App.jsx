@@ -1,43 +1,34 @@
-import React from 'react';
-import { ThemeProvider } from './context/ThemeContext';
-import { LanguageProvider } from './context/LanguageContext';
-import { I18nextProvider } from 'react-i18next';
-import i18n from './i18n/i18n';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
-import Services from './components/Services';
-import Skills from './components/Skills';
+import Experience from './components/Experience';
 import Projects from './components/Projects';
+import Skills from './components/Skills';
+import Services from './components/Services';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import CustomCursor from './components/CustomCursor';
-import './App.css';
-
+import { useTranslation } from 'react-i18next';
+import useReveal from './hooks/useReveal';
 
 function App() {
+  const { t } = useTranslation();
+  useReveal();
+
   return (
-    <I18nextProvider i18n={i18n}>
-      <LanguageProvider>
-        <ThemeProvider>
-          <div className="App custom-cursor-active">
-            <CustomCursor />
-        <Header />
-        <main>
-          <Hero id="home" />
-          <div className="theme-content">
-            <About id="about" />
-            <Services id="services" />
-            <Skills id="skills" />
-            <Projects id="projects" />
-            <Contact id="contact" />
-          </div>
-        </main>
-            <Footer />
-          </div>
-        </ThemeProvider>
-      </LanguageProvider>
-    </I18nextProvider>
+    <>
+      <a href="#main" className="skip-link">{t('nav.skip')}</a>
+      <Header />
+      <main id="main">
+        <Hero />
+        <About />
+        <Experience />
+        <Projects />
+        <Skills />
+        <Services />
+        <Contact />
+      </main>
+      <Footer />
+    </>
   );
 }
 

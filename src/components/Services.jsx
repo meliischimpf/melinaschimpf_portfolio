@@ -1,40 +1,27 @@
-import React from 'react';
-import { Server, Database, Cloud, ShieldCheck } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import './Services.css';
-
-const icons = [Server, Database, Cloud, ShieldCheck];
 
 const Services = () => {
   const { t } = useTranslation();
   const items = t('services.items', { returnObjects: true });
 
   return (
-    <section id="services" className="services">
+    <section id="services" className="section">
       <div className="container">
-        <div className="section-header">
-          <h2>{t('services.title')}</h2>
-          <p>{t('services.subtitle')}</p>
-        </div>
+        <header className="section-header reveal">
+          <span className="eyebrow">{t('services.eyebrow')}</span>
+          <h2 className="section-title">{t('services.title')}</h2>
+        </header>
 
-        <div className="services-grid">
-          {items.map((item, index) => {
-            const Icon = icons[index % icons.length];
-            return (
-              <div key={index} className="service-card">
-                <div className="service-icon">
-                  <Icon size={28} />
-                </div>
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-              </div>
-            );
-          })}
-        </div>
-
-        <div className="services-cta">
-          <a href="#contact" className="btn">{t('services.cta')}</a>
-        </div>
+        <ol className="services__list">
+          {items.map((item, index) => (
+            <li key={item.title} className="services__item reveal">
+              <span className="services__number">{String(index + 1).padStart(2, '0')}</span>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+            </li>
+          ))}
+        </ol>
       </div>
     </section>
   );
