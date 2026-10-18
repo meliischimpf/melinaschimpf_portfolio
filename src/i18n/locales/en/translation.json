@@ -11,7 +11,8 @@
     "themeToLight": "Switch to light mode",
     "themeToDark": "Switch to dark mode",
     "language": "Change language",
-    "skip": "Skip to content"
+    "skip": "Skip to content",
+    "notes": "Notes"
   },
   "hero": {
     "available": "Available for freelance projects",
@@ -206,21 +207,24 @@
       "maquinaria": {
         "title": "Road machinery management",
         "kind": "Management system",
-        "description": "System to manage heavy machinery: authentication, user management, file uploads and an admin dashboard.",
+        "description": "A system to manage a construction company's machinery fleet: machines, sites, assignments and maintenance, with PDF reports and email alerts.",
         "case": {
-          "context": "A system to manage heavy road machinery: register equipment, manage users and keep each machine's documents in one place.",
+          "context": "A construction company needs to know which machines it has, which site each one is on and when it is due for maintenance. This system brings that information together instead of leaving it scattered across spreadsheets.",
           "role": "Built the whole system, from the data model to deployment.",
           "built": [
-            "User authentication and user management (create, update, delete).",
-            "Upload and management of files linked to each machine.",
-            "Admin dashboard with Blade and Bootstrap."
+            "Management of machines and machine types, with their status.",
+            "Construction sites by province, and assignment of machines to sites with start and end dates.",
+            "Maintenance by type, with email notifications when it is due or when a machine is put up for sale.",
+            "PDF reports of assignments, filtered by month and year.",
+            "System parameters configurable from the UI, and user authentication."
           ],
           "decisions": [
-            "Laravel with Blade views: for an internal dashboard, server-side rendering is simple and quick to maintain.",
-            "MySQL as the relational database for machines, users and files.",
-            "Deployed on Render so it can be tried online."
+            "Laravel 12 with Blade views, Tailwind and Alpine.js: for an internal dashboard, server-side rendering is simple and quick to maintain.",
+            "Validation centralized in Form Requests instead of spread across controllers.",
+            "Reports generated with DomPDF and notifications with Laravel Mailables.",
+            "MySQL as the relational database for machines, sites, assignments and maintenance."
           ],
-          "outcome": "The system is live and can be tried online, and the code is public on GitHub."
+          "outcome": "The system is live and can be tried online, and the code is public on GitHub with setup instructions."
         }
       },
       "rulo": {
@@ -356,5 +360,19 @@
   "footer": {
     "rights": "All rights reserved.",
     "backToTop": "Back to top"
+  },
+  "meta": {
+    "title": "Melina Schimpf Baldo · Backend & Security Engineer",
+    "description": "Backend & Security Engineer. APIs, data pipelines and cloud infrastructure with Node.js, Python, AWS and Terraform."
+  },
+  "notes": {
+    "eyebrow": "Notes",
+    "title": "Technical notes",
+    "subtitle": "Things I learned on the job and wish I had read earlier.",
+    "read": "Read note",
+    "minutes": "{{count}} min read",
+    "back": "Back to home",
+    "more": "More notes",
+    "notFound": "I couldn't find that note."
   }
 }

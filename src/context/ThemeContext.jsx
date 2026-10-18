@@ -1,6 +1,5 @@
-import { createContext, useContext, useEffect, useState } from 'react';
-
-const ThemeContext = createContext();
+import { useEffect, useState } from 'react';
+import { ThemeContext } from './contexts';
 
 const getInitialTheme = () => {
   // index.html ya aplica el tema antes de pintar; lo leemos de ahí
@@ -35,4 +34,3 @@ export const ThemeProvider = ({ children }) => {
   );
 };
 
-export const useTheme = () => useContext(ThemeContext);

@@ -1,0 +1,188 @@
+// Notas técnicas. Cada bloque del cuerpo es { type: 'p' | 'h2' | 'ul' | 'code', ... }
+export const NOTES = [
+  {
+    slug: 'signed-urls',
+    date: '2026-10-18',
+    minutes: 4,
+    es: {
+      tags: ['AWS S3', 'Node.js', 'Seguridad'],
+      title: 'Signed URLs: subir archivos pesados sin pasar por tu API',
+      summary: 'Por qué conviene que los archivos vayan directo al almacenamiento y qué cuidar para que eso no abra un agujero de seguridad.',
+      body: [
+        { type: 'p', text: 'En una plataforma de promoción musical, los usuarios suben archivos de audio de decenas de megas. Si cada archivo pasa por la API, el servidor gasta memoria, ancho de banda y tiempo en algo que no le aporta nada: solo reenvía bytes al almacenamiento.' },
+        { type: 'h2', text: 'Cómo funciona' },
+        { type: 'p', text: 'La idea es que la API no reciba el archivo, sino que autorice la subida. El flujo tiene tres pasos:' },
+        { type: 'ul', items: [
+          'El cliente le pide a la API permiso para subir un archivo, con su nombre, tipo y tamaño.',
+          'La API valida al usuario y los datos, y genera una URL firmada que permite subir un único objeto durante pocos minutos.',
+          'El cliente sube el archivo directo al bucket con esa URL y después le avisa a la API para que registre el archivo.',
+        ] },
+        { type: 'code', text: "import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';\nimport { getSignedUrl } from '@aws-sdk/s3-request-presigner';\n\nconst s3 = new S3Client({ region: 'us-east-1' });\n\nexport async function createUploadUrl(userId, contentType) {\n  const key = `uploads/${userId}/${crypto.randomUUID()}`;\n  const command = new PutObjectCommand({ Bucket: process.env.BUCKET, Key: key, ContentType: contentType });\n  const url = await getSignedUrl(s3, command, { expiresIn: 300 });\n  return { url, key };\n}" },
+        { type: 'h2', text: 'Lo que hay que cuidar' },
+        { type: 'p', text: 'Una URL firmada es una credencial temporal. Si se generan sin cuidado, cualquiera puede llenar tu bucket.' },
+        { type: 'ul', items: [
+          'Expiración corta: unos minutos alcanzan para iniciar la subida.',
+          'El nombre del objeto lo decide el servidor, nunca el cliente, para evitar que alguien pise archivos ajenos.',
+          'Validar tipo y tamaño antes de firmar, y volver a validar después de la subida.',
+          'Bucket privado: para descargar, también se generan URLs firmadas de lectura.',
+          'Registrar quién pidió cada URL, para poder auditar después.',
+        ] },
+        { type: 'p', text: 'Con esto la API queda liviana, las subidas son más rápidas para el usuario y el control de acceso sigue estando en el backend.' },
+      ],
+    },
+    en: {
+      tags: ['AWS S3', 'Node.js', 'Security'],
+      title: 'Signed URLs: uploading large files without going through your API',
+      summary: 'Why files should go straight to storage, and what to watch out for so that it does not open a security hole.',
+      body: [
+        { type: 'p', text: 'On a music promotion platform, users upload audio files of tens of megabytes. If every file goes through the API, the server spends memory, bandwidth and time on something that adds nothing: it just forwards bytes to storage.' },
+        { type: 'h2', text: 'How it works' },
+        { type: 'p', text: 'The idea is that the API does not receive the file; it authorizes the upload. The flow has three steps:' },
+        { type: 'ul', items: [
+          'The client asks the API for permission to upload a file, with its name, type and size.',
+          'The API validates the user and the data, and generates a signed URL that allows uploading a single object for a few minutes.',
+          'The client uploads the file straight to the bucket with that URL, then tells the API so it can register the file.',
+        ] },
+        { type: 'code', text: "import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';\nimport { getSignedUrl } from '@aws-sdk/s3-request-presigner';\n\nconst s3 = new S3Client({ region: 'us-east-1' });\n\nexport async function createUploadUrl(userId, contentType) {\n  const key = `uploads/${userId}/${crypto.randomUUID()}`;\n  const command = new PutObjectCommand({ Bucket: process.env.BUCKET, Key: key, ContentType: contentType });\n  const url = await getSignedUrl(s3, command, { expiresIn: 300 });\n  return { url, key };\n}" },
+        { type: 'h2', text: 'What to watch out for' },
+        { type: 'p', text: 'A signed URL is a temporary credential. If you hand them out carelessly, anyone can fill your bucket.' },
+        { type: 'ul', items: [
+          'Short expiry: a few minutes is enough to start the upload.',
+          'The server decides the object key, never the client, so nobody can overwrite someone else\'s files.',
+          'Validate type and size before signing, and validate again after the upload.',
+          'Private bucket: downloads use signed read URLs too.',
+          'Log who requested each URL, so you can audit later.',
+        ] },
+        { type: 'p', text: 'This keeps the API lightweight, makes uploads faster for users, and access control stays in the backend.' },
+      ],
+    },
+  },
+  {
+    slug: 'migrar-infraestructura-terraform',
+    date: '2026-10-18',
+    minutes: 5,
+    es: {
+      tags: ['Terraform', 'AWS', 'Cloud'],
+      title: 'Checklist para migrar infraestructura con Terraform',
+      summary: 'Lo que tengo en cuenta antes de mover una plataforma en producción de un proveedor cloud a otro.',
+      body: [
+        { type: 'p', text: 'Hace poco migré una plataforma de GCP a AWS y Cloudflare. Una migración así no se trata de copiar recursos: se trata de cambiar de lugar sin que los usuarios lo noten. Esta es la lista que uso.' },
+        { type: 'h2', text: 'Antes de tocar nada' },
+        { type: 'ul', items: [
+          'Inventario completo: servicios, bases de datos, buckets, colas, DNS, certificados, variables de entorno y tareas programadas.',
+          'Mapear cada pieza a su equivalente en el destino y anotar las diferencias de comportamiento.',
+          'Definir cómo se vuelve atrás si algo sale mal, antes de necesitarlo.',
+        ] },
+        { type: 'h2', text: 'La infraestructura, como código desde el día uno' },
+        { type: 'ul', items: [
+          'Todo recurso nuevo se crea con Terraform, nada a mano desde la consola.',
+          'Estado remoto con bloqueo, para que dos personas no apliquen cambios a la vez.',
+          'Entornos separados (staging y producción) con las mismas definiciones y distintas variables.',
+          'Cada cambio pasa por un pull request con el resultado de terraform plan, para revisarlo antes de aplicarlo.',
+          'Secretos fuera del repositorio y del estado, en un gestor de secretos.',
+        ] },
+        { type: 'h2', text: 'Datos y corte' },
+        { type: 'ul', items: [
+          'Copiar archivos con herramientas de sincronización y verificar cantidades y checksums al terminar.',
+          'Bajar el TTL de los registros DNS unos días antes, para que el cambio se propague rápido.',
+          'Hacer el corte en un horario de poco tráfico, con el plan de vuelta atrás a mano.',
+          'Dejar el entorno viejo funcionando unos días, en solo lectura, por si hace falta comparar.',
+        ] },
+        { type: 'h2', text: 'Después' },
+        { type: 'p', text: 'Automatizar los despliegues apenas termina la migración. Si el deploy sigue siendo manual, el entorno nuevo empieza a diferir del código en pocas semanas.' },
+      ],
+    },
+    en: {
+      tags: ['Terraform', 'AWS', 'Cloud'],
+      title: 'A checklist for migrating infrastructure with Terraform',
+      summary: 'What I keep in mind before moving a production platform from one cloud provider to another.',
+      body: [
+        { type: 'p', text: 'I recently migrated a platform from GCP to AWS and Cloudflare. A migration like that is not about copying resources: it is about moving without users noticing. This is the list I use.' },
+        { type: 'h2', text: 'Before touching anything' },
+        { type: 'ul', items: [
+          'A full inventory: services, databases, buckets, queues, DNS, certificates, environment variables and scheduled jobs.',
+          'Map each piece to its equivalent in the target and note the behavioral differences.',
+          'Decide how to roll back if something goes wrong, before you need it.',
+        ] },
+        { type: 'h2', text: 'Infrastructure as code from day one' },
+        { type: 'ul', items: [
+          'Every new resource is created with Terraform, nothing by hand in the console.',
+          'Remote state with locking, so two people never apply changes at the same time.',
+          'Separate environments (staging and production) with the same definitions and different variables.',
+          'Every change goes through a pull request with the terraform plan output, reviewed before applying.',
+          'Secrets stay out of the repository and the state, in a secrets manager.',
+        ] },
+        { type: 'h2', text: 'Data and cutover' },
+        { type: 'ul', items: [
+          'Copy files with sync tools and verify counts and checksums when done.',
+          'Lower DNS TTLs a few days in advance so the switch propagates quickly.',
+          'Cut over during low-traffic hours, with the rollback plan at hand.',
+          'Keep the old environment running for a few days, read-only, in case you need to compare.',
+        ] },
+        { type: 'h2', text: 'Afterwards' },
+        { type: 'p', text: 'Automate deployments as soon as the migration is done. If deploys stay manual, the new environment drifts from the code within weeks.' },
+      ],
+    },
+  },
+  {
+    slug: 'incidente-de-malware',
+    date: '2026-10-18',
+    minutes: 4,
+    es: {
+      tags: ['Seguridad', 'Respuesta a incidentes'],
+      title: 'Las primeras horas de un incidente de malware',
+      summary: 'Qué hacer, y en qué orden, cuando un equipo o un servidor está comprometido.',
+      body: [
+        { type: 'p', text: 'Me tocó contener un incidente de malware en una organización. Lo más difícil no es la parte técnica: es resistir la tentación de "limpiar rápido" antes de entender qué pasó. Este es el orden que sigo.' },
+        { type: 'h2', text: '1. Contener' },
+        { type: 'ul', items: [
+          'Aislar los equipos afectados de la red, sin apagarlos si se puede, para no perder información en memoria.',
+          'Cortar accesos remotos y cuentas que puedan estar comprometidas.',
+        ] },
+        { type: 'h2', text: '2. Entender el alcance' },
+        { type: 'ul', items: [
+          'Revisar logs, procesos, tareas programadas y conexiones salientes.',
+          'Identificar por dónde entró: un adjunto, una contraseña débil, un servicio expuesto sin parches.',
+          'Buscar señales del mismo ataque en el resto de los equipos.',
+        ] },
+        { type: 'h2', text: '3. Erradicar y recuperar' },
+        { type: 'ul', items: [
+          'Restaurar desde backups confiables, verificando que sean anteriores al compromiso.',
+          'Cambiar todas las credenciales que pudieron quedar expuestas.',
+          'Cerrar la puerta de entrada: parches, firewall, accesos mínimos y certificados válidos.',
+        ] },
+        { type: 'h2', text: '4. Aprender' },
+        { type: 'p', text: 'Documentar qué pasó, qué funcionó y qué no. Un incidente bien documentado se convierte en una mejora concreta: mejores backups, menos accesos abiertos y alertas que avisen antes la próxima vez.' },
+      ],
+    },
+    en: {
+      tags: ['Security', 'Incident response'],
+      title: 'The first hours of a malware incident',
+      summary: 'What to do, and in what order, when a machine or server is compromised.',
+      body: [
+        { type: 'p', text: 'I once had to contain a malware incident at an organization. The hardest part is not technical: it is resisting the urge to "clean up fast" before understanding what happened. This is the order I follow.' },
+        { type: 'h2', text: '1. Contain' },
+        { type: 'ul', items: [
+          'Isolate affected machines from the network, without shutting them down if possible, so in-memory evidence is not lost.',
+          'Cut remote access and any accounts that may be compromised.',
+        ] },
+        { type: 'h2', text: '2. Understand the scope' },
+        { type: 'ul', items: [
+          'Review logs, processes, scheduled tasks and outbound connections.',
+          'Identify the entry point: an attachment, a weak password, an exposed unpatched service.',
+          'Look for signs of the same attack on other machines.',
+        ] },
+        { type: 'h2', text: '3. Eradicate and recover' },
+        { type: 'ul', items: [
+          'Restore from trusted backups, checking they predate the compromise.',
+          'Rotate every credential that may have been exposed.',
+          'Close the entry point: patches, firewall rules, least-privilege access and valid certificates.',
+        ] },
+        { type: 'h2', text: '4. Learn' },
+        { type: 'p', text: 'Document what happened, what worked and what did not. A well-documented incident turns into concrete improvements: better backups, fewer open access paths and alerts that warn you earlier next time.' },
+      ],
+    },
+  },
+];
+
+export const findNote = (slug) => NOTES.find((note) => note.slug === slug);

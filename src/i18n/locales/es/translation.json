@@ -11,7 +11,8 @@
     "themeToLight": "Cambiar a modo claro",
     "themeToDark": "Cambiar a modo oscuro",
     "language": "Cambiar idioma",
-    "skip": "Saltar al contenido"
+    "skip": "Saltar al contenido",
+    "notes": "Notas"
   },
   "hero": {
     "available": "Disponible para proyectos freelance",
@@ -206,21 +207,24 @@
       "maquinaria": {
         "title": "Gestión de maquinaria vial",
         "kind": "Sistema de gestión",
-        "description": "Sistema para administrar maquinaria pesada: autenticación, gestión de usuarios, carga de archivos y panel administrativo.",
+        "description": "Sistema para administrar la flota de maquinaria de una constructora: máquinas, obras, asignaciones y mantenimientos, con reportes en PDF y avisos por mail.",
         "case": {
-          "context": "Un sistema para administrar maquinaria vial pesada: registrar equipos, gestionar usuarios y centralizar la documentación de cada máquina.",
+          "context": "Una constructora necesita saber qué máquinas tiene, en qué obra está cada una y cuándo le toca mantenimiento. Este sistema centraliza esa información, que de otra forma queda repartida en planillas.",
           "role": "Desarrollo completo del sistema, desde el modelo de datos hasta el despliegue.",
           "built": [
-            "Autenticación de usuarios y gestión de usuarios (alta, baja y modificación).",
-            "Carga y gestión de archivos asociados a cada máquina.",
-            "Panel administrativo con Blade y Bootstrap."
+            "Gestión de máquinas y tipos de máquina, con su estado.",
+            "Obras por provincia y asignación de máquinas a obras con fecha de inicio y de fin.",
+            "Mantenimientos por tipo, con notificaciones por mail cuando corresponde hacerlos o cuando una máquina pasa a venta.",
+            "Reportes en PDF de las asignaciones, filtrados por mes y año.",
+            "Parámetros del sistema configurables desde la interfaz, y autenticación de usuarios."
           ],
           "decisions": [
-            "Laravel con vistas en Blade: para un panel interno, el renderizado del lado del servidor es simple y rápido de mantener.",
-            "MySQL como base relacional para máquinas, usuarios y archivos.",
-            "Desplegado en Render para que se pueda probar en línea."
+            "Laravel 12 con vistas en Blade, Tailwind y Alpine.js: para un panel interno, el renderizado del lado del servidor es simple y rápido de mantener.",
+            "Validaciones centralizadas con Form Requests, en vez de repartirlas por los controladores.",
+            "Reportes generados con DomPDF y notificaciones con Mailables de Laravel.",
+            "MySQL como base relacional para máquinas, obras, asignaciones y mantenimientos."
           ],
-          "outcome": "El sistema está online y se puede probar, y el código es público en GitHub."
+          "outcome": "El sistema está online y se puede probar, y el código es público en GitHub con instrucciones para levantarlo."
         }
       },
       "rulo": {
@@ -356,5 +360,19 @@
   "footer": {
     "rights": "Todos los derechos reservados.",
     "backToTop": "Volver arriba"
+  },
+  "meta": {
+    "title": "Melina Schimpf Baldo · Backend & Security Engineer",
+    "description": "Backend & Security Engineer. APIs, pipelines de datos e infraestructura cloud con Node.js, Python, AWS y Terraform."
+  },
+  "notes": {
+    "eyebrow": "Notas",
+    "title": "Notas técnicas",
+    "subtitle": "Cosas que aprendí trabajando y que me hubiera gustado leer antes.",
+    "read": "Leer nota",
+    "minutes": "{{count}} min de lectura",
+    "back": "Volver al inicio",
+    "more": "Más notas",
+    "notFound": "No encontré esa nota."
   }
 }

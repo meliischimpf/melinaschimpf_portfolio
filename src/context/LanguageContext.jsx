@@ -1,7 +1,6 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { LanguageContext } from './contexts';
 import i18n from '../i18n/i18n';
-
-const LanguageContext = createContext();
 
 const normalize = (lng) => (lng && lng.startsWith('en') ? 'en' : 'es');
 
@@ -22,4 +21,3 @@ export const LanguageProvider = ({ children }) => {
   );
 };
 
-export const useLanguage = () => useContext(LanguageContext);

@@ -1,0 +1,75 @@
+.note-page {
+  padding-top: 48px;
+}
+
+.note-page__inner {
+  max-width: 760px;
+}
+
+.note-page__back {
+  margin-bottom: 32px;
+}
+
+.note-page__header {
+  display: grid;
+  gap: 14px;
+  padding-bottom: 32px;
+  margin-bottom: 32px;
+  border-bottom: 1px solid var(--border);
+}
+
+.note-page__header h1 {
+  font-size: clamp(1.9rem, 4vw, 2.6rem);
+  letter-spacing: -0.03em;
+}
+
+.note-page__summary {
+  font-size: 1.15rem;
+  color: var(--muted);
+}
+
+.note-page__body {
+  display: grid;
+  gap: 18px;
+  font-size: 1.05rem;
+}
+
+.note-page__body h2 {
+  margin-top: 16px;
+  font-size: 1.35rem;
+}
+
+.note-page__body p,
+.note-page__body li {
+  color: var(--muted);
+}
+
+.note-page__body ul {
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+
+.note-page__body li {
+  position: relative;
+  padding-left: 22px;
+}
+
+.note-page__body li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  font-family: var(--font-mono);
+  color: var(--accent);
+}
+
+.note-page__body pre {
+  overflow-x: auto;
+  padding: 18px 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}

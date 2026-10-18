@@ -27,7 +27,7 @@ const FEATURED = [
     id: 'maquinaria',
     image: '/assets/images/maquinaria-vial-screenshot.webp',
     imageSmall: '/assets/images/maquinaria-vial-screenshot-640.webp',
-    tech: ['Laravel', 'PHP', 'MySQL', 'Blade', 'Bootstrap'],
+    tech: ['Laravel 12', 'PHP', 'MySQL', 'Tailwind CSS', 'Alpine.js', 'DomPDF'],
     liveUrl: 'https://gestion-maquinaria-vial.onrender.com/',
     githubUrl: 'https://github.com/meliischimpf/gestion_maquinaria_vial',
   },

@@ -89,7 +89,7 @@
   }
 }
 
-@media (max-width: 860px) {
+@media (max-width: 960px) {
   .header__menu-toggle {
     display: inline-flex;
   }
