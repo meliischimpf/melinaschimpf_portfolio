@@ -471,7 +471,7 @@ const Hero = () => {
               </a>
             </div>
             <div className="social-links">
-              <a href="https://github.com/melischimpf" target="_blank" rel="noopener noreferrer" className="social-link">
+              <a href="https://github.com/meliischimpf" target="_blank" rel="noopener noreferrer" className="social-link">
                 <FaGithub size={20} />
               </a>
               <a href="https://linkedin.com/in/melina-schimpf" target="_blank" rel="noopener noreferrer" className="social-link">

@@ -41,6 +41,7 @@ const Header = () => {
   const navItems = [
     { href: '#home', label: t('header.home') },
     { href: '#about', label: t('header.about') },
+    { href: '#services', label: t('header.services') },
     { href: '#skills', label: t('header.skills') },
     { href: '#projects', label: t('header.projects') },
     { href: '#contact', label: t('header.contact') }

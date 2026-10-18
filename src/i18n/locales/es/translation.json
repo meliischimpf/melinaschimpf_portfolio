@@ -7,14 +7,15 @@
     "contact": "Contacto",
     "themeToggle": "Cambiar a modo {{mode}}",
     "language": "Idioma",
-    "menu": "Menú"
+    "menu": "Menú",
+    "services": "Servicios"
   },
   "hero": {
     "greeting": "Hola, soy",
-    "role": "Desarrolladora Full-Stack Junior",
-    "description": "Técnica Superior en Análisis y Desarrollo de Software con dominio avanzado de Node.js (NestJS/Express), PHP (Laravel), Javascript, Typescript (React) y Kotlin. Especialista en diagnóstico de Causa Raíz (RCA) y despliegue en la nube (GCP/Docker). Bajo principios SOLID, desarrollo soluciones robustas con autenticación segura (Firebase) y gestión de datos SQL/NoSQL, con inglés B2 para equipos globales.",
+    "role": "Backend & Security Engineer",
+    "description": "Construyo APIs, pipelines de datos y la infraestructura cloud que los sostiene. Hoy trabajo en Goalkeeper.com, una empresa de tecnología deportiva del Reino Unido, y tomo proyectos freelance en Node.js, Python, AWS y seguridad.",
     "cta": "Ver mi trabajo",
-    "contact": "Contáctame"
+    "contact": "Trabajemos juntos"
   },
   "languages": {
     "en": "Inglés",
@@ -28,7 +29,7 @@
       "title": "Filtrar por categoría",
       "all": "Todos",
       "fullstack": "FullStack",
-      "backend": "Backend", 
+      "backend": "Backend",
       "frontend": "Frontend",
       "data": "Análisis de Datos"
     },
@@ -39,66 +40,139 @@
     "noProjects": "No se encontraron proyectos en esta categoría.",
     "projects": [
       {
+        "title": "R8 Audio · Plataforma de promoción musical",
+        "description": "Trabajo freelance para una plataforma donde sellos y artistas envían promos, gestionan lanzamientos y reciben feedback. Construí funcionalidades de punta a punta con NestJS y React: subidas con signed URLs, dashboards de analítica, un generador de contenido para redes y la migración de GCP a AWS (S3, SQS, Elastic Beanstalk) y Cloudflare Pages con Terraform.",
+        "technologies": [
+          "NestJS",
+          "React",
+          "TypeScript",
+          "AWS",
+          "Cloudflare",
+          "Terraform",
+          "Docker"
+        ]
+      },
+      {
         "title": "Ding!",
         "description": "Aplicación web desarrollada con React, Typescript y Laravel para la gestión pedidos. Maneja 5 roles clave.",
-        "technologies": ["Typescript", "React", "PHP", "Laravel", "MySQL"]
+        "technologies": [
+          "Typescript",
+          "React",
+          "PHP",
+          "Laravel",
+          "MySQL"
+        ]
       },
       {
         "title": "Sistema de Gestión de Maquinaria Vial",
         "description": "Aplicación web desarrollada con PHP y Laravel para la gestión de maquinaria pesada. Incluye autenticación, CRUD de usuarios, manejo de archivos y panel administrativo con Bootstrap.",
-        "technologies": ["PHP", "Laravel", "MySQL", "Bootstrap", "Blade"]
+        "technologies": [
+          "PHP",
+          "Laravel",
+          "MySQL",
+          "Bootstrap",
+          "Blade"
+        ]
       },
       {
         "title": "Batalla Naval",
         "description": "El reconocido juego batalla naval, creado con HTML, CSS y JavaScript. Incluye tableros interactivos, lógica de juego y diseño responsive.",
-        "technologies": ["HTML5", "CSS3", "JavaScript"]
+        "technologies": [
+          "HTML5",
+          "CSS3",
+          "JavaScript"
+        ]
       },
       {
         "title": "Proyecto Data Analytics",
         "description": "Proyecto Data Analytics sobre Representación Femenina en Videojuegos según certificación Jump! Data Analytics.",
-        "technologies": ["Power BI", "SQL Server", "Excel", "Data Analytics"]
+        "technologies": [
+          "Power BI",
+          "SQL Server",
+          "Excel",
+          "Data Analytics"
+        ]
       },
       {
         "title": "Timbre QR (En Construcción)",
         "description": "Proyecto de Timbre con scanner de QR para mi departamento",
-        "technologies": ["HTML", "CSS3", "JavaScript", "NodeJS"]
+        "technologies": [
+          "HTML",
+          "CSS3",
+          "JavaScript",
+          "NodeJS"
+        ]
       },
       {
         "title": "Alerta de Timbre Mobile (En Construcción)",
         "description": "Proyecto de Alerta de Timbre para alertar el scan de QR",
-        "technologies": ["React Native"]
+        "technologies": [
+          "React Native"
+        ]
       },
       {
         "title": "Portafolio Personal",
         "description": "Sitio web de portafolio moderno y responsivo desarrollado con React, que incluye animaciones fluidas, soporte de internacionalización y un diseño limpio y profesional. Muestra mis proyectos, habilidades y experiencia de manera interactiva.",
-        "technologies": ["React", "JavaScript", "CSS3", "Vite", "i18next", "Framer Motion", "Diseño Responsive"]
+        "technologies": [
+          "React",
+          "JavaScript",
+          "CSS3",
+          "Vite",
+          "i18next",
+          "Diseño Responsive"
+        ]
       },
       {
         "title": "Firme como Rulo",
         "description": "Sistema integral de gestión educativa para profesores desarrollado con PHP puro, HTML, CSS, Javascript y MySQL",
-        "technologies": ["PHP", "JavaScript", "HTML", "CSS", "MySQL"]
+        "technologies": [
+          "PHP",
+          "JavaScript",
+          "HTML",
+          "CSS",
+          "MySQL"
+        ]
       }
     ]
   },
   "footer": {
     "quickLinks": [
-      { "href": "#home", "label": "Inicio" },
-      { "href": "#about", "label": "Acerca de" },
-      { "href": "#skills", "label": "Habilidades" },
-      { "href": "#projects", "label": "Proyectos" },
-      { "href": "#contact", "label": "Contacto" }
+      {
+        "href": "#home",
+        "label": "Inicio"
+      },
+      {
+        "href": "#about",
+        "label": "Sobre mí"
+      },
+      {
+        "href": "#services",
+        "label": "Servicios"
+      },
+      {
+        "href": "#skills",
+        "label": "Habilidades"
+      },
+      {
+        "href": "#projects",
+        "label": "Proyectos"
+      },
+      {
+        "href": "#contact",
+        "label": "Contacto"
+      }
     ],
-    "brandDescription": "Estudiante de Desarrollo de Software apasionada por crear soluciones digitales innovadoras y análisis de datos.",
+    "brandDescription": "Backend & Security Engineer. APIs, pipelines de datos e infraestructura cloud.",
     "quickLinksTitle": "Enlaces Rápidos",
     "connectTitle": "Conecta Conmigo",
     "projectTitle": "¿Tienes un proyecto?",
     "projectText": "¡Hablemos y hagámoslo realidad!",
     "projectCta": "Comenzar Proyecto",
-    "copyright": "© {year} Melina Schimpf Baldo. Hecho con {heart} por una desarrolladora apasionada.",
+    "copyright": "© {year} Melina Schimpf Baldo.",
     "socialLinks": [
       {
         "name": "GitHub",
-        "url": "https://github.com/melischimpf"
+        "url": "https://github.com/meliischimpf"
       },
       {
         "name": "LinkedIn",
@@ -114,7 +188,7 @@
     "title": "Contacto",
     "subtitle": "¿Tienes un proyecto en mente? ¡Hablemos y hagámoslo realidad!",
     "workTogether": "¡Trabajemos Juntos!",
-    "workDescription": "Estoy siempre interesada en nuevos proyectos y oportunidades de aprendizaje. Ya sea que necesites desarrollo web, análisis de datos o simplemente quieras charlar sobre tecnología, no dudes en contactarme.",
+    "workDescription": "Estoy disponible para proyectos freelance: APIs, pipelines de datos, migraciones cloud o revisiones de seguridad. Contame qué necesitás y vemos cómo te puedo ayudar.",
     "contactInfo": [
       {
         "title": "Email",
@@ -133,7 +207,7 @@
     "socialLinks": [
       {
         "name": "GitHub",
-        "url": "https://github.com/melischimpf"
+        "url": "https://github.com/meliischimpf"
       },
       {
         "name": "LinkedIn",
@@ -158,89 +232,131 @@
   },
   "skills": {
     "title": "Habilidades Técnicas",
-    "subtitle": "Tecnologías y herramientas que domino para crear soluciones excepcionales",
-    "additionalTools": "Herramientas y Tecnologías Adicionales",
+    "subtitle": "El stack que uso todos los días",
+    "additionalTools": "También manejo",
     "categories": [
-      {
-        "title": "Frontend",
-        "skills": [
-          { "name": "HTML", "level": 90 },
-          { "name": "CSS", "level": 90 },
-          { "name": "JavaScript", "level": 85 },
-          { "name": "TypeScript", "level": 85 },
-          { "name": "React", "level": 80 },
-          { "name": "NextJS", "level": 75 },
-          { "name": "Vite", "level": 80 },
-          { "name": "Bootstrap", "level": 80 },
-          { "name": "Tailwind", "level": 85 }
-        ]
-      },
       {
         "title": "Backend",
         "skills": [
-          { "name": "NodeJS", "level": 75 },
-          { "name": "NestJS", "level": 75 },
-          { "name": "ExpressJS", "level": 75 },
-          { "name": "PHP", "level": 90 },
-          { "name": "Laravel", "level": 85 },
-          { "name": "C#", "level": 60 },
-          { "name": "Python", "level": 50 }
+          "Node.js",
+          "NestJS",
+          "Express",
+          "TypeScript",
+          "Python",
+          "PHP / Laravel"
         ]
       },
       {
-        "title": "Bases de Datos & Análisis",
+        "title": "Datos",
         "skills": [
-          { "name": "MySQL", "level": 80 },
-          { "name": "Postgres", "level": 70 },
-          { "name": "MariaDB", "level": 80 },
-          { "name": "MongoDB", "level": 70 },
-          { "name": "Power BI", "level": 75 },
-          { "name": "Excel", "level": 85 },
-          { "name": "Análisis de Datos", "level": 85 }
+          "PostgreSQL",
+          "MySQL",
+          "dbt",
+          "ETL / ELT",
+          "MongoDB",
+          "Power BI"
         ]
       },
       {
-        "title": "DevOps",
+        "title": "Cloud y DevOps",
         "skills": [
-          { "name": "Docker", "level": 85 },
-          { "name": "Kubernetes", "level": 70 },
-          { "name": "GCP", "level": 85 },
-          { "name": "AWS", "level": 70 },
-          { "name": "Apache", "level": 80 },
-          { "name": "Nginx", "level": 80 }
+          "AWS",
+          "Azure",
+          "GCP",
+          "Cloudflare",
+          "Docker",
+          "Terraform",
+          "CI/CD"
+        ]
+      },
+      {
+        "title": "Seguridad y Frontend",
+        "skills": [
+          "Control de acceso",
+          "Auditoría",
+          "SSL/HTTPS",
+          "Respuesta a incidentes",
+          "React",
+          "Next.js"
         ]
       }
     ],
     "tools": [
-      "Git", "Visual Studio", "Power BI", "Excel",
-      "Hardware", "Redes", "Sistemas Operativos", "Routers", "Mantenimiento PC"
+      "Git",
+      "GitHub Actions",
+      "Linux",
+      "Windows",
+      "Redes",
+      "Hardware",
+      "Excel",
+      "Kotlin"
     ]
   },
   "about": {
     "title": "Sobre Mí",
-    "subtitle": "Desarrolladora Full-Stack Junior apasionada por crear soluciones innovadoras",
-    "greeting": "¡Hola! Soy Melina Schimpf Baldo",
-    "description1": "Técnica Superior en Análisis y Desarrollo de Software especializada en arquitecturas escalables con Node.js (NestJS/Express), PHP (Laravel) y JavaScript, TypeScript (React). Desarrollo soluciones integrales que incluyen bases de datos SQL/NoSQL, infraestructura en GCP y desarrollo móvil con Kotlin.",
-    "description2": "Mi valor reside en un enfoque metódico de Causa Raíz (RCA) para la resolución de problemas técnicos complejos. Desarrollo bajo principios SOLID para asegurar la calidad y mantenibilidad del software, implementando autenticación segura con Firebase Auth y flujos de CI/CD con Docker.",
-    "description3": "Con nivel de inglés B2 conversacional y una fuerte capacidad de auto-gestión, busco integrarme a equipos globales 100% remotos. Disponible para iniciar en enero 2026, me enfoco en la asimilación rápida de desafíos y la entrega de código de alta precisión orientado a objetivos.",
-    "stats": {
-      "certifications": "Certificaciones",
-      "graduation": "Graduación 2025",
-      "technologies": "Tecnologías"
-    },
+    "subtitle": "Backend & Security Engineer enfocada en sistemas seguros, observables y fáciles de mantener",
+    "greeting": "¡Hola! Soy Melina",
+    "description1": "Soy Backend & Security Engineer, vivo en Entre Ríos, Argentina, y trabajo en remoto. En Goalkeeper.com (TLA Studios, Reino Unido) trabajo en una plataforma de analítica de rendimiento usada por clubes de fútbol profesional: construí un data warehouse multimarca en AWS, mejoro la integridad de datos y la auditoría de la plataforma, y sumo observabilidad a la API principal.",
+    "description2": "Antes, como desarrolladora full-stack freelance en R8 Audio, construí funcionalidades de punta a punta con NestJS y React y lideré la migración de la plataforma de GCP a AWS y Cloudflare con Terraform y Docker.",
+    "description3": "Mi experiencia en soporte IT y seguridad hace que me importe lo que pasa después del deploy. Soy Técnica Superior en Análisis y Desarrollo de Software (2025), tengo inglés B2 y estoy disponible para proyectos freelance.",
+    "stats": [
+      {
+        "value": "130+",
+        "label": "Pull requests en 2026"
+      },
+      {
+        "value": "3",
+        "label": "Clouds: AWS, Azure, GCP"
+      },
+      {
+        "value": "2025",
+        "label": "Egresada"
+      }
+    ],
     "experiences": [
       {
-        "title": "Plataforma de Promoción Musical",
-        "description": "Desarrollo integral de una arquitectura escalable con NestJS, TypeScript y React. Implementación de APIs RESTful, autenticación segura (JWT/Firebase), modelado en PostgreSQL y despliegue en GCP mediante flujos de CI/CD con Docker."
+        "title": "Backend & Security Engineer · Goalkeeper.com",
+        "period": "Jul 2026 – Actualidad · Remoto (Reino Unido)",
+        "description": "Data warehouse multimarca en AWS (dbt, Terraform), integridad de datos y auditoría en la plataforma de analítica, pipelines ETL en Python para datos de partidos y observabilidad de la API principal."
       },
       {
-        "title": "Técnico de Mantenimiento Informático",
-        "description": "Diagnóstico y reparación de hardware y software, mantenimiento preventivo, soporte técnico remoto/presencial, instalación de SO (Windows/Linux) y configuración básica de redes LAN."
+        "title": "Full-Stack Developer · R8 Audio",
+        "period": "Dic 2025 – Ago 2026 · Freelance",
+        "description": "Plataforma de promoción musical para sellos y artistas hecha con NestJS y React: subidas con signed URLs, dashboards de analítica, un generador de contenido para redes y la migración de GCP a AWS y Cloudflare."
       },
       {
-        "title": "Análisis de Datos",
-        "description": "Experiencia en análisis y visualización de datos con Power BI y Excel, optimizando la organización de información para la toma de decisiones basada en datos."
+        "title": "Soporte IT y Técnica de PC",
+        "period": "Abr 2025 – Actualidad · Freelance",
+        "description": "Diagnóstico de hardware y software en Windows y Linux, redes LAN, firewalls, backups, limpieza de malware y configuración de SSL/HTTPS para clientes locales."
+      },
+      {
+        "title": "Helpdesk · Galbop",
+        "period": "Feb 2026 – Jul 2026",
+        "description": "Soporte técnico del sistema de gestión farmacéutica Plex 25, manteniendo operativos a clientes del sector salud."
       }
     ]
+  },
+  "services": {
+    "title": "Servicios",
+    "subtitle": "Cómo puedo ayudar en tu proyecto",
+    "items": [
+      {
+        "title": "APIs y backends",
+        "description": "APIs REST y lógica de negocio con Node.js (NestJS, Express), TypeScript, Python o Laravel, pensadas para testearse y mantenerse."
+      },
+      {
+        "title": "Pipelines de datos",
+        "description": "Pipelines ETL/ELT, modelado de datos con dbt y PostgreSQL, y reglas de calidad de datos confiables."
+      },
+      {
+        "title": "Cloud y DevOps",
+        "description": "Despliegues y migraciones en AWS, Azure y Cloudflare, con Terraform, Docker y CI/CD."
+      },
+      {
+        "title": "Seguridad y confiabilidad",
+        "description": "Control de acceso, auditoría, SSL/HTTPS, limpieza de incidentes y observabilidad para sistemas en producción."
+      }
+    ],
+    "cta": "Contame tu proyecto"
   }
 }
