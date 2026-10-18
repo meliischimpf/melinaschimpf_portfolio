@@ -1,0 +1,2 @@
+# El hash de la CSP depende del texto exacto del script inline: mantener LF en todos los sistemas
+index.html text eol=lf
